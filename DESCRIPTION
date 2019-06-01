@@ -3,7 +3,7 @@ Title: GeneDMRs: an R package for Gene-based differentially methylated regions a
 Version: 0.1.0
 Authors@R: person("Xiao", "Wang", email = "xiwa@dtu.dk", role = c("aut", "cre"))
 Description: Calculating methylations within genes and identify the Gene-based Differentially Methylated Regions (GeneDMRs).
-Depends: R (>= 3.5.2)
+Depends: R (>= 3.5.0)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
