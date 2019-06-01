@@ -4,7 +4,7 @@
 #' 
 #' @description This function calculates the mean methylation difference along each read gene.
 #' Formula:The mean methylation of a gene of one treatment group was calculated by: 
-#' ¡Æn((¡Æm[MR]_ij )/(¡Æm[TR]_ij ))*W_ij and W_ij =  (¡Æm[TR]_ij )/(¡Æn¡Æm[TR]_ij ), 
+#' E((E[MR]_ij )/(E[TR]_ij ))*W_ij and W_ij =  (E[TR]_ij )/(EE[TR]_ij ), 
 #' where [MR]_ij and [TR]_ij are methylated and total reads number of the involved CpG/DMC j at a given gene of individual i, 
 #' n is the total individual number of one treatment group, m is total number of CpG/DMC involved in this gene and 
 #' W_ij is the weight of reads of the involved CpG/DMC j of individual i. 
@@ -324,7 +324,7 @@ Methmean_region <- function(inputmethfile_QC, inputrefseqfile, cpgifeaturefile =
 #' @description This function outputs the methylation mean for each cytosine site. It will calculate methylation difference along each group. 
 #' 
 #' Formula:The mean methylation of a cytosine of one treatment group was calculated by: 
-#' ¡Æn((¡Æm[MR]_i )/(¡Æm[TR]_i ))*W_i and W_i =  (¡Æm[TR]_i )/(¡Æn¡Æm[TR]_i ), 
+#' E((E[MR]_i )/(E[TR]_i ))*W_i and W_i =  (E[TR]_i )/(EE[TR]_i ), 
 #' where [MR]_i and [TR]_i are methylated and total reads number of the CpG, 
 #' n is the total individual number of one treatment group, and 
 #' W_i is the weight of reads of the CpG of individual i. 
