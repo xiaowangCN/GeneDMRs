@@ -3,6 +3,9 @@
 Prepare_GeneDMRs(Dbannotation = "org.Mm.eg.db")
 
 # examples
-Quick_GeneDMRs();
+Quick_GeneDMRs()
 
 Quick_DMCs()
+
+# Contact
+Xiao Wang, xiwa@dtu.dk, Technical University of Denmark
