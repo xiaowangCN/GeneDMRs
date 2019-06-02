@@ -19,7 +19,7 @@ Outputs the mean methylation.
 \description{
 This function calculates the mean methylation difference along each read gene.
 Formula:The mean methylation of a gene of one treatment group was calculated by: 
-¡Æn((¡Æm[MR]_ij )/(¡Æm[TR]_ij ))*W_ij and W_ij =  (¡Æm[TR]_ij )/(¡Æn¡Æm[TR]_ij ), 
+E((E[MR]_ij )/(E[TR]_ij ))*W_ij and W_ij =  (E[TR]_ij )/(EE[TR]_ij ), 
 where [MR]_ij and [TR]_ij are methylated and total reads number of the involved CpG/DMC j at a given gene of individual i, 
 n is the total individual number of one treatment group, m is total number of CpG/DMC involved in this gene and 
 W_ij is the weight of reads of the involved CpG/DMC j of individual i. 

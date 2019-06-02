@@ -14,7 +14,7 @@ Sample_boxplot(inputmethfile, inputrefseqfile, Meth_plot = TRUE,
 
 \item{Meth_plot}{refers to whether to plot the methylation levels, with default TRUE, otherwise to plot the read numbers.}
 
-\item{ylab}{refers to the label of y axis, with default "Methylation level (%)".}
+\item{ylab}{refers to the label of y axis, with default "Methylation level (\%)".}
 
 \item{refseqname}{refers to NCBI ID of specific gene, with default NULL.}
 
