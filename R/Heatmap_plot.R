@@ -6,7 +6,7 @@
 #' 
 #' @param regiongeneall_significant refers to the input file of methylation levels with differentially methylated genes or the genes in different gene body features.
 #' @param featurename refers to the feature name of the output file from Significant_filter() for genefeatureall_cpgfeature file, that is "CpGisland" or "Shore", with default NULL.
-#' @param title refers to the figure title, with the default "Methylation level (%)".
+#' @param title refers to the figure title, with the default "Methylation level".
 #' @param display_numbers refers to whether to display the methylation value in the figure, with default FALSE.
 #' @param number_format refers to the displayed number of the methylation value in round format.
 #' @param cluster_rows refers to whether to cluster the row, with the default FALSE.
@@ -27,9 +27,9 @@
 #' @export
 
 
-Heatmap_plot <- function(regiongeneall_significant, featurename = NULL, title = "Methylation level (%)", 
+Heatmap_plot <- function(regiongeneall_significant, featurename = NULL, title = "Methylation level", 
                          display_numbers = FALSE, number_format = "%.0f", cluster_rows = FALSE, cluster_cols = TRUE, 
-                         gaps_row = c(1,2), gaps_col = NULL){
+						 gaps_row = c(1,2), gaps_col = NULL){
   
   if(is.null(featurename) == TRUE){
     

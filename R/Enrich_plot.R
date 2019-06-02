@@ -109,7 +109,7 @@ Enrich_plot <- function(regiongenealls_significant, adjustpvaluecut = 0.1, enric
       DMgene_merge <- data.frame(REFSEQ = regiongenealls_significant$id, Methdiff = regiongenealls_significant$Methdiff1)
       DMDEgene_merge <- merge(x = DEgene_merge, y = DMgene_merge, by = "REFSEQ")
       
-      neweg <- data.frame(Entrez = DMDEgene_merge$ENTREZID, logFC = DMDEgene_merge$logFC, Methdiff = DMDEgene_merge$Methdiff)
+      neweg <- data.frame(Entrez = DMDEgene_merge$ENTREZID, logFC = DMDEgene_merge$LogFC, Methdiff = DMDEgene_merge$Methdiff)
       if(category == TRUE){
         neweg$group <- "Hyper-methylated"
         neweg$group[neweg$Methdiff < 0] <- "Hypo-methylated"
@@ -127,7 +127,7 @@ Enrich_plot <- function(regiongenealls_significant, adjustpvaluecut = 0.1, enric
         # GO terms between two categories #
         formula_go <- compareCluster(Entrez~group + othergroup, data = neweg, fun = "enrichGO", ont = "all", 
                                      pvalueCutoff = adjustpvaluecut, OrgDb = Dbannotation)
-        dotplot(formula_go, x = ~group, color = "p.adjust", showCategory = listnum, split = NULL, font.size = 14, 
+        clusterProfiler::dotplot(formula_go, x = ~group, color = "p.adjust", showCategory = listnum, split = NULL, font.size = 14, 
                 title = title) + ggplot2::facet_grid(~othergroup)
         
       }else if(length(grep("pathway", enrichterm)) > 0){
@@ -135,7 +135,7 @@ Enrich_plot <- function(regiongenealls_significant, adjustpvaluecut = 0.1, enric
         # pathways between two categories #
         formula_path <- compareCluster(Entrez~group + othergroup, data = neweg, fun = "enrichKEGG", 
                                        organism = keggorganism, pvalueCutoff = adjustpvaluecut)
-        dotplot(formula_path, x=~group, color = "p.adjust", showCategory = listnum, split = NULL, font.size = 14,
+        clusterProfiler::dotplot(formula_path, x=~group, color = "p.adjust", showCategory = listnum, split = NULL, font.size = 14,
                 title = title) + ggplot2::facet_grid(~othergroup)
       }
     }

@@ -283,6 +283,7 @@ Meth_difference <- function(output, diffgroup = NULL){
 #' genefeatureall_cpgfeature_significantcpgisland <- Significant_filter(genefeatureall_cpgfeature_Qvalue)
 #' genefeatureall_cpgfeature_significantshore <- Significant_filter(genefeatureall_cpgfeature_Qvalue, featureout = 2)
 #' genefeatureall_cpgfeature_significantcpgisland <- Significant_filter(genefeatureall_cpgfeature_Qvalue, qvalue = 0.001, methdiff = 0.01, featureout = 1)
+#' regiongeneall_cpgfeature_significantcpgisland <- Significant_filter(regiongeneall_cpgfeature_Qvalue, methdiff = 0.05, featureout = 1)
 #' regiongeneall_significant <- Significant_filter(regiongeneall_Qvalue)
 #' regiongenealls_significant <- Significant_filter(regiongenealls_Qvalue, methdiff = 0.05)
 #' siteall_significant <- Significant_filter(siteall_Qvalue)
