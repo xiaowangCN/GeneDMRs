@@ -1,4 +1,4 @@
-#' Install the dependencies
+#' Install the dependencies.
 #' 
 #' @import BiocManager
 #' 
@@ -42,7 +42,7 @@ Prepare_GeneDMRs <- function(Dbannotation = "org.Mm.eg.db"){
 
 
 
-#' Quick use the GeneDMRs package for gene based differentially methlated regions
+#' Quick use the GeneDMRs package for gene based differentially methlated regions.
 #' 
 #' @import dplyr
 #' @import qqman
@@ -105,7 +105,7 @@ Quick_GeneDMRs <- function(paths = paste(system.file(package = "GeneDMRs"), "/me
 
 
  
-#' Quick use the GeneDMRs package for differentially methylated cytosine sites
+#' Quick use the GeneDMRs package for differentially methylated cytosine sites.
 #' 
 #' @import dplyr
 #' @import qqman

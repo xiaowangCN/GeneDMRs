@@ -1,4 +1,4 @@
-#' Quality control for the input methylation file
+#' Quality control for the input methylation file.
 #' 
 #' @import dplyr
 #' 

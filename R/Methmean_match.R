@@ -1,4 +1,5 @@
 #' Internal Use Function
+#' That calculates the mean methylation difference.
 #'
 #' @import dplyr
 #' 
@@ -157,7 +158,7 @@ Meth_mean <- function(inputmethfile_QC, regionchr, cpgifeaturefile = NULL){
 
 
 
-#' Calculate the methylation mean for regions
+#' Calculate the methylation mean for regions.
 #'
 #' @import dplyr
 #' 
@@ -317,7 +318,7 @@ Methmean_region <- function(inputmethfile_QC, inputrefseqfile, cpgifeaturefile =
 
 
 
-#' Calculate the methylation mean for cytosine sites
+#' Calculate the methylation mean for cytosine sites.
 #' 
 #' @import dplyr
 #' 

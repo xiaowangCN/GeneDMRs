@@ -163,7 +163,7 @@ Logic_regression <- function(genefeatureall_cpgfeature, covariates = NULL, adjus
 
 
 #' Internal Use Function
-#' Adjust the P values of logistical regression model.
+#' That adjusts the P values of logistical regression model.
 #' 
 #' @description This function adjust the P values of each region or each cytosine by logistical regression model.
 #'
@@ -218,7 +218,7 @@ Pvalue_adjusted <- function(output, adjustedmethod = "fdr"){
 
 
 #' Internal Use Function
-#' Calculate the methylation difference between groups.
+#' That calculates the methylation difference between groups.
 #' 
 #' @description This function calculate the methylation difference between groups of each region or each cytosine.
 #'

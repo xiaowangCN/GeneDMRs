@@ -98,7 +98,7 @@ Chromosome_pieplot <- function(genefeatureall_cpgfeature_significantcpgisland, g
   
   
   
-#' Pie plot based on different features
+#' Pie plot based on different features.
 #' 
 #' @import plotrix
 #' 
@@ -247,6 +247,7 @@ Feature_pieplot <- function(siteall_significant_feature, methdirection = "both",
 
  
 #' Internal Use Function
+#' That sorts the chromosomes from "chr1", "chr2", "chr3"......, "chrX" and "chrY".
 #'
 #' @description This function sorts the chromosomes.
 #' 

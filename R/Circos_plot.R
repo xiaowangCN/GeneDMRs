@@ -1,4 +1,4 @@
-#' Plot the circos
+#' Plot the circos.
 #' 
 #' @import RCircos
 #' 

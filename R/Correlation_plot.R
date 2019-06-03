@@ -1,4 +1,4 @@
-#' Plot the methylation correlation
+#' Plot the methylation correlation.
 #' 
 #' @import corrplot
 #' @import Hmisc

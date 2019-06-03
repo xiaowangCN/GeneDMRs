@@ -1,4 +1,4 @@
-#' Divide the genome to windows
+#' Divide the genome to windows.
 #' 
 #' @description This function outputs the window regions of the whole genome.
 #' 

@@ -1,4 +1,4 @@
-#' Read the methylation file
+#' Read the methylation file.
 #' 
 #' @import dplyr
 #' 
@@ -118,7 +118,7 @@ Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/met
 
 
 
-#' Input the standard bedfile of refseq or cpgi downloaded from UCSC.
+#' Read the standard bedfile of refseq or cpgi downloaded from UCSC.
 #' 
 #' @import dplyr
 #' @import genomation
@@ -327,6 +327,7 @@ Bedfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/meth
 
 
 #' Internal Use Function
+#' That reads the bed file.
 #'
 #' @description This function reads the bed file and sort them.
 #' 
@@ -364,6 +365,7 @@ Regionfile_read <- function(bedfile, suffix){
 
 
 #' Internal Use Function
+#' That checks and annotates the promoter to the specific gene. 
 #'
 #' @description This function sorts and makes sure geneobj file can be used in this package,
 #' that mainly works on the promoters without the choromsome and position information.
@@ -420,7 +422,7 @@ refseqfile_check <- function(geneobj, regionfile){
 
 
 
-#' Read the cyto file
+#' Read the cyto file.
 #'
 #' @description This function reads the chromosome information from cyto file (cytoBandIdeo.txt) and sort them by chromosome and position. 
 #' The dataset of the example is the mouse genome information downloaded from UCSC website 

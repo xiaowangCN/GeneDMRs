@@ -1,4 +1,5 @@
 #' Internal Use Function
+#' That transforms data for boxplot.
 #'
 #' @description This function transforms filtered subset of inputmethfile to a dataframe for boxplot.
 #' 
@@ -49,7 +50,7 @@ Boxplot_trans <- function(methallchr){
 #' @param inputmethfile refers to the input file with methylation levels.
 #' @param inputrefseqfile refers to the input of gene regions.
 #' @param Meth_plot refers to whether to plot the methylation levels, with default TRUE, otherwise to plot the read numbers.
-#' @param ylab refers to the label of y axis, with default "Methylation level (%)".
+#' @param ylab refers to the label of y axis, with default "Methylation level (\%)".
 #' @param refseqname refers to NCBI ID of specific gene, with default NULL.
 #' @param col refers to boxplot colors, with default NULL.
 #' 
@@ -188,6 +189,7 @@ Group_boxplot <- function(regiongeneall, ttest = TRUE, title = "Group boxplot", 
 
 
 #' Internal Use Function.
+#' That boxplots the methylation levels for one group based on CpG island features.
 #'
 #' @description This function output the methylation levels in boxplot for one group based on CpG island features,
 #' e.g. CpG island and CpG island shore based on groups.
@@ -197,6 +199,7 @@ Group_boxplot <- function(regiongeneall, ttest = TRUE, title = "Group boxplot", 
 #' 
 #' @param groupnum refers to the group number, can be NULL if without groups but the colnames should have "group" name 
 #' like CpGislandgroup or Shoregroup, can also be automatically set in the Group_feature_boxplot function.
+#' 
 #' @param ttest refers to whether perform the Student t-test, with default TRUE.
 #' @param cpgfeaturelable refers to CpG island features, with default CpGisland" and "Shore".
 #' @param title refers to main text of tilte， with default "Group1".
