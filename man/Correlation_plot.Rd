@@ -2,7 +2,7 @@
 % Please edit documentation in R/Correlation_plot.R
 \name{Correlation_plot}
 \alias{Correlation_plot}
-\title{Plot the methylation correlation}
+\title{Plot the methylation correlation.}
 \usage{
 Correlation_plot(inputmethfile_QC, unmeth_exclude = TRUE)
 }

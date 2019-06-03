@@ -2,7 +2,7 @@
 % Please edit documentation in R/Quick_start.R
 \name{Prepare_GeneDMRs}
 \alias{Prepare_GeneDMRs}
-\title{Install the dependencies}
+\title{Install the dependencies.}
 \usage{
 Prepare_GeneDMRs(Dbannotation = "org.Mm.eg.db")
 }

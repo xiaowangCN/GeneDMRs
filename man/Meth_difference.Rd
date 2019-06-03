@@ -3,7 +3,7 @@
 \name{Meth_difference}
 \alias{Meth_difference}
 \title{Internal Use Function
-Calculate the methylation difference between groups.}
+That calculates the methylation difference between groups.}
 \usage{
 Meth_difference(output, diffgroup = NULL)
 }

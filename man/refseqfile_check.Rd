@@ -2,7 +2,8 @@
 % Please edit documentation in R/File_read.R
 \name{refseqfile_check}
 \alias{refseqfile_check}
-\title{Internal Use Function}
+\title{Internal Use Function
+That checks and annotates the promoter to the specific gene.}
 \usage{
 refseqfile_check(geneobj, regionfile)
 }

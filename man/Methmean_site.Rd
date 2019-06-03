@@ -2,7 +2,7 @@
 % Please edit documentation in R/Methmean_match.R
 \name{Methmean_site}
 \alias{Methmean_site}
-\title{Calculate the methylation mean for cytosine sites}
+\title{Calculate the methylation mean for cytosine sites.}
 \usage{
 Methmean_site(inputmethfile_QC)
 }

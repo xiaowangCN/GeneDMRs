@@ -2,7 +2,7 @@
 % Please edit documentation in R/Circos_plot.R
 \name{Circos_plot}
 \alias{Circos_plot}
-\title{Plot the circos}
+\title{Plot the circos.}
 \usage{
 Circos_plot(inputcytofile, inputmethfile_QC, inputrefseqfile,
   inputcpgifeaturefile, labelname = regiongeneall_significant,

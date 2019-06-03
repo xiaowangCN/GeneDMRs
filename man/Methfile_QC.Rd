@@ -2,7 +2,7 @@
 % Please edit documentation in R/Methfile_QC.R
 \name{Methfile_QC}
 \alias{Methfile_QC}
-\title{Quality control for the input methylation file}
+\title{Quality control for the input methylation file.}
 \usage{
 Methfile_QC(inputmethfile, low_coveragenum = 10,
   high_coveragenum = NULL, low_quantile = NULL, high_quantile = 99.9,

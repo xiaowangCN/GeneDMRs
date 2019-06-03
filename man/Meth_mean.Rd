@@ -2,7 +2,8 @@
 % Please edit documentation in R/Methmean_match.R
 \name{Meth_mean}
 \alias{Meth_mean}
-\title{Internal Use Function}
+\title{Internal Use Function
+That calculates the mean methylation difference.}
 \usage{
 Meth_mean(inputmethfile_QC, regionchr, cpgifeaturefile = NULL)
 }

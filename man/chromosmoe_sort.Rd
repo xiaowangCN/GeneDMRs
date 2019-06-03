@@ -2,7 +2,8 @@
 % Please edit documentation in R/Pie_plot.R
 \name{chromosmoe_sort}
 \alias{chromosmoe_sort}
-\title{Internal Use Function}
+\title{Internal Use Function
+That sorts the chromosomes from "chr1", "chr2", "chr3"......, "chrX" and "chrY".}
 \usage{
 chromosmoe_sort(chromtable)
 }

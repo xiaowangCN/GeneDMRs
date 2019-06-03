@@ -2,7 +2,8 @@
 % Please edit documentation in R/Box_plot.R
 \name{Boxplot_trans}
 \alias{Boxplot_trans}
-\title{Internal Use Function}
+\title{Internal Use Function
+That transforms data for boxplot.}
 \usage{
 Boxplot_trans(methallchr)
 }

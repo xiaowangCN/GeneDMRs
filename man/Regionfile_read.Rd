@@ -2,7 +2,8 @@
 % Please edit documentation in R/File_read.R
 \name{Regionfile_read}
 \alias{Regionfile_read}
-\title{Internal Use Function}
+\title{Internal Use Function
+That reads the bed file.}
 \usage{
 Regionfile_read(bedfile, suffix)
 }

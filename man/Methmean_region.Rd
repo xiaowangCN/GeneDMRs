@@ -2,7 +2,7 @@
 % Please edit documentation in R/Methmean_match.R
 \name{Methmean_region}
 \alias{Methmean_region}
-\title{Calculate the methylation mean for regions}
+\title{Calculate the methylation mean for regions.}
 \usage{
 Methmean_region(inputmethfile_QC, inputrefseqfile,
   cpgifeaturefile = NULL, chrnum = "all", posistart = NULL,

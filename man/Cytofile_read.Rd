@@ -2,7 +2,7 @@
 % Please edit documentation in R/File_read.R
 \name{Cytofile_read}
 \alias{Cytofile_read}
-\title{Read the cyto file}
+\title{Read the cyto file.}
 \usage{
 Cytofile_read(paths = paste(system.file(package = "GeneDMRs"),
   "/methdata", sep = ""), cytofile = "cytoBandIdeo",

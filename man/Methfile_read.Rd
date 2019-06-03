@@ -2,7 +2,7 @@
 % Please edit documentation in R/File_read.R
 \name{Methfile_read}
 \alias{Methfile_read}
-\title{Read the methylation file}
+\title{Read the methylation file.}
 \usage{
 Methfile_read(paths = paste(system.file(package = "GeneDMRs"),
   "/methdata", sep = ""), suffix = ".gz")

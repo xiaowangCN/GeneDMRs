@@ -2,7 +2,7 @@
 % Please edit documentation in R/Quick_start.R
 \name{Quick_DMCs}
 \alias{Quick_DMCs}
-\title{Quick use the GeneDMRs package for differentially methylated cytosine sites}
+\title{Quick use the GeneDMRs package for differentially methylated cytosine sites.}
 \usage{
 Quick_DMCs(paths = paste(system.file(package = "GeneDMRs"), "/methdata",
   sep = ""), suffixmeth = ".gz")

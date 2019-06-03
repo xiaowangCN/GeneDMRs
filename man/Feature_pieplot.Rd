@@ -2,7 +2,7 @@
 % Please edit documentation in R/Pie_plot.R
 \name{Feature_pieplot}
 \alias{Feature_pieplot}
-\title{Pie plot based on different features}
+\title{Pie plot based on different features.}
 \usage{
 Feature_pieplot(siteall_significant_feature, methdirection = "both",
   title = "Pie plot for feature", threeDplot = TRUE)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Quick_start.R
 \name{Quick_GeneDMRs}
 \alias{Quick_GeneDMRs}
-\title{Quick use the GeneDMRs package for gene based differentially methlated regions}
+\title{Quick use the GeneDMRs package for gene based differentially methlated regions.}
 \usage{
 Quick_GeneDMRs(paths = paste(system.file(package = "GeneDMRs"),
   "/methdata", sep = ""), suffixmeth = ".gz", bedfile = "refseq",

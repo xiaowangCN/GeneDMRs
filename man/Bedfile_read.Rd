@@ -2,7 +2,7 @@
 % Please edit documentation in R/File_read.R
 \name{Bedfile_read}
 \alias{Bedfile_read}
-\title{Input the standard bedfile of refseq or cpgi downloaded from UCSC.}
+\title{Read the standard bedfile of refseq or cpgi downloaded from UCSC.}
 \usage{
 Bedfile_read(paths = paste(system.file(package = "GeneDMRs"),
   "/methdata", sep = ""), bedfile = "refseq", suffix = ".txt",

@@ -3,7 +3,7 @@
 \name{Pvalue_adjusted}
 \alias{Pvalue_adjusted}
 \title{Internal Use Function
-Adjust the P values of logistical regression model.}
+That adjusts the P values of logistical regression model.}
 \usage{
 Pvalue_adjusted(output, adjustedmethod = "fdr")
 }

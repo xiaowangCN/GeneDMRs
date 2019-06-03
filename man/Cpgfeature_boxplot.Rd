@@ -2,7 +2,8 @@
 % Please edit documentation in R/Box_plot.R
 \name{Cpgfeature_boxplot}
 \alias{Cpgfeature_boxplot}
-\title{Internal Use Function.}
+\title{Internal Use Function.
+That boxplots the methylation levels for one group based on CpG island features.}
 \usage{
 Cpgfeature_boxplot(genefeatureall_cpgfeature, groupnum = 1,
   ttest = TRUE, cpgfeaturelable = c("CpGisland", "Shore"),

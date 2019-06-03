@@ -2,7 +2,7 @@
 % Please edit documentation in R/Window_divide.R
 \name{Window_divide}
 \alias{Window_divide}
-\title{Divide the genome to windows}
+\title{Divide the genome to windows.}
 \usage{
 Window_divide(inputcytofile, windowbp = 1e+06)
 }
