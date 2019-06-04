@@ -3,7 +3,7 @@
 #' @import BiocManager
 #' 
 #' @description GeneDMRs is an R package to detect the differentially methylated regions based on genes (DMG), gene body (DMP, DME, DMI), 
-#' CpG islands and gene body interacted with CpG island features (e.g. DMG/DMP/DME/DMI_CpG island and DMG/DMP/DME/DMI_CpG island shore). 
+#' CpG islands and gene body interacted with CpG island features (e.g., DMG/DMP/DME/DMI_CpG island and DMG/DMP/DME/DMI_CpG island shore). 
 #' This function can install the other R packages for the dependencies of GeneDMRs.
 #' 
 #' @param Dbannotation refers to the annotation dataset for enrichment, with default "org.Mm.eg.db" of mouse.
@@ -54,9 +54,9 @@ GeneDMRs <- function(Dbannotation = "org.Mm.eg.db"){
 #' @description This function outputs a series of results and figures for gene based regions' methylation analysis.
 #' 
 #' @param paths refers to the path of input file, with default the package path.
-#' @param suffixmeth refers to the suffix of methylation file, e.g. ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".
+#' @param suffixmeth refers to the suffix of methylation file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".
 #' @param bedfile refers to the file name of bed file for "refseq". This file is downloaded from UCSC website, with default "refseq".
-#' @param suffixbed refers to the suffix of bed file, e.g. ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".txt".
+#' @param suffixbed refers to the suffix of bed file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".txt".
 #' @param Dbannotation refers to the annotation dataset for enrichment, with default "org.Mm.eg.db" of mouse.
 #' @param keggorganism refers to the species name for KEGG enrichment, with default "mmu" of mouse.
 #' 
@@ -115,7 +115,7 @@ Quick_GeneDMRs <- function(paths = paste(system.file(package = "GeneDMRs"), "/me
 #' @description This function outputs the differentially methylated cytosine sites (DMCs).
 #' 
 #' @param paths refers to the path of input file, with default the package path.
-#' @param suffixmeth refers to the suffix of methylation file, e.g. ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".
+#' @param suffixmeth refers to the suffix of methylation file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".
 #' 
 #' @return Outputs DMC results.
 #'

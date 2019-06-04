@@ -192,10 +192,10 @@ Group_boxplot <- function(regiongeneall, ttest = TRUE, title = "Group boxplot", 
 #' That boxplots the methylation levels for one group based on CpG island features.
 #'
 #' @description This function output the methylation levels in boxplot for one group based on CpG island features,
-#' e.g. CpG island and CpG island shore based on groups.
+#' e.g., CpG island and CpG island shore based on groups.
 #' 
 #' @param genefeatureall_cpgfeature refers to output of Region_match as well. 
-#' the output of gene or genebody match with cpgi features, e.g. all genes in promoter or exon or intron regions.
+#' the output of gene or genebody match with cpgi features, e.g., all genes in promoter or exon or intron regions.
 #' 
 #' @param groupnum refers to the group number, can be NULL if without groups but the colnames should have "group" name 
 #' like CpGislandgroup or Shoregroup, can also be automatically set in the Group_feature_boxplot function.
@@ -278,12 +278,12 @@ Cpgfeature_boxplot <- function(genefeatureall_cpgfeature, groupnum = 1, ttest = 
 #' Boxplot the methylation levels for groups based on CpG island features.
 #'
 #' @description This function outputs the methylation levels in boxplot for one or more groups based on CpG island features,
-#' e.g. CpG island and CpG island shore features.
+#' e.g., CpG island and CpG island shore features.
 #' 
 #' @param genefeatureall_cpgfeature refers to the input file with group methylation levels and CpG island features.
 #' @param groupnum refers to the group number, with default "all" for all of the groups.
 #' @param ttest refers to whether to perform the Student t-test, with default TRUE.
-#' @param cpgfeaturelable refers to CpG island features, with default "CpGisland" and "Shore". Only one CpG island feature can also be available, e.g. "CpGisland".
+#' @param cpgfeaturelable refers to CpG island features, with default "CpGisland" and "Shore". Only one CpG island feature can also be available, e.g., "CpGisland".
 #' @param title refers to the figure title， with default "Group1", "Group2" and "Group3".
 #' @param col refers to the boxplot colors, with default NULL.
 #' 
@@ -338,10 +338,10 @@ Group_cpgfeature_boxplot <- function(genefeatureall_cpgfeature, groupnum = "all"
 #' Boxplot the methylation levels for gene body based on CpG island features.
 #'
 #' @description This function outputs the methylation levels in boxplot for one or more features of gene body based on CpG island features, 
-#' e.g. CpG island and CpG island shore features.
+#' e.g., CpG island and CpG island shore features.
 #' 
 #' @param genefeatureall_cpgfeature refers to the input file of methylation levels with gene body and CpG island features.
-#' @param genebodyname refers to the name of gene body features e.g. promoter, exon, intron and TSSes, with default "promoters", "exons", "introns", "TSSes".
+#' @param genebodyname refers to the name of gene body features e.g., promoter, exon, intron and TSSes, with default "promoters", "exons", "introns", "TSSes".
 #' @param ttest refers to whether perform the Student t-test, with default TRUE.
 #' @param cpgfeaturelable refers to CpG island features, with default "CpGisland" and "Shore".
 #' @param title refers to the figure title, with default "Promoter", "Exon", "Intron" and "TSS".

@@ -3,8 +3,8 @@
 #' @description This function outputs the pie plot for the percentages of sites or regions in different chromosomes.
 #' 
 #' @param genefeatureall_cpgfeature_significantcpgisland refers to the input file with chromosomes, which can be files with/without significant filter().
-#' @param genefeatureall_cpgfeature_significantshore refers to another input file with chromosomes, e.g. genefeatureall_cpgfeature_significantshore file for comparison, with default NULL.
-#' @param methdirection refers to the methylation direction when the input file contains the methylation difference column i.e. Methdiff1 after Logic_regression(), 
+#' @param genefeatureall_cpgfeature_significantshore refers to another input file with chromosomes, e.g., genefeatureall_cpgfeature_significantshore file for comparison, with default NULL.
+#' @param methdirection refers to the methylation direction when the input file contains the methylation difference column i.e., Methdiff1 after Logic_regression(), 
 #'  which can be "hypo", "hyper" and "both", with the default "both" for both directions.
 #' 
 #' @param title refers to figure titles, with the default "Pie plot for chromosome".
@@ -105,7 +105,7 @@ Chromosome_pieplot <- function(genefeatureall_cpgfeature_significantcpgisland, g
 #' @description This function outputs the pie plot of feature percentages in gene body or CpG island mainly for DMC sites with features.
 #' 
 #' @param siteall_significant_feature refers to the input file with features, mainly for DMC sites with features.
-#' @param methdirection refers to the methylation direction when the input file contains the methylation difference column i.e. Methdiff1 after Logic_regression(), 
+#' @param methdirection refers to the methylation direction when the input file contains the methylation difference column i.e., Methdiff1 after Logic_regression(), 
 #'  which can be "hypo", "hyper" and "both", with the default "both" for both directions.
 #' 
 #' @param title refers to figure titles, with the default "Pie plot for chromosome".

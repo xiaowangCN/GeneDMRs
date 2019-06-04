@@ -16,7 +16,7 @@
 
 Window_divide <- function(inputcytofile, windowbp = 1000000){
   
-  # calculate the position for each e.g. 1 million bp window #
+  # calculate the position for each e.g., 1 million bp window #
   inputcytofile$start <- ceiling(inputcytofile$end / windowbp) #or floor#
   
   output <- array(0, c(sum(inputcytofile$start), 3))

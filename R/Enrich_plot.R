@@ -9,7 +9,7 @@
 #' @param regiongenealls_significant refers to the differentially methylated genes.
 #' @param adjustpvaluecut refers to the threshold of the adjusted P values for the enrichment, with default 0.1.
 #' @param enrichterm refers to the term need to be analyzed, which can be "GOgroup", "GO", "pathway", with default "pathway".
-#' @param category refers to whether to divide the enrichments into two categories, i.e. hypo/hyper methylated or down/up regulated, with default TRUE.
+#' @param category refers to whether to divide the enrichments into two categories, i.e., hypo/hyper methylated or down/up regulated, with default TRUE.
 #' @param Dbannotation refers to the annotation dataset, with default "org.Mm.eg.db" of mouse.
 #' @param keggorganism refers to the species name for KEGG enrichment, with default "mmu" of mouse.
 #' @param listnum refers to the list of display number, with default 20.

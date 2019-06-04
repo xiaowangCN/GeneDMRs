@@ -163,11 +163,11 @@ Meth_mean <- function(inputmethfile_QC, regionchr, cpgifeaturefile = NULL){
 #' @import dplyr
 #' 
 #' @description This function outputs the methylation mean for different groups based on gene and CpG island regions by matching with cytosine. 
-#' It is also for gene body of promoter, exon, intron and TSSes regions, cgpi feature of CpG island and CpG island shores and their interactive regions e.g. promoter CpG island.
+#' It is also for gene body of promoter, exon, intron and TSSes regions, cgpi feature of CpG island and CpG island shores and their interactive regions e.g., promoter CpG island.
 #' 
 #' @param inputmethfile_QC refers to the input of methylation file after quality control.
-#' @param inputrefseqfile refers to the input file with regions e.g. inputrefseqfile/inputcpgifile with 4 columns or inputgenebodyfile/inputcpgifeaturefile with 5 columns.
-#' @param cpgifeaturefile refers to the input of CpG island feature file e.g. inputcpgifeaturefile, with default NULL.
+#' @param inputrefseqfile refers to the input file with regions e.g., inputrefseqfile/inputcpgifile with 4 columns or inputgenebodyfile/inputcpgifeaturefile with 5 columns.
+#' @param cpgifeaturefile refers to the input of CpG island feature file e.g., inputcpgifeaturefile, with default NULL.
 #' If provided, the output file is methylation mean of inputrefseqfile or inputgenebodyfile with CpG island and CpG island shore features.
 #' 
 #' @param chrnum refers to the chromosome number or all chromosomes (all) or all chromosomes with unannotated sites (alls), with default "all".

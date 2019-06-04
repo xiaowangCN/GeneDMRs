@@ -4,7 +4,7 @@
 #' 
 #' @description This function outputs the Manhattan plot for all cytosines or regions in different chromosomes with significant line based on R package qqman.
 #' 
-#' @param siteall_Qvalue refers to the input file with Q value from DMR_test(), e.g. regiongeneall_Qvalues, genefeatureall_cpgfeature_Qvalue or others with Q values.
+#' @param siteall_Qvalue refers to the input file with Q value from DMR_test(), e.g., regiongeneall_Qvalues, genefeatureall_cpgfeature_Qvalue or others with Q values.
 #' @param chrlabs refers to the label of chromosomes, with default NULL.
 #' @param col refers to the color of plots, with default black and grey.
 #' @param suggestiveline refers to the significant line, with default 0.01.

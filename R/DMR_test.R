@@ -9,7 +9,7 @@
 #' The adjustedmethod could be "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "none" methods as well.
 #'
 #' @param diffgroup refers to methylation difference between two groups, with the default NULL, that is the max group - min group.
-#' The two groups can be manually selected e.g. diffgroup = c("group1", "group2").
+#' The two groups can be manually selected e.g., diffgroup = c("group1", "group2").
 #'
 #' @return Outputs a data frame of region gene or region cpgi or those regions with different features or cytosine sites, 
 #' by accompanying with P values, Q values and methylation differences.
@@ -318,11 +318,11 @@ Significant_filter <- function(genefeatureall_cpgfeature_Qvalue, qvalue = 0.01, 
 #'
 #' @param siteall_significant refers to the input file with DMC sites.
 #' @param featureid refers to whether to include the feature id or not, with the default TRUE. 
-#' The feature id will output the id of first file of the featurefile list e.g. the id of inputgenebodyfile.
+#' The feature id will output the id of first file of the featurefile list e.g., the id of inputgenebodyfile.
 #' 
-#' @param featurefile refers to the input feature files e.g. inputgenebodyfile and inputcpgifeaturefile, 
+#' @param featurefile refers to the input feature files e.g., inputgenebodyfile and inputcpgifeaturefile, 
 #' with default two files in a list as featurefile = list(inputgenebodyfile, inputcpgifeaturefile),
-#' and it can also be one file without a list e.g. featurefile = inputgenebodyfile.
+#' and it can also be one file without a list e.g., featurefile = inputgenebodyfile.
 #'
 #' @return Outputs a data frame contains DMC sites with features.
 #' 
