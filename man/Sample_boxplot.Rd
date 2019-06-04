@@ -5,7 +5,7 @@
 \title{Boxplot the methylation levels or read numbers in different samples.}
 \usage{
 Sample_boxplot(inputmethfile, inputrefseqfile, Meth_plot = TRUE,
-  ylab = "Methylation level (\%)", refseqname = NULL, col = NULL)
+  ylab = "Methylation level", refseqname = NULL, col = NULL)
 }
 \arguments{
 \item{inputmethfile}{refers to the input file with methylation levels.}
@@ -14,7 +14,7 @@ Sample_boxplot(inputmethfile, inputrefseqfile, Meth_plot = TRUE,
 
 \item{Meth_plot}{refers to whether to plot the methylation levels, with default TRUE, otherwise to plot the read numbers.}
 
-\item{ylab}{refers to the label of y axis, with default "Methylation level (\%)".}
+\item{ylab}{refers to the label of y axis, with default "Methylation level".}
 
 \item{refseqname}{refers to NCBI ID of specific gene, with default NULL.}
 
@@ -30,7 +30,7 @@ This function outputs the methylation levels or read numbers of the selected gen
 Sample_boxplot(inputmethfile_QC, inputrefseqfile)
 Sample_boxplot(inputmethfile_QC, inputrefseqfile, refseqname = "NM_001244864")
 Sample_boxplot(inputmethfile_QC, inputrefseqfile, refseqname = c("NM_001244864", "NM_001244534"))
-Sample_boxplot(inputmethfile_QC, inputrefseqfile, refseqname = c("NM_001244864", "NM_001143697", "NM_213902"), col = c("red", "green", "blue"))
+Sample_boxplot(inputmethfile_QC, inputrefseqfile, , ylab = "Methylation level (\%)"ï¼Œ refseqname = c("NM_001244864", "NM_001143697", "NM_213902"), col = c("red", "green", "blue"))
 Sample_boxplot(inputmethfile_QC, inputrefseqfile, Meth_plot = FALSE, ylab = "Read number", col = c("red", "blue"))
 Sample_boxplot(inputmethfile_QC, inputrefseqfile, Meth_plot = FALSE, ylab = "Read number", refseqname = c("NM_001244864", "NM_001244534"))
 Sample_boxplot(inputmethfile_QC, inputrefseqfile, Meth_plot = FALSE, ylab = "Read number", 

@@ -29,7 +29,7 @@ Outputs a series of DMG results.
 This function outputs a series of results and figures for gene based regions' methylation analysis.
 }
 \examples{
-Quick_GeneDMRs()
-Quick_GeneDMRs(Dbannotation = "org.Mm.eg.db", keggorganism = "mmu")
+allDMGs <- Quick_GeneDMRs()
+allDMGs_mouse <- Quick_GeneDMRs(Dbannotation = "org.Mm.eg.db", keggorganism = "mmu")
 
 }

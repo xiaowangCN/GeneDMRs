@@ -19,6 +19,6 @@ Outputs DMC results.
 This function outputs the differentially methylated cytosine sites (DMCs).
 }
 \examples{
-Quick_DMCs()
+allDMCs <- Quick_DMCs()
 
 }
