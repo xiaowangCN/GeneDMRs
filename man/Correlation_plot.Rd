@@ -15,7 +15,7 @@ Correlation_plot(inputmethfile_QC, unmeth_exclude = TRUE)
 Outputs a correlation figure.
 }
 \description{
-This function outputs the correlation plot for the methylation level of different samples or groups based on R package corrplot, Hmisc and RColorBrewer.
+This function outputs the correlation plot for the methylation level of different samples or groups based on R package corrplot.
 }
 \examples{
 Correlation_plot(inputmethfile_QC)
