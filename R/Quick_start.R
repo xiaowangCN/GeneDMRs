@@ -1,20 +1,22 @@
-#' Install the dependencies.
+#' Gene-based differentially methylated regions analysis (GeneDMRs) and install the dependencies.
 #' 
 #' @import BiocManager
 #' 
-#' @description This function install the other R packages for the dependencies of GeneDMRs.
+#' @description GeneDMRs is an R package to detect the differentially methylated regions based on genes (DMG), gene body (DMP, DME, DMI), 
+#' CpG islands and gene body interacted with CpG island features (e.g. DMG/DMP/DME/DMI_CpG island and DMG/DMP/DME/DMI_CpG island shore). 
+#' This function can install the other R packages for the dependencies of GeneDMRs.
 #' 
 #' @param Dbannotation refers to the annotation dataset for enrichment, with default "org.Mm.eg.db" of mouse.
 #' 
-#' @return Outputs a list of installed R packages.
+#' @return Outputs a list of required R packages.
 #'
 #' @examples
-#' Prepare_GeneDMRs(Dbannotation = "org.Mm.eg.db")
+#' GeneDMRs(Dbannotation = "org.Mm.eg.db")
 #' 
 #' @export
 
 
-Prepare_GeneDMRs <- function(Dbannotation = "org.Mm.eg.db"){
+GeneDMRs <- function(Dbannotation = "org.Mm.eg.db"){
   
   # install the dependencies and library them #
   if (!requireNamespace("BiocManager", quietly = TRUE))
@@ -61,8 +63,8 @@ Prepare_GeneDMRs <- function(Dbannotation = "org.Mm.eg.db"){
 #' @return Outputs a series of DMG results.
 #'
 #' @examples
-#' Quick_GeneDMRs()
-#' Quick_GeneDMRs(Dbannotation = "org.Mm.eg.db", keggorganism = "mmu")
+#' allDMGs <- Quick_GeneDMRs()
+#' allDMGs_mouse <- Quick_GeneDMRs(Dbannotation = "org.Mm.eg.db", keggorganism = "mmu")
 #' 
 #' @export
 
@@ -118,7 +120,7 @@ Quick_GeneDMRs <- function(paths = paste(system.file(package = "GeneDMRs"), "/me
 #' @return Outputs DMC results.
 #'
 #' @examples
-#' Quick_DMCs()
+#' allDMCs <- Quick_DMCs()
 #' 
 #' @export
 

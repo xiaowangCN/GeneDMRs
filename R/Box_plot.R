@@ -50,7 +50,7 @@ Boxplot_trans <- function(methallchr){
 #' @param inputmethfile refers to the input file with methylation levels.
 #' @param inputrefseqfile refers to the input of gene regions.
 #' @param Meth_plot refers to whether to plot the methylation levels, with default TRUE, otherwise to plot the read numbers.
-#' @param ylab refers to the label of y axis, with default "Methylation level (\%)".
+#' @param ylab refers to the label of y axis, with default "Methylation level".
 #' @param refseqname refers to NCBI ID of specific gene, with default NULL.
 #' @param col refers to boxplot colors, with default NULL.
 #' 
@@ -60,7 +60,7 @@ Boxplot_trans <- function(methallchr){
 #' Sample_boxplot(inputmethfile_QC, inputrefseqfile)
 #' Sample_boxplot(inputmethfile_QC, inputrefseqfile, refseqname = "NM_001244864")
 #' Sample_boxplot(inputmethfile_QC, inputrefseqfile, refseqname = c("NM_001244864", "NM_001244534"))
-#' Sample_boxplot(inputmethfile_QC, inputrefseqfile, refseqname = c("NM_001244864", "NM_001143697", "NM_213902"), col = c("red", "green", "blue"))
+#' Sample_boxplot(inputmethfile_QC, inputrefseqfile, , ylab = "Methylation level (%)"， refseqname = c("NM_001244864", "NM_001143697", "NM_213902"), col = c("red", "green", "blue"))
 #' Sample_boxplot(inputmethfile_QC, inputrefseqfile, Meth_plot = FALSE, ylab = "Read number", col = c("red", "blue"))
 #' Sample_boxplot(inputmethfile_QC, inputrefseqfile, Meth_plot = FALSE, ylab = "Read number", refseqname = c("NM_001244864", "NM_001244534"))
 #' Sample_boxplot(inputmethfile_QC, inputrefseqfile, Meth_plot = FALSE, ylab = "Read number", 
@@ -69,7 +69,7 @@ Boxplot_trans <- function(methallchr){
 #' @export
 
 
-Sample_boxplot <- function(inputmethfile, inputrefseqfile, Meth_plot = TRUE, ylab = "Methylation level (%)", refseqname = NULL, col = NULL){
+Sample_boxplot <- function(inputmethfile, inputrefseqfile, Meth_plot = TRUE, ylab = "Methylation level", refseqname = NULL, col = NULL){
   
   # total methylation level #
   if(is.null(refseqname) == TRUE){
