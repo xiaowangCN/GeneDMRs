@@ -39,16 +39,18 @@ If dependencies need to be installed
 GeneDMRs(Dbannotation = "org.Mm.eg.db")
 ```
 
-If get all differentially methylated genes (DMGs) quickly
+Before the quick start, the user could download the example data or the whole folder from "/methdata" for testing. In the folder "/methdata", "1_1.gz", "1_2.gz" and "1_3.gz" files are the control group, while "2_1.gz" and "2_1.gz" files are case group. The user just needs to give one path for GeneDMRS package, e.g., "paths = paste(system.file(package = "GeneDMRs")" which is the package path.
+
+1. If get all differentially methylated genes (DMGs) quickly
 
 ```
-allDMGs <- Quick_GeneDMRs()
+allDMGs <- Quick_GeneDMRs(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""))
 ```
 
-If get all differentially methylated cytosine sites (DMCs) quickly
+2. If get all differentially methylated cytosine sites (DMCs) quickly
 
 ```
-allDMCs <- Quick_DMCs()
+allDMCs <- Quick_DMCs(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""))
 ```
 
 ### More about GeneDMRs
