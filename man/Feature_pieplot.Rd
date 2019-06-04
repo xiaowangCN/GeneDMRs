@@ -10,7 +10,7 @@ Feature_pieplot(siteall_significant_feature, methdirection = "both",
 \arguments{
 \item{siteall_significant_feature}{refers to the input file with features, mainly for DMC sites with features.}
 
-\item{methdirection}{refers to the methylation direction when the input file contains the methylation difference column i.e. Methdiff1 after Logic_regression(), 
+\item{methdirection}{refers to the methylation direction when the input file contains the methylation difference column i.e., Methdiff1 after Logic_regression(), 
 which can be "hypo", "hyper" and "both", with the default "both" for both directions.}
 
 \item{title}{refers to figure titles, with the default "Pie plot for chromosome".}

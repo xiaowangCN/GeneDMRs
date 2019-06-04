@@ -17,7 +17,7 @@ Enrich_plot(regiongenealls_significant, adjustpvaluecut = 0.1,
 
 \item{enrichterm}{refers to the term need to be analyzed, which can be "GOgroup", "GO", "pathway", with default "pathway".}
 
-\item{category}{refers to whether to divide the enrichments into two categories, i.e. hypo/hyper methylated or down/up regulated, with default TRUE.}
+\item{category}{refers to whether to divide the enrichments into two categories, i.e., hypo/hyper methylated or down/up regulated, with default TRUE.}
 
 \item{Dbannotation}{refers to the annotation dataset, with default "org.Mm.eg.db" of mouse.}
 

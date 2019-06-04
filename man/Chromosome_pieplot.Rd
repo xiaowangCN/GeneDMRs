@@ -11,9 +11,9 @@ Chromosome_pieplot(genefeatureall_cpgfeature_significantcpgisland,
 \arguments{
 \item{genefeatureall_cpgfeature_significantcpgisland}{refers to the input file with chromosomes, which can be files with/without significant filter().}
 
-\item{genefeatureall_cpgfeature_significantshore}{refers to another input file with chromosomes, e.g. genefeatureall_cpgfeature_significantshore file for comparison, with default NULL.}
+\item{genefeatureall_cpgfeature_significantshore}{refers to another input file with chromosomes, e.g., genefeatureall_cpgfeature_significantshore file for comparison, with default NULL.}
 
-\item{methdirection}{refers to the methylation direction when the input file contains the methylation difference column i.e. Methdiff1 after Logic_regression(), 
+\item{methdirection}{refers to the methylation direction when the input file contains the methylation difference column i.e., Methdiff1 after Logic_regression(), 
 which can be "hypo", "hyper" and "both", with the default "both" for both directions.}
 
 \item{title}{refers to figure titles, with the default "Pie plot for chromosome".}

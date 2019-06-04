@@ -13,10 +13,10 @@ Bedfile_read(paths = paste(system.file(package = "GeneDMRs"),
 
 \item{bedfile}{refers to the file name of bed file like "refseq" or "cpgi". This file is downloaded from UCSC website, with default "refseq".}
 
-\item{suffix}{refers to the suffix of bed file, e.g. ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".txt".}
+\item{suffix}{refers to the suffix of bed file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".txt".}
 
 \item{feature}{refers to whether to read the bed with the features, with default FALSE. 
-If feature = TRUE, the output of this function will contain the features e.g. promoter, exon, intron or CpG island, CpG island shore based on R package genomation.}
+If feature = TRUE, the output of this function will contain the features e.g., promoter, exon, intron or CpG island, CpG island shore based on R package genomation.}
 
 \item{featurewrite}{refers to whether to write out the feature file to the given path, with default FALSE.}
 }
@@ -28,8 +28,8 @@ If feature = TRUE, the data frame is five columns with the added feature such as
 This function reads the bed file of refseq or cpgi and sorts them by chromosome and position. 
 The dataset of the example are the mouse reference genes and CpG island information that are downloaded from UCSC website 
 (http://genome.ucsc.edu/cgi-bin/hgTables). 
-The R package genomation used here can divide the refseq.bed file into several gene body features, e.g. promoter, exon, intron regions and 
-the cpgi.bed file into CpG island features, e.g. CpG island and CpG island shore.
+The R package genomation used here can divide the refseq.bed file into several gene body features, e.g., promoter, exon, intron regions and 
+the cpgi.bed file into CpG island features, e.g., CpG island and CpG island shore.
 }
 \examples{
 inputrefseqfile <- Bedfile_read() 

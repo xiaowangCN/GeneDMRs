@@ -13,7 +13,7 @@ Cytofile_read(paths = paste(system.file(package = "GeneDMRs"),
 
 \item{cytofile}{refers to the name of input cyto file that is downloaded from UCSC website, with default "cytoBandIdeo".}
 
-\item{suffix}{refers to the suffix of input cyto file, e.g. ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".txt.gz".}
+\item{suffix}{refers to the suffix of input cyto file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".txt.gz".}
 }
 \value{
 Outputs a data frame contains chromosome, start position, end position.

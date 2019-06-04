@@ -10,7 +10,7 @@ Quick_DMCs(paths = paste(system.file(package = "GeneDMRs"), "/methdata",
 \arguments{
 \item{paths}{refers to the path of input file, with default the package path.}
 
-\item{suffixmeth}{refers to the suffix of methylation file, e.g. ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".}
+\item{suffixmeth}{refers to the suffix of methylation file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".}
 }
 \value{
 Outputs DMC results.

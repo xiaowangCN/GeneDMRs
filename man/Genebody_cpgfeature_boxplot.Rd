@@ -12,7 +12,7 @@ Genebody_cpgfeature_boxplot(genefeatureall_cpgfeature,
 \arguments{
 \item{genefeatureall_cpgfeature}{refers to the input file of methylation levels with gene body and CpG island features.}
 
-\item{genebodyname}{refers to the name of gene body features e.g. promoter, exon, intron and TSSes, with default "promoters", "exons", "introns", "TSSes".}
+\item{genebodyname}{refers to the name of gene body features e.g., promoter, exon, intron and TSSes, with default "promoters", "exons", "introns", "TSSes".}
 
 \item{ttest}{refers to whether perform the Student t-test, with default TRUE.}
 
@@ -27,7 +27,7 @@ Outputs a boxplot figure with gene body and CpG island features.
 }
 \description{
 This function outputs the methylation levels in boxplot for one or more features of gene body based on CpG island features, 
-e.g. CpG island and CpG island shore features.
+e.g., CpG island and CpG island shore features.
 }
 \examples{
 Genebody_cpgfeature_boxplot(genefeatureall_cpgfeature)

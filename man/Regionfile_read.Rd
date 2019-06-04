@@ -8,7 +8,7 @@ That reads the bed file.}
 Regionfile_read(bedfile, suffix)
 }
 \arguments{
-\item{bedfile}{refers to the bedfile name (e.g. refseq or cpgi) downloaded from UCSC, with the default refseq.}
+\item{bedfile}{refers to the bedfile name (e.g., refseq or cpgi) downloaded from UCSC, with the default refseq.}
 
 \item{suffix}{refers to the compressed file suffix such as ".gz", ".zip" and so on, with the default suffix ".gz".}
 }

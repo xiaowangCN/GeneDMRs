@@ -15,7 +15,7 @@ Group_cpgfeature_boxplot(genefeatureall_cpgfeature, groupnum = "all",
 
 \item{ttest}{refers to whether to perform the Student t-test, with default TRUE.}
 
-\item{cpgfeaturelable}{refers to CpG island features, with default "CpGisland" and "Shore". Only one CpG island feature can also be available, e.g. "CpGisland".}
+\item{cpgfeaturelable}{refers to CpG island features, with default "CpGisland" and "Shore". Only one CpG island feature can also be available, e.g., "CpGisland".}
 
 \item{title}{refers to the figure title， with default "Group1", "Group2" and "Group3".}
 
@@ -26,7 +26,7 @@ Outputs a boxplot figure with groups and CpG island features.
 }
 \description{
 This function outputs the methylation levels in boxplot for one or more groups based on CpG island features,
-e.g. CpG island and CpG island shore features.
+e.g., CpG island and CpG island shore features.
 }
 \examples{
 Group_cpgfeature_boxplot(genefeatureall_cpgfeature, groupnum = 1)

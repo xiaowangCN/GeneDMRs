@@ -11,9 +11,9 @@ Methmean_region(inputmethfile_QC, inputrefseqfile,
 \arguments{
 \item{inputmethfile_QC}{refers to the input of methylation file after quality control.}
 
-\item{inputrefseqfile}{refers to the input file with regions e.g. inputrefseqfile/inputcpgifile with 4 columns or inputgenebodyfile/inputcpgifeaturefile with 5 columns.}
+\item{inputrefseqfile}{refers to the input file with regions e.g., inputrefseqfile/inputcpgifile with 4 columns or inputgenebodyfile/inputcpgifeaturefile with 5 columns.}
 
-\item{cpgifeaturefile}{refers to the input of CpG island feature file e.g. inputcpgifeaturefile, with default NULL.
+\item{cpgifeaturefile}{refers to the input of CpG island feature file e.g., inputcpgifeaturefile, with default NULL.
 If provided, the output file is methylation mean of inputrefseqfile or inputgenebodyfile with CpG island and CpG island shore features.}
 
 \item{chrnum}{refers to the chromosome number or all chromosomes (all) or all chromosomes with unannotated sites (alls), with default "all".}
@@ -33,7 +33,7 @@ Outputs a data frame of the methylation mean of provided regions with/without di
 }
 \description{
 This function outputs the methylation mean for different groups based on gene and CpG island regions by matching with cytosine. 
-It is also for gene body of promoter, exon, intron and TSSes regions, cgpi feature of CpG island and CpG island shores and their interactive regions e.g. promoter CpG island.
+It is also for gene body of promoter, exon, intron and TSSes regions, cgpi feature of CpG island and CpG island shores and their interactive regions e.g., promoter CpG island.
 }
 \examples{
 Methmean_region(inputmethfile_QC, inputrefseqfile, chrnum = "alls", featureid = c("NM_001244353", "NM_001244864")) # find sepecific gene by NCBI ID #

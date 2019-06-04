@@ -9,7 +9,7 @@ Manhattan_plot(siteall_Qvalue, chrlabs = NULL, col = c("black",
   genomewideline = -log10(0.001))
 }
 \arguments{
-\item{siteall_Qvalue}{refers to the input file with Q value from DMR_test(), e.g. regiongeneall_Qvalues, genefeatureall_cpgfeature_Qvalue or others with Q values.}
+\item{siteall_Qvalue}{refers to the input file with Q value from DMR_test(), e.g., regiongeneall_Qvalues, genefeatureall_cpgfeature_Qvalue or others with Q values.}
 
 \item{chrlabs}{refers to the label of chromosomes, with default NULL.}
 

@@ -10,7 +10,7 @@ Methfile_read(paths = paste(system.file(package = "GeneDMRs"),
 \arguments{
 \item{paths}{refers to the path of methylation file, with default the package path.}
 
-\item{suffix}{refers to the suffix of methylation file, e.g. ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".}
+\item{suffix}{refers to the suffix of methylation file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".}
 }
 \value{
 Outputs a data frame contain chromosome, position, and Cs & Ts for different replicates and groups.
@@ -18,7 +18,7 @@ Outputs a data frame contain chromosome, position, and Cs & Ts for different rep
 \description{
 This function reads all of the methylation files and generates one file with all samples including methylated read coverages (Cs) and unmethylated read coverages (Ts).
 It can automatically test how many samples and how many replicates in each group and the distribute them from 1_1, 1_2 to the final file by headers.
-The methylation files should be the standard coverage file (i.e. .bismark.cov) outputted from Bismark software.
+The methylation files should be the standard coverage file (i.e., .bismark.cov) outputted from Bismark software.
 The dataset of the example is the Reduced representation bisulfite sequencing (RRBS) data of DNA methylation for mouse myeloid progenitor tissue from GEO (Accession number: GSE62392)
 (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE62392).
 }

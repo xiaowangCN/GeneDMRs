@@ -11,7 +11,7 @@ Cpgfeature_boxplot(genefeatureall_cpgfeature, groupnum = 1,
 }
 \arguments{
 \item{genefeatureall_cpgfeature}{refers to output of Region_match as well. 
-the output of gene or genebody match with cpgi features, e.g. all genes in promoter or exon or intron regions.}
+the output of gene or genebody match with cpgi features, e.g., all genes in promoter or exon or intron regions.}
 
 \item{groupnum}{refers to the group number, can be NULL if without groups but the colnames should have "group" name 
 like CpGislandgroup or Shoregroup, can also be automatically set in the Group_feature_boxplot function.}
@@ -32,7 +32,7 @@ Outputs boxplot figure.
 }
 \description{
 This function output the methylation levels in boxplot for one group based on CpG island features,
-e.g. CpG island and CpG island shore based on groups.
+e.g., CpG island and CpG island shore based on groups.
 }
 \examples{
 Cpgfeature_boxplot(genefeatureall_cpgfeature, groupnum = 1, ttest = TRUE, cpgfeaturelable = c("CpGisland", "Shore"), title = "Group1", col = "blue")

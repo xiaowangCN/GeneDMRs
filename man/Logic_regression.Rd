@@ -16,7 +16,7 @@ Logic_regression(genefeatureall_cpgfeature, covariates = NULL,
 The adjustedmethod could be "holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "none" methods as well.}
 
 \item{diffgroup}{refers to methylation difference between two groups, with the default NULL, that is the max group - min group.
-The two groups can be manually selected e.g. diffgroup = c("group1", "group2").}
+The two groups can be manually selected e.g., diffgroup = c("group1", "group2").}
 }
 \value{
 Outputs a data frame of region gene or region cpgi or those regions with different features or cytosine sites, 

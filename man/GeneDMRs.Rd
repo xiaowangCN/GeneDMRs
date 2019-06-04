@@ -14,7 +14,7 @@ Outputs a list of required R packages.
 }
 \description{
 GeneDMRs is an R package to detect the differentially methylated regions based on genes (DMG), gene body (DMP, DME, DMI), 
-CpG islands and gene body interacted with CpG island features (e.g. DMG/DMP/DME/DMI_CpG island and DMG/DMP/DME/DMI_CpG island shore). 
+CpG islands and gene body interacted with CpG island features (e.g., DMG/DMP/DME/DMI_CpG island and DMG/DMP/DME/DMI_CpG island shore). 
 This function can install the other R packages for the dependencies of GeneDMRs.
 }
 \examples{

@@ -12,11 +12,11 @@ Quick_GeneDMRs(paths = paste(system.file(package = "GeneDMRs"),
 \arguments{
 \item{paths}{refers to the path of input file, with default the package path.}
 
-\item{suffixmeth}{refers to the suffix of methylation file, e.g. ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".}
+\item{suffixmeth}{refers to the suffix of methylation file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".}
 
 \item{bedfile}{refers to the file name of bed file for "refseq". This file is downloaded from UCSC website, with default "refseq".}
 
-\item{suffixbed}{refers to the suffix of bed file, e.g. ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".txt".}
+\item{suffixbed}{refers to the suffix of bed file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".txt".}
 
 \item{Dbannotation}{refers to the annotation dataset for enrichment, with default "org.Mm.eg.db" of mouse.}
 

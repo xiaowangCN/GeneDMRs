@@ -11,11 +11,11 @@ DMC_feature(siteall_significant, featureid = TRUE,
 \item{siteall_significant}{refers to the input file with DMC sites.}
 
 \item{featureid}{refers to whether to include the feature id or not, with the default TRUE. 
-The feature id will output the id of first file of the featurefile list e.g. the id of inputgenebodyfile.}
+The feature id will output the id of first file of the featurefile list e.g., the id of inputgenebodyfile.}
 
-\item{featurefile}{refers to the input feature files e.g. inputgenebodyfile and inputcpgifeaturefile, 
+\item{featurefile}{refers to the input feature files e.g., inputgenebodyfile and inputcpgifeaturefile, 
 with default two files in a list as featurefile = list(inputgenebodyfile, inputcpgifeaturefile),
-and it can also be one file without a list e.g. featurefile = inputgenebodyfile.}
+and it can also be one file without a list e.g., featurefile = inputgenebodyfile.}
 }
 \value{
 Outputs a data frame contains DMC sites with features.
