@@ -6,7 +6,9 @@ GeneDMRs is an R package to detect the differentially methylated regions based o
 # Dependencies
 # Use the annotation dataset for enrichment, e.g. "org.Mm.eg.db" of mouse
 if (!requireNamespace("BiocManager", quietly = TRUE))
+
     install.packages("BiocManager")
+    
   BiocManager::install(c("devtools", "clusterProfiler", "corrplot", "dplyr", "genomation", "Hmisc", "KEGG.db", 
                          "pheatmap", "plotrix", "qqman", "RColorBrewer", "RCircos", "VennDiagram", "org.Mm.eg.db"))
 
