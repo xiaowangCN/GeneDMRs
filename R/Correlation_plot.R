@@ -1,10 +1,8 @@
 #' Plot the methylation correlation.
 #' 
 #' @import corrplot
-#' @import Hmisc
-#' @import RColorBrewer
 #' 
-#' @description This function outputs the correlation plot for the methylation level of different samples or groups based on R package corrplot, Hmisc and RColorBrewer.
+#' @description This function outputs the correlation plot for the methylation level of different samples or groups based on R package corrplot.
 #' 
 #' @param inputmethfile_QC refers to the input file with methylation levels, with default inputmethfile after quality control.
 #' @param unmeth_exclude refers to whether to exclude the unmethylated sites or regions, with default TRUE.
@@ -66,10 +64,11 @@ Correlation_plot <- function(inputmethfile_QC, unmeth_exclude = TRUE){
     samplematrix <- unmeth_samplematrix[, -grep("unmeth", colnames(unmeth_samplematrix))]
   }
   
-  # correlation based on Hmisc #
-  res <- rcorr(as.matrix(samplematrix))
+  # correlation #
+  Maxcor <- cor(as.matrix(samplematrix))
+  res <- cor.mtest(as.matrix(samplematrix), conf.level = .95)
   
-  corrplot(res$r, type="upper", order="hclust", col = brewer.pal(n = 20, name = "RdYlBu"), p.mat = res$P, 
+  corrplot(Maxcor$r, type="upper", order="hclust", p.mat = res$P, 
            insig = "label_sig",sig.level = c(.001, .01, .05), pch.cex = .9, pch.col = "black")
 }
 

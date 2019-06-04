@@ -21,20 +21,18 @@ GeneDMRs <- function(Dbannotation = "org.Mm.eg.db"){
   # install the dependencies and library them #
   if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
-  BiocManager::install(c("devtools", "clusterProfiler", "corrplot", "dplyr", "genomation", "Hmisc", "KEGG.db", 
-                         "pheatmap", "plotrix", "qqman", "RColorBrewer", "RCircos", "VennDiagram", Dbannotation))
+  BiocManager::install(c("devtools", "clusterProfiler", "corrplot", "dplyr", "genomation", "KEGG.db", 
+                         "pheatmap", "plotrix", "qqman", "RCircos", "VennDiagram", Dbannotation))
   
   require("clusterProfiler")
   require("corrplot")
   require("devtools")
   require("dplyr")
   require("genomation")
-  require("Hmisc")
   require("KEGG.db")
   require("pheatmap")
   require("plotrix")
   require("qqman")
-  require("RColorBrewer")
   require("RCircos")
   require("VennDiagram")
   require(Dbannotation)
