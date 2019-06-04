@@ -22,7 +22,10 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 ```
 
 ### Installation
+
+```
 source("https://install-github.me/xiaowangCN/GeneDMRs")
+```
 
 ### User manual
 See the GeneDMRs.pdf file
