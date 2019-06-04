@@ -1,0 +1,62 @@
+---
+title: "Introduction to GeneDMRs"
+author: "Xiao Wang"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to GeneDMRs}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This vignette gives an overview of the package `GeneDMRs`.
+
+# Overview
+
+## File read
+
+----------------------------   ----------------------------------------------
+Bedfile_read                   Read the standard bedfile of refseq or cpgi downloaded from UCSC
+Cytofile_read                  Read the cyto file
+Methfile_read                  Read the methylation file
+----------------------------   ----------------------------------------------
+
+
+## Statistical analysis
+
+----------------------------   ----------------------------------------------
+Logic_regression               Logistical regression analysis for each region or each cytosine site
+Methfile_QC                    Quality control for the input methylation file
+Methmean_region                Calculate the methylation mean for regions
+Methmean_site                  Calculate the methylation mean for cytosine sites
+----------------------------   ----------------------------------------------
+
+
+## Utility functions
+
+----------------------------   ----------------------------------------------
+DMC_feature                    Annotate the differentially methylated cytosine (DMC) to features
+DMC_methfile_QC                Merge the methylation file after quality control with DMCs
+Significant_filter             Filter the significant regions or cytosine sites
+Window_divide                  Divide the genome to windows
+----------------------------   ----------------------------------------------
+
+
+## Graphics
+
+----------------------------   ----------------------------------------------
+Circos_plot                    Plot the circos
+Correlation_plot               Plot the methylation correlation
+Chromosome_pieplot             Pie plot based on different chromosomes
+Enrich_plot                    Enrich plot for GO terms and pathways
+Feature_pieplot                Pie plot based on different features
+Group_boxplot                  Boxplot the methylation levels for groups
+Group_cpgfeature_boxplot       Boxplot the methylation levels for groups based on CpG island features
+Genebody_cpgfeature_boxplot    Boxplot the methylation levels for gene body based on CpG island features
+Heatmap_plot                   Heat map plot for chromosomes and features
+Manhattan_plot                 Manhattan plot for all cytosines or regions
+Sample_boxplot                 Boxplot the methylation levels or read numbers in different samples
+Venn_plot                      Venn plot for the common CpG island and CpG island shore
+Volcano_plot                   Volcano plot for all the cytosines
+----------------------------   ----------------------------------------------
+
