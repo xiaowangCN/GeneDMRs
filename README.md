@@ -4,7 +4,6 @@
 GeneDMRs is an R package to detect the differentially methylated regions based on genes (DMG), gene body (DMP, DME, DMI), CpG islands and gene body interacted with CpG island features (e.g. DMG/DMP/DME/DMI_CpG island and DMG/DMP/DME/DMI_CpG island shore). 
 
 # Dependencies
-# Use the annotation dataset for enrichment, e.g. "org.Mm.eg.db" of mouse
 if (!requireNamespace("BiocManager", quietly = TRUE))
 
     install.packages("BiocManager")
