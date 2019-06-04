@@ -28,6 +28,7 @@ source("https://install-github.me/xiaowangCN/GeneDMRs")
 ```
 
 ### User manual
+
 See the GeneDMRs.pdf file
 
 ### Examples
@@ -57,4 +58,9 @@ allDMCs <- Quick_DMCs()
 ```
 
 ## Author and contact information
+
 Xiao Wang, Technical University of Denmark, xiwa@dtu.dk or wangxiao880923@gmail.com
+
+## Reference
+
+Xiao Wang and Haja N. Kadarmideen. GeneDMRs: an R package for Gene-based Differentially Methylated Regions analysis. International Society for Computational Biology (ISCB), 2019.
