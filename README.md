@@ -69,7 +69,11 @@ allDMCs <- Quick_DMCs(paths = paste(system.file(package = "GeneDMRs"), "/methdat
 
 ## Author and contact information
 
-Xiao Wang, Technical University of Denmark, xiwa@dtu.dk or wangxiao880923@gmail.com
+Xiao Wang, Dan Hao, Haja N. Kadarmideen. Department of Applied Mathematics and Computer Science, Technical University of Denmark
+
+## Maintainer
+
+Xiao Wang <xiwa@dtu.dk> or <wangxiao880923@gmail.com>
 
 ## Reference
 
