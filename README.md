@@ -73,7 +73,7 @@ Xiao Wang, Dan Hao, Haja N. Kadarmideen. Department of Applied Mathematics and C
 
 ## Maintainer
 
-Xiao Wang <xiwa@dtu.dk> or <wangxiao880923@gmail.com>
+Xiao Wang. <xiwa@dtu.dk> or <wangxiao880923@gmail.com>
 
 ## Reference
 
