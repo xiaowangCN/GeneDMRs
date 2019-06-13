@@ -4,10 +4,10 @@ Version: 0.1.0
 Authors@R: person("Xiao", "Wang", email = c("xiwa@dtu.dk", "wangxiao880923@gmail.com"), role = c("aut", "cre"))
 Description: Calculating methylations within genes and identify the Gene-based Differentially Methylated Regions (GeneDMRs).
 Depends: R (>= 3.5.0)
-Imports: clusterProfiler, corrplot, dplyr, genomation, KEGG.db, pheatmap, plotrix, qqman, RCircos, VennDiagram
+Imports: clusterProfiler, corrplot, dplyr, genomation, KEGG.db, pheatmap, plotrix, qqman, RCircos, VennDiagram, org.Mm.eg.db
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
-Suggests: knitr, rmarkdown, org.Hs.eg.db, org.Mm.eg.db, org.Ss.eg.db
+Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
