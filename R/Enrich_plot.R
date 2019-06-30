@@ -27,7 +27,7 @@
 #' Enrich_plot(regiongenealls_significant, enrichterm = "GO", title = "Go term for significant gene")
 #' Enrich_plot(regiongenealls_significant, enrichterm = "GO", Dbannotation = "org.Hs.eg.db", title = "Go term for significant gene") # for human data #
 #' Enrich_plot(regiongenealls_significant, adjustpvaluecut = 0.2, enrichterm = "pathway", keggorganism = "mmu", title = "Pathway for significant gene")
-#' Enrich_plot(regiongenealls_significant, enrichterm = "pathway", keggorganism = "hsa", category = FALSE, title = "Pathway for significant gene") # for human data #
+#' Enrich_plot(regiongenealls_significant, enrichterm = "pathway", keggorganism = "hsa", Dbannotation = "org.Hs.eg.db", category = FALSE, title = "Pathway for significant gene") # for human data #
 #' 
 #' expressionfile_significant <- read.table(paste(system.file(package = "GeneDMRs"), "/methdata/DEgenes.txt", sep=""), header = T) # read DEgene file #
 #' 
