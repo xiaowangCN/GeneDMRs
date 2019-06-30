@@ -273,19 +273,40 @@ chromosmoe_sort <- function(chromtable){
     
     chromtable$chr[chromtable$chr == paste("chr", i ,sep="")] <- i
   }
-  chromtable$chr[chromtable$chr == "chrX"] <- sum(chromtable$freq != 0) - 1
-  chromtable$chr[chromtable$chr == "chrY"] <- sum(chromtable$freq != 0)
+  
+  chromtablenum <- chromtable
+  
+  # set the chromosome X or Y #
+  if(length(which(chromtable$chr == "chrX")) != 0 & length(which(chromtable$chr == "chrY")) != 0){
+    chromtablenum$chr[chromtablenum$chr == "chrX"] <- sum(chromtablenum$freq != 0) - 1
+    chromtablenum$chr[chromtablenum$chr == "chrY"] <- sum(chromtablenum$freq != 0)
+    
+  }else if(length(which(chromtable$chr == "chrX")) != 0 & length(which(chromtable$chr == "chrY")) == 0){
+    chromtablenum$chr[chromtablenum$chr == "chrX"] <- sum(chromtablenum$freq != 0)
+    
+  }else if(length(which(chromtable$chr == "chrX")) == 0 & length(which(chromtable$chr == "chrY")) != 0){
+    chromtablenum$chr[chromtablenum$chr == "chrY"] <- sum(chromtablenum$freq != 0)
+  }
   
   # transfer chr column to numeric again for sort #
-  chromtable$chr <- as.numeric(chromtable$chr)
-  chromtable <- chromtable[order(chromtable$chr), ] 
+  chromtablenum$chr <- as.numeric(chromtablenum$chr)
+  chromtablenum <- chromtablenum[order(chromtablenum$chr), ] 
   
   # paste "chr" to chromosome number #
-  chromtable$chr <- paste("chr", chromtable$chr, sep = "")
-  chromtable$chr[chromtable$chr == paste("chr", (sum(chromtable$freq != 0) - 1), sep = "")] <- "chrX"
-  chromtable$chr[chromtable$chr == paste("chr", sum(chromtable$freq != 0), sep = "")] <- "chrY"
+  chromtablenum$chr <- paste("chr", chromtablenum$chr, sep = "")
   
-  return(chromtable)
+  if(length(which(chromtable$chr == "chrX")) != 0 & length(which(chromtable$chr == "chrY")) != 0){
+    chromtablenum$chr[chromtablenum$chr == paste("chr", (sum(chromtablenum$freq != 0) - 1), sep = "")] <- "chrX"
+    chromtablenum$chr[chromtablenum$chr == paste("chr", sum(chromtablenum$freq != 0), sep = "")] <- "chrY"
+    
+  }else if(length(which(chromtable$chr == "chrX")) != 0 & length(which(chromtable$chr == "chrY")) == 0){
+    chromtablenum$chr[chromtablenum$chr == paste("chr", sum(chromtablenum$freq != 0), sep = "")] <- "chrX"
+    
+  }else if(length(which(chromtable$chr == "chrX")) == 0 & length(which(chromtable$chr == "chrY")) != 0){
+    chromtablenum$chr[chromtablenum$chr == paste("chr", sum(chromtablenum$freq != 0), sep = "")] <- "chrX"
+  }
+  
+  return(chromtablenum)
 }
 
 
