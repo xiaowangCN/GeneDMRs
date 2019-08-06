@@ -96,7 +96,7 @@ Methfile_QC <- function(inputmethfile, low_coveragenum = 10, high_coveragenum = 
 
   # print to the system file #
   if(coveragewrite == TRUE){
-    write.table(coveragetotal, paste(system.file(package = "GeneDMRs"), "/methdata/Coverage", sep = ""), col.names = T, row.names = F, quote = F)
+    write.table(coveragetotal, paste(system.file(package = "GeneDMRs"), "/Coverage", sep = ""), col.names = T, row.names = F, quote = F)
     }
   
     # filter the CpG sites with coverage number > 10 #
