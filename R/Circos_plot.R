@@ -65,8 +65,7 @@ Circos_plot <- function(inputcytofile, inputmethfile_QC, inputrefseqfile, inputc
   }
   
   # label for gene names #
-  labelnamefile <- data.frame(chr = regiongeneall_significant$chr, start = regiongeneall_significant$start,
-                          end = regiongeneall_significant$end, labelname = regiongeneall_significant$id)
+  labelnamefile <- data.frame(chr = labelname$chr, start = labelname$start, end = labelname$end, label = labelname$id)
   
   
   # full steps in Rcircos #
