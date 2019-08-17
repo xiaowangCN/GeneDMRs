@@ -282,7 +282,12 @@ Methmean_region <- function(inputmethfile_QC, inputrefseqfile, cpgifeaturefile =
       }else{
         
         # when input file is inputgenebodyfile or inputcpgifeaturefile #
-        regionchr <- filter(inputrefseqfile, feature %in% featurename)
+		tmpfeature <- unlist(lapply(X = inputrefseqfile$feature, FUN = function(x) {return(strsplit(x, split = "_")[[1]][1])}))
+		
+		# combine file with no "_" feature name #
+		inputrefseqfile <- data.frame(inputrefseqfile, tmpfeature_select = tmpfeature)
+        regionchr <- filter(inputrefseqfile, tmpfeature_select %in% featurename)
+		regionchr <- regionchr[, -ncol(regionchr)]
       }
       
       # when featureid!="all", and featureid is the specific gene name or cpgi id #
@@ -292,9 +297,15 @@ Methmean_region <- function(inputmethfile_QC, inputrefseqfile, cpgifeaturefile =
         regionchr <- filter(inputrefseqfile, id %in% featureid)
         
       }else{
-        regionchr <- filter(inputrefseqfile, id %in% featureid, feature %in% featurename)
+	  
+	    # combine file with no "_" feature name #
+		tmpfeature <- unlist(lapply(X = inputrefseqfile$feature, FUN = function(x) {return(strsplit(x, split = "_")[[1]][1])}))
+		inputrefseqfile <- data.frame(inputrefseqfile, tmpfeature_select = tmpfeature)
+        regionchr <- filter(inputrefseqfile, id %in% featureid, tmpfeature_select %in% featurename)
+		regionchr <- regionchr[, -ncol(regionchr)]
       }
     }
+	
   }else{
     
     # if chrnum is given like "chr1", "chr2"#
