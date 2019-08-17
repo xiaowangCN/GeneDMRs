@@ -18,6 +18,7 @@ Outputs gene body file.
 \description{
 This function sorts and makes sure geneobj file can be used in this package,
 that mainly works on the promoters without the choromsome and position information.
+In addition, it can add the genomic number of exons and introns, e.g., first exon or second intron.
 }
 \examples{
 geneobj <- refseqfile_check(geneobj, regionfile)
