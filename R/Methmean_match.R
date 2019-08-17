@@ -249,7 +249,7 @@ Methmean_region <- function(inputmethfile_QC, inputrefseqfile, cpgifeaturefile =
     regionchr <- inputrefseqfile
     
   }else if(chrnum=="all"){   
-  
+    
     # find the unannotated chromosome rows and delete them #
     regionchr <- filter(inputrefseqfile, !grepl("_", chr))
     
@@ -282,12 +282,12 @@ Methmean_region <- function(inputmethfile_QC, inputrefseqfile, cpgifeaturefile =
       }else{
         
         # when input file is inputgenebodyfile or inputcpgifeaturefile #
-		tmpfeature <- unlist(lapply(X = inputrefseqfile$feature, FUN = function(x) {return(strsplit(x, split = "_")[[1]][1])}))
-		
-		# combine file with no "_" feature name #
-		inputrefseqfile <- data.frame(inputrefseqfile, tmpfeature_select = tmpfeature)
+        tmpfeature <- unlist(lapply(X = inputrefseqfile$feature, FUN = function(x) {return(strsplit(x, split = "_")[[1]][1])}))
+        
+        # combine file with no "_" feature name #
+        inputrefseqfile <- data.frame(inputrefseqfile, tmpfeature_select = tmpfeature)
         regionchr <- filter(inputrefseqfile, tmpfeature_select %in% featurename)
-		regionchr <- regionchr[, -ncol(regionchr)]
+        regionchr <- regionchr[, -ncol(regionchr)]
       }
       
       # when featureid!="all", and featureid is the specific gene name or cpgi id #
@@ -297,15 +297,15 @@ Methmean_region <- function(inputmethfile_QC, inputrefseqfile, cpgifeaturefile =
         regionchr <- filter(inputrefseqfile, id %in% featureid)
         
       }else{
-	  
-	    # combine file with no "_" feature name #
-		tmpfeature <- unlist(lapply(X = inputrefseqfile$feature, FUN = function(x) {return(strsplit(x, split = "_")[[1]][1])}))
-		inputrefseqfile <- data.frame(inputrefseqfile, tmpfeature_select = tmpfeature)
+        
+        # combine file with no "_" feature name #
+        tmpfeature <- unlist(lapply(X = inputrefseqfile$feature, FUN = function(x) {return(strsplit(x, split = "_")[[1]][1])}))
+        inputrefseqfile <- data.frame(inputrefseqfile, tmpfeature_select = tmpfeature)
         regionchr <- filter(inputrefseqfile, id %in% featureid, tmpfeature_select %in% featurename)
-		regionchr <- regionchr[, -ncol(regionchr)]
+        regionchr <- regionchr[, -ncol(regionchr)]
       }
     }
-	
+    
   }else{
     
     # if chrnum is given like "chr1", "chr2"#
