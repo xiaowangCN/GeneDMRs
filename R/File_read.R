@@ -415,6 +415,7 @@ refseqfile_check <- function(geneobj, regionfile){
   geneobj$strand <- paste(geneobj$chr, geneobj$start, geneobj$end, sep = "_")
   geneobj <- distinct(geneobj, strand, .keep_all = TRUE)
   
+  
   ## add the number of exon and intron ##
   tmp_exonintron <- filter(geneobj, genebody == "exons" | genebody == "introns")
   tmp_noexonintron <- filter(geneobj, genebody != "exons" & genebody != "introns")
@@ -424,31 +425,30 @@ refseqfile_check <- function(geneobj, regionfile){
   
   # add one first row and one last row #
   tmp_exonintron <- rbind(tmp_noexonintron[1, ], tmp_exonintron, tmp_noexonintron[1, ])
-  tmp_exonintron <- cbind(tmp_exonintron, 0)
   numexon <- 1
   numintron <- 1
-  for(i in 1:(nrow(tmp_exonintron) - 1)){
+  for(j in 2:(nrow(tmp_exonintron) - 1)){
     
     # for same gene #
-    if(as.vector(unlist(tmp_exonintron$refseq))[i] == as.vector(unlist(tmp_exonintron$refseq))[i + 1]){
-      if(as.vector(unlist(tmp_exonintron$genebody))[i] == "exons"){
-        tmp_exonintron[i, ncol(tmp_exonintron)] <- paste("exons", numexon, sep = "_")
+    if(as.vector(unlist(tmp_exonintron$refseq))[j] == as.vector(unlist(tmp_exonintron$refseq))[j + 1]){
+      if(as.vector(unlist(tmp_exonintron$genebody))[j] == "exons"){
+        tmp_exonintron[j, ncol(tmp_exonintron)] <- paste("exons", numexon, sep = "_")
         numexon <- numexon + 1
         
-      }else if(as.vector(unlist(tmp_exonintron$genebody))[i] == "introns"){
-        tmp_exonintron[i, ncol(tmp_exonintron)] <- paste("introns", numintron, sep = "_")
+      }else if(as.vector(unlist(tmp_exonintron$genebody))[j] == "introns"){
+        tmp_exonintron[j, ncol(tmp_exonintron)] <- paste("introns", numintron, sep = "_")
         numintron <- numintron + 1
       }
       
     }else{
       
       # last gene body of the same gene #
-      if(as.vector(unlist(tmp_exonintron$refseq))[i] == as.vector(unlist(tmp_exonintron$refseq))[i - 1]){
-        if(as.vector(unlist(tmp_exonintron$genebody))[i] == "exons"){
-          tmp_exonintron[i, ncol(tmp_exonintron)] <- paste("exons", numexon, sep = "_")
+      if(as.vector(unlist(tmp_exonintron$refseq))[j] == as.vector(unlist(tmp_exonintron$refseq))[j - 1]){
+        if(as.vector(unlist(tmp_exonintron$genebody))[j] == "exons"){
+          tmp_exonintron[j, ncol(tmp_exonintron)] <- paste("exons", numexon, sep = "_")
           
-        }else if(as.vector(unlist(tmp_exonintron$genebody))[i] == "introns"){
-          tmp_exonintron[i, ncol(tmp_exonintron)] <- paste("introns", numintron, sep = "_")
+        }else if(as.vector(unlist(tmp_exonintron$genebody))[j] == "introns"){
+          tmp_exonintron[j, ncol(tmp_exonintron)] <- paste("introns", numintron, sep = "_")
         }
         numexon <- 1
         numintron <- 1
@@ -457,25 +457,25 @@ refseqfile_check <- function(geneobj, regionfile){
         # for the different gene #
         numexon <- 1
         numintron <- 1
-        if(as.vector(unlist(tmp_exonintron$genebody))[i] == "exons"){
-          tmp_exonintron[i, ncol(tmp_exonintron)] <- paste("exons", numexon, sep = "_")
+        if(as.vector(unlist(tmp_exonintron$genebody))[j] == "exons"){
+          tmp_exonintron[j, ncol(tmp_exonintron)] <- paste("exons", numexon, sep = "_")
           
-        }else if(as.vector(unlist(tmp_exonintron$genebody))[i] == "introns"){
-          tmp_exonintron[i, ncol(tmp_exonintron)] <- paste("introns", numintron, sep = "_")
+        }else if(as.vector(unlist(tmp_exonintron$genebody))[j] == "introns"){
+          tmp_exonintron[j, ncol(tmp_exonintron)] <- paste("introns", numintron, sep = "_")
         }
       }
     }
   }
   
-  # delete the first row and last column #
+  # delete the first row, last row and last column #
   tmp_exonintron$genebody <- tmp_exonintron[, ncol(tmp_exonintron)]
   tmp_exonintron <- tmp_exonintron[-c(1, nrow(tmp_exonintron)), -ncol(tmp_exonintron)]
-  geneobj <- rbind(tmp_exonintron, tmp_noexonintron)
+  geneobj <- rbind(tmp_exonintron, tmp_noexonintron[, -ncol(tmp_noexonintron)])
   
   # sort the file #
   geneobj <- arrange(geneobj, chr, start, refseq)
   
-  return(geneobj[,-6])
+  return(geneobj)
 }
 
 
