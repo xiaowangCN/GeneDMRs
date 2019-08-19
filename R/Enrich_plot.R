@@ -24,16 +24,16 @@
 #'
 #' @examples
 #' Enrich_plot(regiongenealls_significant, enrichterm = "GOgroup", Dbannotation = "org.Mm.eg.db", title = "Biological process for significant gene")
-#' Enrich_plot(regiongenealls_significant, enrichterm = "GO", title = "Go term for significant gene")
+#' Enrich_plot(regiongenealls_significant, enrichterm = "GO", Dbannotation = "org.Mm.eg.db", title = "Go term for significant gene")
 #' Enrich_plot(regiongenealls_significant, enrichterm = "GO", Dbannotation = "org.Hs.eg.db", title = "Go term for significant gene") # for human data #
-#' Enrich_plot(regiongenealls_significant, adjustpvaluecut = 0.2, enrichterm = "pathway", keggorganism = "mmu", title = "Pathway for significant gene")
+#' Enrich_plot(regiongenealls_significant, adjustpvaluecut = 0.2, enrichterm = "pathway", Dbannotation = "org.Mm.eg.db", keggorganism = "mmu", title = "Pathway for significant gene")
 #' Enrich_plot(regiongenealls_significant, enrichterm = "pathway", keggorganism = "hsa", Dbannotation = "org.Hs.eg.db", category = FALSE, title = "Pathway for significant gene") # for human data #
 #' 
 #' expressionfile_significant <- read.table(paste(system.file(package = "GeneDMRs"), "/methdata/DEgenes.txt", sep=""), header = T) # read DEgene file #
 #' 
 #' Enrich_plot(regiongenealls_significant, adjustpvaluecut = 0.2, enrichterm = "GO", Dbannotation = "org.Mm.eg.db", title = "Go term for significant gene in two categories", 
 #' expressionfile_significant = expressionfile_significant, expressionfile_genetype = "SYMBOL")
-#' Enrich_plot(regiongenealls_significant, enrichterm = "pathway", keggorganism = "mmu", title = "Pathway for significant gene in two categories", 
+#' Enrich_plot(regiongenealls_significant, enrichterm = "pathway", Dbannotation = "org.Mm.eg.db", keggorganism = "mmu", title = "Pathway for significant gene in two categories", 
 #' expressionfile_significant = expressionfile_significant, expressionfile_genetype = "SYMBOL")
 #' 
 #' @export
