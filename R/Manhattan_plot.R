@@ -42,8 +42,18 @@ Manhattan_plot <- function(siteall_Qvalue, chrlabs = NULL, col = c("black", "gre
     
     siteall_Qvalue$chr[siteall_Qvalue$chr == paste("chr", i ,sep="")] <- i
   }
-  siteall_Qvalue$chr[siteall_Qvalue$chr == "chrX"] <- length(chromtable[chromtable != 0]) - 1
-  siteall_Qvalue$chr[siteall_Qvalue$chr == "chrY"] <- length(chromtable[chromtable != 0])
+  
+  if(length(which(names(chromtable) == "chrX")) > 0 & length(which(names(chromtable) == "chrY")) > 0){
+    siteall_Qvalue$chr[siteall_Qvalue$chr == "chrX"] <- length(chromtable[chromtable != 0]) - 1
+    siteall_Qvalue$chr[siteall_Qvalue$chr == "chrY"] <- length(chromtable[chromtable != 0])
+    
+  }else if(length(which(names(chromtable) == "chrX")) > 0 & length(which(names(chromtable) == "chrY")) == 0){
+    siteall_Qvalue$chr[siteall_Qvalue$chr == "chrX"] <- length(chromtable[chromtable != 0])
+    
+  }else if(length(which(names(chromtable) == "chrY")) > 0 & length(which(names(chromtable) == "chrX")) == 0){
+    siteall_Qvalue$chr[siteall_Qvalue$chr == "chrY"] <- length(chromtable[chromtable != 0])
+  }
+  
   siteall_Qvalue$chr <- as.numeric(siteall_Qvalue$chr)
   
   # check the site position or regions start or more feature qvalues #
