@@ -211,7 +211,7 @@ Meth_mean <- function(inputmethfile_QC, regionchr, cpgifeaturefile = NULL){
 #' partshore <- Methmean_region(inputmethfile_QC, inputcpgifeaturefile, featureid = "shore10")
 #' cpgislandall <- Methmean_region(inputmethfile_QC, inputcpgifeaturefile, featureid = "all", featurename = "CpGisland")
 #' cpgshoreall <- Methmean_region(inputmethfile_QC, inputcpgifeaturefile, featureid = "all", featurename = "Shores") #long time #
-#' cpgfeatureall <- Methmean_region(inputmethfile_QC, inputcpgifeaturefile, featureid = "all", featurename = c("CpGisland", "Shores") #long time #
+#' cpgfeatureall <- Methmean_region(inputmethfile_QC, inputcpgifeaturefile, featureid = "all", featurename = c("CpGisland", "Shores")) #long time #
 #' 
 #' genebodychr_promoter <- Methmean_region(inputmethfile_QC, inputgenebodyfile, chrnum = "chr1", featureid = "all", featurename = "promoters")
 #' cpgchr_island <- Methmean_region(inputmethfile_QC, inputcpgifeaturefile, chrnum = "chr1", featureid = "all", featurename = "CpGisland")
