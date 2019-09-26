@@ -222,27 +222,27 @@ Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/met
  #        refseq  chr start   end    genebody
  # 1 NM_001244353 chr1 22826 24826   promoters
  # 2 NM_001244353 chr1 23826 23826       TSSes
- # 3 NM_001244353 chr1 23827 23965       exons
- # 4 NM_001244353 chr1 23966 27359     introns
- # 5 NM_001244353 chr1 27360 27467       exons
- # 6 NM_001244353 chr1 27468 30767     introns
- # 7 NM_001244353 chr1 30768 30849     exons
- # 8 NM_001244353 chr1 30850 33299   introns
- # 9 NM_001244353 chr1 33300 33429     exons
- # 10 NM_001244353 chr1 33430 38650   introns
+ # 3 NM_001244353 chr1 23827 23965       exons_1
+ # 4 NM_001244353 chr1 23966 27359     introns_1
+ # 5 NM_001244353 chr1 27360 27467       exons_2
+ # 6 NM_001244353 chr1 27468 30767     introns_2
+ # 7 NM_001244353 chr1 30768 30849     exons_3
+ # 8 NM_001244353 chr1 30850 33299   introns_3
+ # 9 NM_001244353 chr1 33300 33429     exons_4
+ # 10 NM_001244353 chr1 33430 38650   introns_4
   
  # The inputcpgifeaturefile contains chromosome, start position, end position and CpGfeature.
  #     cpgi  chr start   end cpgfeature
- # 1  shore1 chr1 19811 21810     Shores
- # 2   cpgi1 chr1 21811 22330  CpGisland
- # 3  shore2 chr1 22331 23706     Shores
- # 4   cpgi2 chr1 23707 24083  CpGisland
- # 5  shore3 chr1 24084 26083     Shores
- # 6  shore4 chr1 64380 66379     Shores
- # 7   cpgi3 chr1 66380 66649  CpGisland
- # 8  shore5 chr1 66650 68649     Shores
- # 9  shore6 chr1 89255 91254     Shores
- # 10  cpgi4 chr1 91255 91533  CpGisland
+ # 1  shore1 chr1 19811 21810     Shores_1
+ # 2   cpgi1 chr1 21811 22330  CpGisland_1
+ # 3  shore2 chr1 22331 23706     Shores_2
+ # 4   cpgi2 chr1 23707 24083  CpGisland_2
+ # 5  shore3 chr1 24084 26083     Shores_3
+ # 6  shore4 chr1 64380 66379     Shores_4
+ # 7   cpgi3 chr1 66380 66649  CpGisland_3
+ # 8  shore5 chr1 66650 68649     Shores_5
+ # 9  shore6 chr1 89255 91254     Shores_6
+ # 10  cpgi4 chr1 91255 91533  CpGisland_4
   
   
 Bedfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), bedfile = "refseq", suffix = ".txt", feature = FALSE, featurewrite = TRUE){
@@ -297,15 +297,16 @@ Bedfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/meth
       cpgiobj <- read.table("Cpgifeature")
       cpgiobj[,6] <- cpgiobj[,2]
       cpgiobj <- cpgiobj[,3:6]
-      colnames(cpgiobj) <- c("chr","start","end","cpgfeature")
+      colnames(cpgiobj) <- c("chr", "start", "end", "cpgfeature")
 	  
 	  # rename the "cpgi" #
 	  cpginum <- sum(cpgiobj$cpgfeature == "CpGisland")
-	  cpginame <- c(paste("cpgi", 1:cpginum, sep = ""), paste("shore", 1:(nrow(cpgiobj) - cpginum), sep = ""))
-	  cpgiobj <- data.frame(cpgi = cpginame, cpgiobj)
+	  cpginame_1 <- c(paste("cpgi", 1:cpginum, sep = ""), paste("shore", 1:(nrow(cpgiobj) - cpginum), sep = ""))
+	  cpginame_2 <- c(paste("CpGisland", 1:cpginum, sep = "_"), paste("Shores", 1:(nrow(cpgiobj) - cpginum), sep = "_"))
+	  cpgiobj <- data.frame(cpgi = cpginame_1, cpgiobj[, -which(colnames(cpgiobj) == "cpgfeature")], cpgfeature = cpginame_2)
 	        
       # sort the file #
-      cpgiobj <- arrange(cpgiobj,chr,start)
+      cpgiobj <- arrange(cpgiobj, chr, start)
       
       # if featurewrite == FALSE then delete cpgiobj file #
       if(featurewrite == FALSE){
