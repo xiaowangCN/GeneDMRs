@@ -304,7 +304,8 @@ Bedfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/meth
 	  cpginame_1 <- c(paste("cpgi", 1:cpginum, sep = ""), paste("shore", 1:(nrow(cpgiobj) - cpginum), sep = ""))
 	  cpginame_2 <- c(paste("CpGisland", 1:cpginum, sep = "_"), paste("Shores", 1:(nrow(cpgiobj) - cpginum), sep = "_"))
 	  cpgiobj <- data.frame(cpgi = cpginame_1, cpgiobj[, -which(colnames(cpgiobj) == "cpgfeature")], cpgfeature = cpginame_2)
-	        
+	  cpgiobj$cpgfeature <- as.character(cpgiobj$cpgfeature)
+      
       # sort the file #
       cpgiobj <- arrange(cpgiobj, chr, start)
       
