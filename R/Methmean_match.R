@@ -285,7 +285,7 @@ Methmean_region <- function(inputmethfile_QC, inputrefseqfile, cpgifeaturefile =
         inputrefseqfile$feature <- as.character(inputrefseqfile$feature)
         
         # judge feature column contain "_" or not #
-        if(is.na(strsplit(inputrefseqfile$feature[[1]][2], split = "_"))==FALSE){
+        if(is.na((strsplit(inputrefseqfile$feature, split = "_"))[[1]][2])==FALSE){
           tmpfeature <- unlist(lapply(X = inputrefseqfile$feature, FUN = function(x) {return(strsplit(x, split = "_")[[1]][1])}))
           
         }else{
@@ -310,7 +310,7 @@ Methmean_region <- function(inputmethfile_QC, inputrefseqfile, cpgifeaturefile =
         inputrefseqfile$feature <- as.character(inputrefseqfile$feature)
         
         # judge feature column contain "_" or not #
-        if(is.na(strsplit(inputrefseqfile$feature[[1]][2], split = "_"))==FALSE){
+        if(is.na((strsplit(inputrefseqfile$feature, split = "_"))[[1]][2])==FALSE){
           tmpfeature <- unlist(lapply(X = inputrefseqfile$feature, FUN = function(x) {return(strsplit(x, split = "_")[[1]][1])}))
           
         }else{
