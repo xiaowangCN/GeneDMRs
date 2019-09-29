@@ -285,11 +285,11 @@ Methmean_region <- function(inputmethfile_QC, inputrefseqfile, cpgifeaturefile =
         inputrefseqfile$feature <- as.character(inputrefseqfile$feature)
         
         # judge feature column contain "_" or not #
-        if(is.na((strsplit(inputrefseqfile$feature, split = "_"))[[1]][2])==FALSE){
-          tmpfeature <- unlist(lapply(X = inputrefseqfile$feature, FUN = function(x) {return(strsplit(x, split = "_")[[1]][1])}))
+        if(names(table(inputcpgifeaturefile$cpgfeature))[1] == "CpGisland"){
+          tmpfeature <- inputrefseqfile$feature
           
         }else{
-          tmpfeature <- inputrefseqfile$feature
+          tmpfeature <- unlist(lapply(X = inputrefseqfile$feature, FUN = function(x) {return(strsplit(x, split = "_")[[1]][1])}))
         }
         
         # combine file with no "_" feature name #
@@ -310,11 +310,11 @@ Methmean_region <- function(inputmethfile_QC, inputrefseqfile, cpgifeaturefile =
         inputrefseqfile$feature <- as.character(inputrefseqfile$feature)
         
         # judge feature column contain "_" or not #
-        if(is.na((strsplit(inputrefseqfile$feature, split = "_"))[[1]][2])==FALSE){
-          tmpfeature <- unlist(lapply(X = inputrefseqfile$feature, FUN = function(x) {return(strsplit(x, split = "_")[[1]][1])}))
+        if(names(table(inputcpgifeaturefile$cpgfeature))[1] == "CpGisland"){
+          tmpfeature <- inputrefseqfile$feature
           
         }else{
-          tmpfeature <- inputrefseqfile$feature
+          tmpfeature <- unlist(lapply(X = inputrefseqfile$feature, FUN = function(x) {return(strsplit(x, split = "_")[[1]][1])}))
         }
         
         inputrefseqfile <- data.frame(inputrefseqfile, tmpfeature_select = tmpfeature)
