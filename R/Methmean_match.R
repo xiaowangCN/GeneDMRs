@@ -285,7 +285,7 @@ Methmean_region <- function(inputmethfile_QC, inputrefseqfile, cpgifeaturefile =
         inputrefseqfile$feature <- as.character(inputrefseqfile$feature)
         
         # judge feature column contain "_" or not #
-        if(names(table(inputcpgifeaturefile$cpgfeature))[1] == "CpGisland"){
+        if(names(table(inputrefseqfile$feature))[1] == "CpGisland" | names(table(inputrefseqfile$feature))[1] == "Shores"){
           tmpfeature <- inputrefseqfile$feature
           
         }else{
@@ -310,7 +310,7 @@ Methmean_region <- function(inputmethfile_QC, inputrefseqfile, cpgifeaturefile =
         inputrefseqfile$feature <- as.character(inputrefseqfile$feature)
         
         # judge feature column contain "_" or not #
-        if(names(table(inputcpgifeaturefile$cpgfeature))[1] == "CpGisland"){
+        if(names(table(inputrefseqfile$feature))[1] == "CpGisland" | names(table(inputrefseqfile$feature))[1] == "Shores"){
           tmpfeature <- inputrefseqfile$feature
           
         }else{
