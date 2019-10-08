@@ -43,16 +43,16 @@ regiongenechr <- Methmean_region(inputmethfile_QC, inputrefseqfile, chrnum = c("
 regiongeneall <- Methmean_region(inputmethfile_QC, inputrefseqfile, chrnum = "all")
 DMC_regiongeneall <- Methmean_region(DMC_inputmethfile_QC, inputrefseqfile, chrnum = "all") # Calculate DMC first and then recalculate the methylation mean by replacing the RRBS cytosine sites #
 regiongenealls <- Methmean_region(inputmethfile_QC, inputrefseqfile, chrnum = "alls") # alls include unannotated CpG site like chrUn_NW_018084826v1 #
-Methmean_region(inputmethfile_QC,inputcpgifile,"chr1", 21800, 21900) # acturally regiongenepart = regioncpgpart #
+Methmean_region(inputmethfile_QC,inputcpgifile,"chr1", posistart = 21800, posiend = 21900) # acturally regiongenepart = regioncpgpart #
 regioncpgchr <- Methmean_region(inputmethfile_QC, inputcpgifile, chrnum = c("chr1","chr2"))
-regioncpgall <- Methmean_region(inputmethfile_QC, inputcpgifile)
+regioncpgall <- Methmean_region(inputmethfile_QC, inputcpgifile, chrnum = "all")
 regioncpgalls <- Methmean_region(inputmethfile_QC, inputcpgifile, chrnum = "alls")
 
 regiongenebodychr <- Methmean_region(inputmethfile_QC, inputgenebodyfile, chrnum = c("chr1","chr2"))
-regiongenebodyall <- Methmean_region(inputmethfile_QC, inputgenebodyfile)
+regiongenebodyall <- Methmean_region(inputmethfile_QC, inputgenebodyfile, chrnum = "all")
 regiongenebodyalls <- Methmean_region(inputmethfile_QC, inputgenebodyfile, chrnum = "alls")
 regioncpgifeaturechr <- Methmean_region(inputmethfile_QC, inputcpgifeaturefile, chrnum = c("chr1","chr2"))
-regioncpgifeatureall <- Methmean_region(inputmethfile_QC, inputcpgifeaturefile)
+regioncpgifeatureall <- Methmean_region(inputmethfile_QC, inputcpgifeaturefile, chrnum = "all")
 regioncpgifeaturealls <- Methmean_region(inputmethfile_QC, inputcpgifeaturefile, chrnum = "alls")
 
 partgenebody <- Methmean_region(inputmethfile_QC, inputgenebodyfile, featureid = "NM_001244353")
@@ -65,7 +65,7 @@ partcpgi <- Methmean_region(inputmethfile_QC, inputcpgifeaturefile, featureid = 
 partshore <- Methmean_region(inputmethfile_QC, inputcpgifeaturefile, featureid = "shore10")
 cpgislandall <- Methmean_region(inputmethfile_QC, inputcpgifeaturefile, featureid = "all", featurename = "CpGisland")
 cpgshoreall <- Methmean_region(inputmethfile_QC, inputcpgifeaturefile, featureid = "all", featurename = "Shores") #long time #
-cpgfeatureall <- Methmean_region(inputmethfile_QC, inputcpgifeaturefile, featureid = "all", featurename = c("CpGisland", "Shores") #long time #
+cpgfeatureall <- Methmean_region(inputmethfile_QC, inputcpgifeaturefile, featureid = "all", featurename = c("CpGisland", "Shores")) #long time #
 
 genebodychr_promoter <- Methmean_region(inputmethfile_QC, inputgenebodyfile, chrnum = "chr1", featureid = "all", featurename = "promoters")
 cpgchr_island <- Methmean_region(inputmethfile_QC, inputcpgifeaturefile, chrnum = "chr1", featureid = "all", featurename = "CpGisland")
