@@ -47,7 +47,7 @@ If dependencies need to be installed
 GeneDMRs(Dbannotation = "org.Mm.eg.db")
 ```
 
-Before the quick start, the user could download the example data or the whole folder from "/methdata" for testing. In the folder "/methdata", "1_1.gz", "1_2.gz" and "1_3.gz" files are the control group, while "2_1.gz" and "2_1.gz" files are case group. The user just needs to give one path for GeneDMRS package, e.g., "paths = paste(system.file(package = "GeneDMRs")" which is the package systme path.
+Before the starting quickly or starting step by step, the user could download the example data or the whole folder from "/methdata" for testing. In the folder "/methdata", "1_1.gz", "1_2.gz" and "1_3.gz" files are the control group, while "2_1.gz" and "2_1.gz" files are case group. The user just needs to give one path for GeneDMRS package, e.g., "paths = paste(system.file(package = "GeneDMRs")" which is the package systme path.
 
 1. If get all differentially methylated genes (DMGs) quickly
 
@@ -56,6 +56,27 @@ allDMGs <- Quick_GeneDMRs(paths = paste(system.file(package = "GeneDMRs"), "/met
 ```
 
 2. If get all differentially methylated cytosine sites (DMCs) quickly
+
+```
+  # read the file #
+  inputmethfile <- Methfile_read(paths = paths, suffix = suffixmeth)
+  inputrefseqfile <- Bedfile_read(paths = paths, bedfile = bedfile, suffix = suffixbed, feature = FALSE)
+  
+  # quality control #
+  inputmethfile_QC <- Methfile_QC(inputmethfile)
+  
+  # methylation mean #
+  regiongeneall <- Methmean_region(inputmethfile_QC, inputrefseqfile, chrnum = "all")
+  
+  # statistical test #
+  regiongeneall_Qvalue <- Logic_regression(regiongeneall)
+  
+  # sifnificant filter #
+  regiongeneall_significant <- Significant_filter(regiongeneall_Qvalue)
+
+```
+
+3. If get all DMGs step by step
 
 ```
 allDMCs <- Quick_DMCs(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""))
