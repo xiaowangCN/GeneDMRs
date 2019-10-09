@@ -58,28 +58,27 @@ allDMGs <- Quick_GeneDMRs(paths = paste(system.file(package = "GeneDMRs"), "/met
 2. If get all differentially methylated cytosine sites (DMCs) quickly
 
 ```
-  # read the file #
-  inputmethfile <- Methfile_read(paths = paths, suffix = suffixmeth)
-  inputrefseqfile <- Bedfile_read(paths = paths, bedfile = bedfile, suffix = suffixbed, feature = FALSE)
-  
-  # quality control #
-  inputmethfile_QC <- Methfile_QC(inputmethfile)
-  
-  # methylation mean #
-  regiongeneall <- Methmean_region(inputmethfile_QC, inputrefseqfile, chrnum = "all")
-  
-  # statistical test #
-  regiongeneall_Qvalue <- Logic_regression(regiongeneall)
-  
-  # sifnificant filter #
-  regiongeneall_significant <- Significant_filter(regiongeneall_Qvalue)
-
+allDMCs <- Quick_DMCs(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""))
 ```
 
 3. If get all DMGs step by step
 
 ```
-allDMCs <- Quick_DMCs(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""))
+# read the file #
+inputmethfile <- Methfile_read(paths = paths, suffix = suffixmeth)
+inputrefseqfile <- Bedfile_read(paths = paths, bedfile = bedfile, suffix = suffixbed, feature = FALSE)
+  
+# quality control #
+inputmethfile_QC <- Methfile_QC(inputmethfile)
+  
+# methylation mean #
+regiongeneall <- Methmean_region(inputmethfile_QC, inputrefseqfile, chrnum = "all")
+  
+# statistical test #
+regiongeneall_Qvalue <- Logic_regression(regiongeneall)
+  
+# sifnificant filter #
+regiongeneall_significant <- Significant_filter(regiongeneall_Qvalue)
 ```
 
 ### More about GeneDMRs
