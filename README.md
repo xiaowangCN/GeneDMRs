@@ -47,7 +47,7 @@ If dependencies need to be installed
 GeneDMRs(Dbannotation = "org.Mm.eg.db")
 ```
 
-Before the starting quickly or starting step by step, the user could download the example data or the whole folder from "/methdata" for testing. In the folder "/methdata", "1_1.gz", "1_2.gz" and "1_3.gz" files are the control group, while "2_1.gz" and "2_1.gz" files are case group. The user just needs to give one path for GeneDMRS package, e.g., "paths = paste(system.file(package = "GeneDMRs")" which is the package systme path.
+Before starting quickly or starting step by step, the user could download the example data or the whole folder from "/methdata" for testing. In the folder "/methdata", "1_1.gz", "1_2.gz" and "1_3.gz" files are the control group, while "2_1.gz" and "2_1.gz" files are case group. The user just needs to give one path for GeneDMRS package, e.g., "paths = paste(system.file(package = "GeneDMRs")" which is the package systme path.
 
 1. If get all differentially methylated genes (DMGs) quickly
 
@@ -65,8 +65,8 @@ allDMCs <- Quick_DMCs(paths = paste(system.file(package = "GeneDMRs"), "/methdat
 
 ```
 # read the file #
-inputmethfile <- Methfile_read(paths = paths, suffix = suffixmeth)
-inputrefseqfile <- Bedfile_read(paths = paths, bedfile = bedfile, suffix = suffixbed, feature = FALSE)
+inputmethfile <- Methfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), suffix = ".gz")
+inputrefseqfile <- Bedfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), bedfile = "refseq", suffix = ".txt", feature = FALSE)
   
 # quality control #
 inputmethfile_QC <- Methfile_QC(inputmethfile)
