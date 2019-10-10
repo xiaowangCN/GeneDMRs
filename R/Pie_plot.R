@@ -139,6 +139,20 @@ Feature_pieplot <- function(siteall_significant_feature, methdirection = "both",
   # count the feature number #
   featurenum <- length(grep("Feature", names(siteall_significant_feature)))
   
+  # first to split one site with "&" and rename feature without "_" #
+  dupwithand <- grep(" & ", siteall_significant_feature$Feature1)
+  andone <- unlist(lapply(X = siteall_significant_feature$Feature1[dupwithand], 
+                          FUN = function(x) {return(strsplit(x, split = " & ")[[1]][1])}))
+  andtwo <- unlist(lapply(X = siteall_significant_feature$Feature1[dupwithand], 
+                          FUN = function(x) {return(strsplit(x, split = " & ")[[1]][2])}))
+  andone <- unlist(lapply(X = andone, FUN = function(x) {return(strsplit(x, split = "_")[[1]][1])}))
+  andtwo <- unlist(lapply(X = andtwo, FUN = function(x) {return(strsplit(x, split = "_")[[1]][1])}))
+  siteall_significant_feature$Feature1[dupwithand] <- paste(andone, andtwo, sep = " & ")
+  
+  # then the rest of gene body feature column contain "_" #
+  siteall_significant_feature$Feature1 <- unlist(lapply(X = siteall_significant_feature$Feature1, 
+                                                        FUN = function(x) {return(strsplit(x, split = "_")[[1]][1])}))
+  
   # calculate the percentage of first feature #
   chromtable1 <- table(siteall_significant_feature$Feature1)
   
