@@ -162,8 +162,8 @@ Group_boxplot <- function(regiongeneall, ttest = TRUE, title = "Group boxplot", 
   
   colnames(groupfile) <-c("Methylation","Group")
   
-  boxplot(Methylation*100 ~ Group, groupfile, axes = FALSE, main = title, col = col)
-  axis(1, at = 1:groupnum, labels = paste("Group", 1:groupnum, sep = ""),font = 2)
+  boxplot(Methylation*100 ~ Group, groupfile, axes = FALSE, xlab = "", ylab = "", main = title, col = col)
+  axis(1, at = 1:groupnum, labels = paste("Group", 1:groupnum, sep = ""), font = 2)
   axis(2, las=1)
   title(ylab = "Methylation (%)", cex.lab = 1.5)
   
@@ -230,7 +230,7 @@ Cpgfeature_boxplot <- function(genefeatureall_cpgfeature, groupnum = 1, ttest = 
   colnames(featurefile) <-c("Methylation","Feature")
   featurefile <- filter(featurefile, Methylation != "NaN")
   
-  boxplot(Methylation*100 ~ Feature, featurefile, axes = FALSE, col = col)
+  boxplot(Methylation*100 ~ Feature, featurefile, axes = FALSE, xlab = "", ylab = "", col = col)
   axis(1, at = 1:cpgfeaturenum, labels = cpgfeaturelable, font = 2)
   if(yaxislabel==TRUE){
     axis(2, las=1)
@@ -375,6 +375,9 @@ Genebody_cpgfeature_boxplot <- function(genefeatureall_cpgfeature, genebodyname 
   
   for(i in 1:genebodyfeaturenum){
     featurefile <- NULL
+    
+    # gene body feature column contain "_" #
+    genefeatureall_cpgfeature$feature <- unlist(lapply(X = genefeatureall_cpgfeature$feature, FUN = function(x) {return(strsplit(x, split = "_")[[1]][1])}))
     subfile <- filter(genefeatureall_cpgfeature, feature %in% genebodyname[i])
     
     # calculate the feature group number #
@@ -391,7 +394,7 @@ Genebody_cpgfeature_boxplot <- function(genefeatureall_cpgfeature, genebodyname 
     featurefile <- filter(featurefile, Methylation != "NaN")
     
     # boxplot #
-    boxplot(Methylation*100 ~ Feature, featurefile, axes = FALSE, col = col[i])
+    boxplot(Methylation*100 ~ Feature, featurefile, axes = FALSE,  xlab = "", ylab = "", col = col[i])
     axis(1, at = 1:cpgfeaturenum, labels = cpgfeaturelable, font = 2)
     
     # add one y axis #
