@@ -318,7 +318,7 @@ Significant_filter <- function(genefeatureall_cpgfeature_Qvalue, qvalue = 0.01, 
 #'
 #' @param siteall_significant refers to the input file with DMC sites.
 #' @param featureid refers to whether to include the feature id or not, with the default TRUE. 
-#' The feature id will output the id of first file of the featurefile list e.g., the id of inputgenebodyfile.
+#' The feature id will output the id of first file of the featurefile list e.g., the id (gene name) of inputgenebodyfile.
 #' 
 #' @param featurefile refers to the input feature files e.g., inputgenebodyfile and inputcpgifeaturefile, 
 #' with default two files in a list as featurefile = list(inputgenebodyfile, inputcpgifeaturefile),
@@ -348,10 +348,10 @@ DMC_feature <- function(siteall_significant, featureid = TRUE, featurefile = lis
   if(featureid == TRUE){
     
     # if with feature id then add one column #
-    output <- data.frame(siteall_significant, array(0,c(nrow(siteall_significant), 1 + length(featurefile))))
+    output <- data.frame(siteall_significant, array(0,c(nrow(siteall_significant), 1 + filenum)))
     
     # rename #
-    colnames(output) <- c(colnames(siteall_significant), "Feature1_id", paste("Feature", 1:length(featurefile), sep = ""))
+    colnames(output) <- c(colnames(siteall_significant), "Feature1_id", paste("Feature", 1:filenum, sep = ""))
     
     # read the feature file #
     for(i in 1:filenum){
@@ -438,10 +438,10 @@ DMC_feature <- function(siteall_significant, featureid = TRUE, featurefile = lis
   }else{
     
     # if without feature id #
-    output <- data.frame(siteall_significant, array(0,c(nrow(siteall_significant), length(featurefile))))
+    output <- data.frame(siteall_significant, array(0,c(nrow(siteall_significant), filenum)))
     
     # rename #
-    colnames(output) <- c(colnames(siteall_significant), paste("Feature", 1:length(featurefile), sep = ""))
+    colnames(output) <- c(colnames(siteall_significant), paste("Feature", 1:filenum, sep = ""))
     
     # read the feature file #
     for(i in 1:filenum){
