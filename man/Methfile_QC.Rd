@@ -6,7 +6,7 @@
 \usage{
 Methfile_QC(inputmethfile, low_coveragenum = 10,
   high_coveragenum = NULL, low_quantile = NULL, high_quantile = 99.9,
-  coveragewrite = TRUE)
+  samplenum_QC = "all")
 }
 \arguments{
 \item{inputmethfile}{refers to the input of methylation file after Methfile_read().}
@@ -19,7 +19,9 @@ Methfile_QC(inputmethfile, low_coveragenum = 10,
 
 \item{high_quantile}{refers to the maximum quantile of read coverage to be discarded, with default 99.99.}
 
-\item{coveragewrite}{refers to whether to write out the read coverage file to the given path, with default TRUE.}
+\item{samplenum_QC}{refers to the sample numbers under quanlity control (e.g., samplenum_QC = 3 means that 
+if three of five samples at one cytosine site have unqualified read coverage, then this site 
+will be discarded), with default "all" samples.}
 }
 \value{
 Outputs a data frame contain chromosome, position, and Cs & Ts for different replicates and groups after quality control.
@@ -30,6 +32,6 @@ This function discards the cytosine sites with low read coverage (quantile) or h
 \examples{
 inputmethfile_QC <- Methfile_QC(inputmethfile)
 inputmethfile_QC <- Methfile_QC(inputmethfile, low_coveragenum = 20, high_quantile = 99.99)
-inputmethfile_QC <- Methfile_QC(inputmethfile, low_coveragenum = 10, high_coveragenum = 100, coveragewrite = FALSE)
+inputmethfile_QC <- Methfile_QC(inputmethfile, low_coveragenum = 10, high_coveragenum = 100, samplenum_QC = 3)
 
 }
