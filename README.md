@@ -17,7 +17,7 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 
     install.packages("BiocManager")
     
-  BiocManager::install(c("devtools", "clusterProfiler", "corrplot", "dplyr", "genomation", "KEGG.db", 
+  BiocManager::install(c("devtools", "clusterProfiler", "corrplot", "dplyr", "ffbase", "genomation", "KEGG.db", 
                          "pheatmap", "plotrix", "qqman", "RCircos", "VennDiagram", "org.Mm.eg.db"))
 ```
 
