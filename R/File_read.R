@@ -1,6 +1,7 @@
 #' Read the methylation file.
 #' 
-#' @import dplyr
+#' @import dplyr 
+#' @import ffbase
 #' 
 #' @description This function reads all of the methylation files and generates one file with all samples including methylated read coverages (Cs) and unmethylated read coverages (Ts).
 #' It can automatically test how many samples and how many replicates in each group and the distribute them from 1_1, 1_2 to the final file by headers.
@@ -21,37 +22,36 @@
 #' @export
 
 
-# So, what are the origanal coverage file and combined methall file looking like? #
+# So, what are the origanal coverage file and combined methall file looking like? e.g. data from mouse #
 
  # Coverage file from Bismark without header, so don't add the header. If the cov file is with header, please use "chr", "posi", "Cs", "Ts" for four columns #
  # It contains six columns that are choromsome, start position, end position, methylated percentage, methylated read coverage and unmethylated read coverage #
  # Methylated percentage = Methylated read coverage / (Methylated read coverage and Unmethylated read coverage) #
- #1 chr1	3391	3391	100	1	0
- #2 chr1	3392	3392	0	0	2
- #3 chr1	3396	3396	100	1	0
- #4 chr1	3397	3397	100	2	0
- #5 chr1	3413	3413	100	1	0
- #6 chr1	3414	3414	100	2	0
- #7 chr1	3430	3430	100	1	0
- #8 chr1	3431	3431	100	2	0
- #9 chr1	3437	3437	100	1	0
- #10 chr1	3438	3438	100	2	0
+   #1  chr1 3020877 3020877  97.46835 77  2
+   #2  chr1 3020891 3020891  92.40506 73  6
+   #3  chr1 3020946 3020946  88.67925 47  6
+   #4  chr1 3020988 3020988  98.64865 73  1
+   #5  chr1 3021013 3021013 100.00000 74  0
+   #6  chr1 3094122 3094122   0.00000  0  1
+   #7  chr1 3094126 3094126 100.00000  1  0
+   #8  chr1 3150008 3150008 100.00000  3  0
+   #9  chr1 3150022 3150022 100.00000  3  0
+   #10 chr1 3150068 3150068 100.00000  1  0
 
  
  # The output file of this function is with header and combines all the files with the same chromosome and position #
- # It contains choromsome, position, methylated read coverages (Cs) and unmethylated read coverages (Ts) of each sample.
-    #chr  posi Cs1_1 Ts1_1 Cs1_2 Ts1_2 Cs1_3 Ts1_3 Cs2_1 Ts2_1 Cs2_2 Ts2_2 Cs2_3 Ts2_3 Cs3_1 Ts3_1 Cs3_2 Cs3_3 Ts3_3
- #1  chr1 21896     0     4     1    49     0    25     4    24     5    28     0    33     1    43     0    0     6
- #2  chr1 21897     0    10     1   107     1    43     0    71     0    47     1    69     1    88     0    0    19
- #3  chr1 21904     0     4     0    50     0    25     0    28     0    33     1    33     0    44     0    0     6
- #4  chr1 21905     0    10     0   108     0    44     0    71     1    46     0    70     1    88     1    0    19
- #5  chr1 21912     0     4     0    50     0    25     0    28     0    33     0    34     0    44     0    0     6
- #6  chr1 21913     0    10     0   106     0    44     0    72     0    47     0    70     0    89     0    0    19
- #7  chr1 21916     0     4     0    50     1    24     0    28     0    33     0    34     0    44     4    0     6
- #8  chr1 21917     0    10     1   105     0    44     1    70     0    46     0    70     0    89     0    0    19
- #9  chr1 21925     0     4     0    50     0    25     0    28     0    33     0    34     0    44     0    0     6
- #10 chr1 21926     0    10     0   108     0    44     0    72     0    46     0    70     0    89     0    0    19
-
+ # It contains choromsome, position, methylated read coverages (Cs) and unmethylated read coverages (Ts) of each sample #
+    #   chr  posi   Cs1_1 Ts1_1 Cs1_2 Ts1_2 Cs1_3 Ts1_3 Cs2_1 Ts2_1 Cs2_2 Ts2_2
+   #1  chr1 3020877    77     2    77     7    49     2    31     4    68     0
+   #2  chr1 3020891    73     6    78     6    49     2    33     2    68     0
+   #3  chr1 3020946    47     6    96    17    71     9    52     5    71    12
+   #4  chr1 3020988    73     1    58     0    57     6    55     2    61     2
+   #5  chr1 3021013    74     0    56     2    59     4    49     8    63     0
+   #6  chr1 3531651    11     1    25     0    13     1     7     0    15     1
+   #7  chr1 3531658    12     0    25     0    12     2     7     0    16     0
+   #8  chr1 3531671    12     0    25     0    13     1     6     1    16     0
+   #9  chr1 3531676    12     0    25     0    14     0     7     0    16     0
+   #10 chr1 3531680    12     0    22     3    10     3     7     0    14     1
 
 # The function for automatically reading different replicates of different groups #
 
@@ -66,24 +66,33 @@ Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/met
   filenum <- 0
   
   # detect the total group number 
-  groupnum <- length(grep("_1",dir(paths)))
+  groupnum <- length(grep("_1", dir(paths)))
   
   # from different group to different relicate files
   for(i in 1:groupnum){
     
     # dectect the real replicate number of this group
     # output the real replicate number
-    realreplicatenum <- length(grep(paste(i,"_",sep = ""),dir(paths)))
+    realreplicatenum <- length(grep(paste(i,"_",sep = ""), dir(paths)))
     
 	# read the file from each real replicate of each group and combine the same chromosome and position #
     for(j in 1:realreplicatenum){
 	
       # read cov file (without header) from Bismark output and save the column of read number of Ts and Cs #
-      tmpfile <- read.table(paste(i, "_", j, suffix, sep = ""), header = F)
+      tmpfile <- read.table.ffdf(x = NULL, file = paste(i, "_", j, suffix, sep = ""), FUN = "read.table", nrows = -1, header = F)
+      
+      # check column number of the input file
+      if(ncol(tmpfile) == 7){
+        tmpfile <- tmpfile[, -7]
+      }
+      
+      else if(ncol(tmpfile) > 7){
+        stop("Stop and please check the input file format")
+      }
 	  
-	  # If the cov file is with header, please use "chr", "posi", "Cs", "Ts" for four columns #
+	  # If the cov file is with header, use "chr", "posi", "Cs", "Ts" for four columns #
 	  if(tmpfile[1,1] == "chr" | tmpfile[1,2] == "posi"){
-	    tmpfile <- read.table(paste(i, "_", j, suffix, sep = ""), header = T)
+	    tmpfile <- read.table.ffdf(x = NULL, file = paste(i, "_", j, suffix, sep = ""), FUN = "read.table", nrows = -1, header = T)
 	    tmpfile <- tmpfile[, c(tmpfile$chr, tmpfile$posi, tmpfile$Cs, tmpfile$Ts)]
 		
 	  }else{
@@ -158,7 +167,7 @@ Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/met
 #' @export
 
 
-# So, what are the origanally standard bedfile and outputed file looking like? #
+# So, what are the origanally standard bedfile and outputed file looking like? e.g. data from pig #
 
  # Bedfile is without header, so don't add the header #
  
