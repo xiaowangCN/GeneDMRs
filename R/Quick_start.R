@@ -44,6 +44,7 @@ GeneDMRs <- function(Dbannotation = "org.Mm.eg.db"){
 #' Quick use the GeneDMRs package for gene based differentially methlated regions.
 #' 
 #' @import dplyr
+#' @import ffbase
 #' @import qqman
 #' @import pheatmap
 #' @import clusterProfiler

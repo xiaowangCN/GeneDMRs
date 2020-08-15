@@ -11,13 +11,14 @@
 #' 
 #' @param paths refers to the path of methylation file, with default the package path.
 #' @param suffix refers to the suffix of methylation file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".
+#' @param WGBS refers to whether to use Whole genome bisulfite sequencing (WGBS) data, with default FALSE.
 #' 
 #' @return Outputs a data frame contain chromosome, position, and Cs & Ts for different replicates and groups.
 #' 
 #' @examples
 #' inputmethfile <- Methfile_read() 
 #' inputmethfile <- Methfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), suffix = ".gz") # test the functions with default parameters #
-#' head(inputmethfile)
+#' inputmethfile <- Methfile_read(paths = "my own path", suffix = ".txt.gz", WGBS = TRUE) 
 #' 
 #' @export
 
@@ -55,7 +56,9 @@
 
 # The function for automatically reading different replicates of different groups #
 
-Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), suffix = ".gz"){
+Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), suffix = ".gz",
+                          WGBS = FALSE){
+  
   # Output the begin time
   print(paste("The start time is ", date(), sep = ""))
 
@@ -77,10 +80,18 @@ Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/met
     
 	# read the file from each real replicate of each group and combine the same chromosome and position #
     for(j in 1:realreplicatenum){
-	
-      # read cov file (without header) from Bismark output and save the column of read number of Ts and Cs #
-      tmpfile <- read.table.ffdf(x = NULL, file = paste(i, "_", j, suffix, sep = ""), FUN = "read.table", nrows = -1, header = F)
       
+      # read cov file (without header) from Bismark output and save the column of read number of Ts and Cs #
+      if(WGBS == TRUE){
+        
+        # if use WGBS data, read cov file based on ffbase package #
+        tmpfile <- read.table.ffdf(x = NULL, file = paste(i, "_", j, suffix, sep = ""), FUN = "read.table", 
+                                   nrows = -1, header = F)
+        
+      }else{
+        tmpfile <- read.table(file = paste(i, "_", j, suffix, sep = ""), header = F)
+      }
+	
       # check column number of the input file
       if(ncol(tmpfile) == 7){
         tmpfile <- tmpfile[, -7]
@@ -92,7 +103,15 @@ Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/met
 	  
 	  # If the cov file is with header, use "chr", "posi", "Cs", "Ts" for four columns #
 	  if(tmpfile[1,1] == "chr" | tmpfile[1,2] == "posi"){
-	    tmpfile <- read.table.ffdf(x = NULL, file = paste(i, "_", j, suffix, sep = ""), FUN = "read.table", nrows = -1, header = T)
+	    if(WGBS == TRUE){
+	      tmpfile <- read.table.ffdf(x = NULL, file = paste(i, "_", j, suffix, sep = ""), FUN = "read.table", 
+	                                 nrows = -1, header = T)
+	      
+	    }else{
+	      tmpfile <- read.table(file = paste(i, "_", j, suffix, sep = ""), header = F)
+	    }
+	    
+	    # arrange using the header #
 	    tmpfile <- tmpfile[, c(tmpfile$chr, tmpfile$posi, tmpfile$Cs, tmpfile$Ts)]
 		
 	  }else{
@@ -254,7 +273,8 @@ Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/met
  # 10  cpgi4 chr1 91255 91533  CpGisland_4
   
   
-Bedfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), bedfile = "refseq", suffix = ".txt", feature = FALSE, featurewrite = TRUE){
+Bedfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), bedfile = "refseq", 
+                         suffix = ".txt", feature = FALSE, featurewrite = TRUE){
   
   # set the paths #
   setwd(paths)
@@ -505,12 +525,14 @@ refseqfile_check <- function(geneobj, regionfile){
 #'  
 #' @examples
 #' inputcytofile <- Cytofile_read()
-#' inputcytofile <- Cytofile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), cytofile = "cytoBandIdeo", suffix = ".txt.gz")
+#' inputcytofile <- Cytofile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), 
+#' cytofile = "cytoBandIdeo", suffix = ".txt.gz")
 #' 
 #' @export
 
 
-Cytofile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), cytofile = "cytoBandIdeo", suffix = ".txt.gz"){
+Cytofile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), cytofile = "cytoBandIdeo", 
+                          suffix = ".txt.gz"){
   
   # set the paths #
   setwd(paths)
