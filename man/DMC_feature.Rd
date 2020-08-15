@@ -4,8 +4,11 @@
 \alias{DMC_feature}
 \title{Annotate the differentially methylated cytosine (DMC) to features.}
 \usage{
-DMC_feature(siteall_significant, featureid = TRUE,
-  featurefile = list(inputgenebodyfile, inputcpgifeaturefile))
+DMC_feature(
+  siteall_significant,
+  featureid = TRUE,
+  featurefile = list(inputgenebodyfile, inputcpgifeaturefile)
+)
 }
 \arguments{
 \item{siteall_significant}{refers to the input file with DMC sites.}

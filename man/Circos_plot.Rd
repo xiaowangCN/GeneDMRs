@@ -4,9 +4,14 @@
 \alias{Circos_plot}
 \title{Plot the circos.}
 \usage{
-Circos_plot(inputcytofile, inputmethfile_QC, inputrefseqfile,
-  inputcpgifeaturefile, labelname = regiongeneall_significant,
-  linecolor = NULL)
+Circos_plot(
+  inputcytofile,
+  inputmethfile_QC,
+  inputrefseqfile,
+  inputcpgifeaturefile,
+  labelname = regiongeneall_significant,
+  linecolor = NULL
+)
 }
 \arguments{
 \item{inputcytofile}{refers to the output of Cytofile_read() which contains the chromosome information.}

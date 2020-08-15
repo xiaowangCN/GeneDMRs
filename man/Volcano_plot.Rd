@@ -4,10 +4,13 @@
 \alias{Volcano_plot}
 \title{Volcano plot for all the cytosines.}
 \usage{
-Volcano_plot(siteall_Qvalue,
+Volcano_plot(
+  siteall_Qvalue,
   title = "Volcano for Q value and methylation difference",
-  qvalue = 0.01, methdiffpercentage = c(5, 10, 15, 20, 25),
-  pointcolor = c("red", "purple", "orange", "yellow", "blue", "green"))
+  qvalue = 0.01,
+  methdiffpercentage = c(5, 10, 15, 20, 25),
+  pointcolor = c("red", "purple", "orange", "yellow", "blue", "green")
+)
 }
 \arguments{
 \item{siteall_Qvalue}{refers to the input file with Q values and methylation differences.}

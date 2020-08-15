@@ -4,8 +4,11 @@
 \alias{Venn_plot}
 \title{Venn plot for the common CpG island and CpG island shore.}
 \usage{
-Venn_plot(genefeatureall_cpgfeature_Qvalue, title = "Venn plot",
-  fillcolor = c("cornflowerblue", "green"))
+Venn_plot(
+  genefeatureall_cpgfeature_Qvalue,
+  title = "Venn plot",
+  fillcolor = c("cornflowerblue", "green")
+)
 }
 \arguments{
 \item{title}{refers to the figure title, with default "Venn plot".}

@@ -4,10 +4,14 @@
 \alias{Quick_GeneDMRs}
 \title{Quick use the GeneDMRs package for gene based differentially methlated regions.}
 \usage{
-Quick_GeneDMRs(paths = paste(system.file(package = "GeneDMRs"),
-  "/methdata", sep = ""), suffixmeth = ".gz", bedfile = "refseq",
-  suffixbed = ".txt", Dbannotation = "org.Mm.eg.db",
-  keggorganism = "mmu")
+Quick_GeneDMRs(
+  paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep = ""),
+  suffixmeth = ".gz",
+  bedfile = "refseq",
+  suffixbed = ".txt",
+  Dbannotation = "org.Mm.eg.db",
+  keggorganism = "mmu"
+)
 }
 \arguments{
 \item{paths}{refers to the path of input file, with default the package path.}

@@ -4,9 +4,14 @@
 \alias{Manhattan_plot}
 \title{Manhattan plot for all cytosines or regions.}
 \usage{
-Manhattan_plot(siteall_Qvalue, chrlabs = NULL, col = c("black",
-  "grey"), ylab = "-log(Q value)", suggestiveline = -log10(0.01),
-  genomewideline = -log10(0.001))
+Manhattan_plot(
+  siteall_Qvalue,
+  chrlabs = NULL,
+  col = c("black", "grey"),
+  ylab = "-log(Q value)",
+  suggestiveline = -log10(0.01),
+  genomewideline = -log10(0.001)
+)
 }
 \arguments{
 \item{siteall_Qvalue}{refers to the input file with Q value from DMR_test(), e.g., regiongeneall_Qvalues, genefeatureall_cpgfeature_Qvalue or others with Q values.}

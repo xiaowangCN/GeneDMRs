@@ -4,8 +4,7 @@
 \alias{Group_boxplot}
 \title{Boxplot the methylation levels for groups.}
 \usage{
-Group_boxplot(regiongeneall, ttest = TRUE, title = "Group boxplot",
-  col = NULL)
+Group_boxplot(regiongeneall, ttest = TRUE, title = "Group boxplot", col = NULL)
 }
 \arguments{
 \item{regiongeneall}{refers to the input file with group methylation levels.}

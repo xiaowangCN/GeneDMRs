@@ -4,10 +4,17 @@
 \alias{Heatmap_plot}
 \title{Heat map plot for chromosomes and features.}
 \usage{
-Heatmap_plot(regiongeneall_significant, featurename = NULL,
-  title = "Methylation level", display_numbers = FALSE,
-  number_format = "\%.0f", cluster_rows = FALSE, cluster_cols = TRUE,
-  gaps_row = c(1, 2), gaps_col = NULL)
+Heatmap_plot(
+  regiongeneall_significant,
+  featurename = NULL,
+  title = "Methylation level",
+  display_numbers = FALSE,
+  number_format = "\%.0f",
+  cluster_rows = FALSE,
+  cluster_cols = TRUE,
+  gaps_row = c(1, 2),
+  gaps_col = NULL
+)
 }
 \arguments{
 \item{regiongeneall_significant}{refers to the input file of methylation levels with differentially methylated genes or the genes in different gene body features.}

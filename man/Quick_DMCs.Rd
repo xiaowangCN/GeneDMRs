@@ -4,8 +4,10 @@
 \alias{Quick_DMCs}
 \title{Quick use the GeneDMRs package for differentially methylated cytosine sites.}
 \usage{
-Quick_DMCs(paths = paste(system.file(package = "GeneDMRs"), "/methdata",
-  sep = ""), suffixmeth = ".gz")
+Quick_DMCs(
+  paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep = ""),
+  suffixmeth = ".gz"
+)
 }
 \arguments{
 \item{paths}{refers to the path of input file, with default the package path.}

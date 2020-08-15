@@ -4,10 +4,14 @@
 \alias{Genebody_cpgfeature_boxplot}
 \title{Boxplot the methylation levels for gene body based on CpG island features.}
 \usage{
-Genebody_cpgfeature_boxplot(genefeatureall_cpgfeature,
+Genebody_cpgfeature_boxplot(
+  genefeatureall_cpgfeature,
   genebodyname = c("promoters", "exons", "introns", "TSSes"),
-  ttest = TRUE, cpgfeaturelable = c("CpGisland", "Shore"),
-  title = c("Promoter", "Exon", "Intron", "TSS"), col = NULL)
+  ttest = TRUE,
+  cpgfeaturelable = c("CpGisland", "Shore"),
+  title = c("Promoter", "Exon", "Intron", "TSS"),
+  col = NULL
+)
 }
 \arguments{
 \item{genefeatureall_cpgfeature}{refers to the input file of methylation levels with gene body and CpG island features.}

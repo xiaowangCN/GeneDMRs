@@ -4,9 +4,14 @@
 \alias{Methfile_QC}
 \title{Quality control for the input methylation file.}
 \usage{
-Methfile_QC(inputmethfile, low_coveragenum = 10,
-  high_coveragenum = NULL, low_quantile = NULL, high_quantile = 99.9,
-  samplenum_QC = "all")
+Methfile_QC(
+  inputmethfile,
+  low_coveragenum = 10,
+  high_coveragenum = NULL,
+  low_quantile = NULL,
+  high_quantile = 99.9,
+  samplenum_QC = "all"
+)
 }
 \arguments{
 \item{inputmethfile}{refers to the input of methylation file after Methfile_read().}

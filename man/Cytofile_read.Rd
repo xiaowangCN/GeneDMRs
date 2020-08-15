@@ -4,9 +4,11 @@
 \alias{Cytofile_read}
 \title{Read the cyto file.}
 \usage{
-Cytofile_read(paths = paste(system.file(package = "GeneDMRs"),
-  "/methdata", sep = ""), cytofile = "cytoBandIdeo",
-  suffix = ".txt.gz")
+Cytofile_read(
+  paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep = ""),
+  cytofile = "cytoBandIdeo",
+  suffix = ".txt.gz"
+)
 }
 \arguments{
 \item{paths}{refers to the path of input file, with default the package path.}
@@ -25,6 +27,7 @@ The dataset of the example is the mouse genome information downloaded from UCSC 
 }
 \examples{
 inputcytofile <- Cytofile_read()
-inputcytofile <- Cytofile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), cytofile = "cytoBandIdeo", suffix = ".txt.gz")
+inputcytofile <- Cytofile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), 
+cytofile = "cytoBandIdeo", suffix = ".txt.gz")
 
 }

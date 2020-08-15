@@ -4,9 +4,13 @@
 \alias{Bedfile_read}
 \title{Read the standard bedfile of refseq or cpgi downloaded from UCSC.}
 \usage{
-Bedfile_read(paths = paste(system.file(package = "GeneDMRs"),
-  "/methdata", sep = ""), bedfile = "refseq", suffix = ".txt",
-  feature = FALSE, featurewrite = TRUE)
+Bedfile_read(
+  paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep = ""),
+  bedfile = "refseq",
+  suffix = ".txt",
+  feature = FALSE,
+  featurewrite = TRUE
+)
 }
 \arguments{
 \item{paths}{refers to the path of bed file, with default the package path.}

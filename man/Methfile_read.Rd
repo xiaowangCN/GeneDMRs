@@ -4,13 +4,18 @@
 \alias{Methfile_read}
 \title{Read the methylation file.}
 \usage{
-Methfile_read(paths = paste(system.file(package = "GeneDMRs"),
-  "/methdata", sep = ""), suffix = ".gz")
+Methfile_read(
+  paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep = ""),
+  suffix = ".gz",
+  WGBS = FALSE
+)
 }
 \arguments{
 \item{paths}{refers to the path of methylation file, with default the package path.}
 
 \item{suffix}{refers to the suffix of methylation file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".}
+
+\item{WGBS}{refers to whether to use Whole genome bisulfite sequencing (WGBS) data, with default FALSE.}
 }
 \value{
 Outputs a data frame contain chromosome, position, and Cs & Ts for different replicates and groups.
@@ -25,6 +30,6 @@ The dataset of the example is the Reduced representation bisulfite sequencing (R
 \examples{
 inputmethfile <- Methfile_read() 
 inputmethfile <- Methfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), suffix = ".gz") # test the functions with default parameters #
-head(inputmethfile)
+inputmethfile <- Methfile_read(paths = "my own path", suffix = ".txt.gz", WGBS = TRUE) 
 
 }

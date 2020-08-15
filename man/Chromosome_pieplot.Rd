@@ -4,9 +4,12 @@
 \alias{Chromosome_pieplot}
 \title{Pie plot based on different chromosomes.}
 \usage{
-Chromosome_pieplot(genefeatureall_cpgfeature_significantcpgisland,
+Chromosome_pieplot(
+  genefeatureall_cpgfeature_significantcpgisland,
   genefeatureall_cpgfeature_significantshore = NULL,
-  methdirection = "both", title = "Pie plot for chromosome")
+  methdirection = "both",
+  title = "Pie plot for chromosome"
+)
 }
 \arguments{
 \item{genefeatureall_cpgfeature_significantcpgisland}{refers to the input file with chromosomes, which can be files with/without significant filter().}

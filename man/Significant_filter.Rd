@@ -4,8 +4,12 @@
 \alias{Significant_filter}
 \title{Filter the significant regions or cytosine sites.}
 \usage{
-Significant_filter(genefeatureall_cpgfeature_Qvalue, qvalue = 0.01,
-  methdiff = 0, featureout = 1)
+Significant_filter(
+  genefeatureall_cpgfeature_Qvalue,
+  qvalue = 0.01,
+  methdiff = 0,
+  featureout = 1
+)
 }
 \arguments{
 \item{genefeatureall_cpgfeature_Qvalue}{refers to the input file with Q values and methylation differences need to be filtered.}

@@ -4,9 +4,14 @@
 \alias{Group_cpgfeature_boxplot}
 \title{Boxplot the methylation levels for groups based on CpG island features.}
 \usage{
-Group_cpgfeature_boxplot(genefeatureall_cpgfeature, groupnum = "all",
-  ttest = TRUE, cpgfeaturelable = c("CpGisland", "Shore"),
-  title = c("Group1", "Group2", "Group3"), col = NULL)
+Group_cpgfeature_boxplot(
+  genefeatureall_cpgfeature,
+  groupnum = "all",
+  ttest = TRUE,
+  cpgfeaturelable = c("CpGisland", "Shore"),
+  title = c("Group1", "Group2", "Group3"),
+  col = NULL
+)
 }
 \arguments{
 \item{genefeatureall_cpgfeature}{refers to the input file with group methylation levels and CpG island features.}

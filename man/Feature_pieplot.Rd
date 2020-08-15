@@ -4,8 +4,12 @@
 \alias{Feature_pieplot}
 \title{Pie plot based on different features.}
 \usage{
-Feature_pieplot(siteall_significant_feature, methdirection = "both",
-  title = "Pie plot for feature", threeDplot = TRUE)
+Feature_pieplot(
+  siteall_significant_feature,
+  methdirection = "both",
+  title = "Pie plot for feature",
+  threeDplot = TRUE
+)
 }
 \arguments{
 \item{siteall_significant_feature}{refers to the input file with features, mainly for DMC sites with features.}

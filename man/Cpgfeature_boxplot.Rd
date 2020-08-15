@@ -5,9 +5,15 @@
 \title{Internal Use Function.
 That boxplots the methylation levels for one group based on CpG island features.}
 \usage{
-Cpgfeature_boxplot(genefeatureall_cpgfeature, groupnum = 1,
-  ttest = TRUE, cpgfeaturelable = c("CpGisland", "Shore"),
-  title = NULL, col = NULL, yaxislabel = TRUE)
+Cpgfeature_boxplot(
+  genefeatureall_cpgfeature,
+  groupnum = 1,
+  ttest = TRUE,
+  cpgfeaturelable = c("CpGisland", "Shore"),
+  title = NULL,
+  col = NULL,
+  yaxislabel = TRUE
+)
 }
 \arguments{
 \item{genefeatureall_cpgfeature}{refers to output of Region_match as well. 

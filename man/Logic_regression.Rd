@@ -4,8 +4,12 @@
 \alias{Logic_regression}
 \title{Logistical regression analysis for each region or each cytosine site.}
 \usage{
-Logic_regression(genefeatureall_cpgfeature, covariates = NULL,
-  adjustedmethod = "fdr", diffgroup = NULL)
+Logic_regression(
+  genefeatureall_cpgfeature,
+  covariates = NULL,
+  adjustedmethod = "fdr",
+  diffgroup = NULL
+)
 }
 \arguments{
 \item{genefeatureall_cpgfeature}{refers to the input file with methylation levels to be tested.}

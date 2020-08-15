@@ -4,9 +4,16 @@
 \alias{Methmean_region}
 \title{Calculate the methylation mean for regions.}
 \usage{
-Methmean_region(inputmethfile_QC, inputrefseqfile,
-  cpgifeaturefile = NULL, chrnum = "all", posistart = NULL,
-  posiend = NULL, featureid = NULL, featurename = NULL)
+Methmean_region(
+  inputmethfile_QC,
+  inputrefseqfile,
+  cpgifeaturefile = NULL,
+  chrnum = "all",
+  posistart = NULL,
+  posiend = NULL,
+  featureid = NULL,
+  featurename = NULL
+)
 }
 \arguments{
 \item{inputmethfile_QC}{refers to the input of methylation file after quality control.}

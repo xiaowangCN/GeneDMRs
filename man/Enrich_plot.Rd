@@ -4,11 +4,18 @@
 \alias{Enrich_plot}
 \title{Enrich plot for GO terms and pathways.}
 \usage{
-Enrich_plot(regiongenealls_significant, adjustpvaluecut = 0.1,
-  enrichterm = "pathway", category = TRUE,
-  Dbannotation = "org.Mm.eg.db", keggorganism = "mmu", listnum = 20,
+Enrich_plot(
+  regiongenealls_significant,
+  adjustpvaluecut = 0.1,
+  enrichterm = "pathway",
+  category = TRUE,
+  Dbannotation = "org.Mm.eg.db",
+  keggorganism = "mmu",
+  listnum = 20,
   title = "Enrichment for significant gene",
-  expressionfile_significant = NULL, expressionfile_genetype = NULL)
+  expressionfile_significant = NULL,
+  expressionfile_genetype = NULL
+)
 }
 \arguments{
 \item{regiongenealls_significant}{refers to the differentially methylated genes.}
