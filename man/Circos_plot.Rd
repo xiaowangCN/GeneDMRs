@@ -39,9 +39,9 @@ All the files used in this function should contain chromosome, start position, a
 }
 \examples{
 Circos_plot(inputcytofile, inputmethfile_QC, inputrefseqfile, inputcpgifeaturefile, 
-            labelname = regiongeneall_significant, linecolor = c("blue1", "orange1", "green1"))
+            labelname = regiongeneall_significant, linecolor = c("blue1", "green1"))
 Circos_plot(inputcytofile, inputmethfile_QC, inputrefseqfile, inputcpgifeaturefile, 
-            labelname = selfdefinedfile, linecolor = c("blue", "orange", "green"))
+            labelname = selfdefinedfile, linecolor = c("blue", "red"))
 
 }
 \references{
