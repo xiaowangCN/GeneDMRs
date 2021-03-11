@@ -68,7 +68,7 @@ Correlation_plot <- function(inputmethfile_QC, unmeth_exclude = TRUE){
   Maxcor <- cor(as.matrix(samplematrix))
   res <- cor.mtest(as.matrix(samplematrix), conf.level = .95)
   
-  corrplot(Maxcor$r, type="upper", order="hclust", p.mat = res$P, 
+  corrplot(Maxcor, type="upper", order="hclust", p.mat = res$p, 
            insig = "label_sig",sig.level = c(.001, .01, .05), pch.cex = .9, pch.col = "black")
 }
 

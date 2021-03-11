@@ -58,13 +58,15 @@ Boxplot_trans <- function(methallchr){
 #'
 #' @examples
 #' Sample_boxplot(inputmethfile_QC, inputrefseqfile)
-#' Sample_boxplot(inputmethfile_QC, inputrefseqfile, refseqname = "NM_001244864")
-#' Sample_boxplot(inputmethfile_QC, inputrefseqfile, refseqname = c("NM_001244864", "NM_001244534"))
-#' Sample_boxplot(inputmethfile_QC, inputrefseqfile, , ylab = "Methylation level (%)"， refseqname = c("NM_001244864", "NM_001143697", "NM_213902"), col = c("red", "green", "blue"))
+#' Sample_boxplot(inputmethfile_QC, inputrefseqfile, refseqname = "NM_001011874")
+#' Sample_boxplot(inputmethfile_QC, inputrefseqfile, refseqname = c("NM_001011874", "NM_001289465"))
+#' Sample_boxplot(inputmethfile_QC, inputrefseqfile, ylab = "Methylation level (%)", 
+#' refseqname = c("NM_001011874", "NM_001289465", "NM_008866"), col = c("red", "green", "blue", "yellow", "purple"))
+#' 
 #' Sample_boxplot(inputmethfile_QC, inputrefseqfile, Meth_plot = FALSE, ylab = "Read number", col = c("red", "blue"))
-#' Sample_boxplot(inputmethfile_QC, inputrefseqfile, Meth_plot = FALSE, ylab = "Read number", refseqname = c("NM_001244864", "NM_001244534"))
+#' Sample_boxplot(inputmethfile_QC, inputrefseqfile, Meth_plot = FALSE, ylab = "Read number", refseqname = c("NM_001011874", "NM_001289465"))
 #' Sample_boxplot(inputmethfile_QC, inputrefseqfile, Meth_plot = FALSE, ylab = "Read number", 
-#' refseqname = c("NM_001244864", "NM_001143697", "NM_213902"), col = c("red", "green", "blue"))
+#' refseqname = c("NM_001011874", "NM_001289465", "NM_008866"), col = c("red", "green", "blue"))
 #' 
 #' @export
 
@@ -202,7 +204,7 @@ Group_boxplot <- function(regiongeneall, ttest = TRUE, title = "Group boxplot", 
 #' 
 #' @param ttest refers to whether perform the Student t-test, with default TRUE.
 #' @param cpgfeaturelable refers to CpG island features, with default CpGisland" and "Shore".
-#' @param title refers to main text of tilte， with default "Group1".
+#' @param title refers to main text of title with default "Group1".
 #' @param col refers to colors, with default NULL.
 #' @param yaxislabel refers to the label of y axis, with default TRUE,
 #' but the yaxislabel will be set to FALSE when Group_feature_boxplot function is used for only one y axis in multiple groups.
@@ -214,7 +216,8 @@ Group_boxplot <- function(regiongeneall, ttest = TRUE, title = "Group boxplot", 
 #' 
 #' @export
 
-Cpgfeature_boxplot <- function(genefeatureall_cpgfeature, groupnum = 1, ttest = TRUE, cpgfeaturelable = c("CpGisland", "Shore"), title = NULL, col = NULL, yaxislabel = TRUE){
+
+Cpgfeature_boxplot <- function(genefeatureall_cpgfeature, groupnum = 1, ttest = TRUE, cpgfeaturelable = c("CpGisland", "Shore"), title = "Group1", col = NULL, yaxislabel = TRUE){
   
   # calculate the feature group number #
   cpgfeaturenum <- length(grep("Methgroup1", colnames(genefeatureall_cpgfeature)))
@@ -284,7 +287,7 @@ Cpgfeature_boxplot <- function(genefeatureall_cpgfeature, groupnum = 1, ttest = 
 #' @param groupnum refers to the group number, with default "all" for all of the groups.
 #' @param ttest refers to whether to perform the Student t-test, with default TRUE.
 #' @param cpgfeaturelable refers to CpG island features, with default "CpGisland" and "Shore". Only one CpG island feature can also be available, e.g., "CpGisland".
-#' @param title refers to the figure title， with default "Group1", "Group2" and "Group3".
+#' @param title refers to the figure title with default "Group1", "Group2" and "Group3".
 #' @param col refers to the boxplot colors, with default NULL.
 #' 
 #' @return Outputs a boxplot figure with groups and CpG island features.
