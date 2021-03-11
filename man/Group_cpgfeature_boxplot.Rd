@@ -22,7 +22,7 @@ Group_cpgfeature_boxplot(
 
 \item{cpgfeaturelable}{refers to CpG island features, with default "CpGisland" and "Shore". Only one CpG island feature can also be available, e.g., "CpGisland".}
 
-\item{title}{refers to the figure title， with default "Group1", "Group2" and "Group3".}
+\item{title}{refers to the figure title with default "Group1", "Group2" and "Group3".}
 
 \item{col}{refers to the boxplot colors, with default NULL.}
 }

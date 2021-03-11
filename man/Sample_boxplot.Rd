@@ -34,12 +34,14 @@ This function outputs the methylation levels or read numbers of the selected gen
 }
 \examples{
 Sample_boxplot(inputmethfile_QC, inputrefseqfile)
-Sample_boxplot(inputmethfile_QC, inputrefseqfile, refseqname = "NM_001244864")
-Sample_boxplot(inputmethfile_QC, inputrefseqfile, refseqname = c("NM_001244864", "NM_001244534"))
-Sample_boxplot(inputmethfile_QC, inputrefseqfile, , ylab = "Methylation level (\%)"ï¼Œ refseqname = c("NM_001244864", "NM_001143697", "NM_213902"), col = c("red", "green", "blue"))
+Sample_boxplot(inputmethfile_QC, inputrefseqfile, refseqname = "NM_001011874")
+Sample_boxplot(inputmethfile_QC, inputrefseqfile, refseqname = c("NM_001011874", "NM_001289465"))
+Sample_boxplot(inputmethfile_QC, inputrefseqfile, ylab = "Methylation level (\%)", 
+refseqname = c("NM_001011874", "NM_001289465", "NM_008866"), col = c("red", "green", "blue", "yellow", "purple"))
+
 Sample_boxplot(inputmethfile_QC, inputrefseqfile, Meth_plot = FALSE, ylab = "Read number", col = c("red", "blue"))
-Sample_boxplot(inputmethfile_QC, inputrefseqfile, Meth_plot = FALSE, ylab = "Read number", refseqname = c("NM_001244864", "NM_001244534"))
+Sample_boxplot(inputmethfile_QC, inputrefseqfile, Meth_plot = FALSE, ylab = "Read number", refseqname = c("NM_001011874", "NM_001289465"))
 Sample_boxplot(inputmethfile_QC, inputrefseqfile, Meth_plot = FALSE, ylab = "Read number", 
-refseqname = c("NM_001244864", "NM_001143697", "NM_213902"), col = c("red", "green", "blue"))
+refseqname = c("NM_001011874", "NM_001289465", "NM_008866"), col = c("red", "green", "blue"))
 
 }

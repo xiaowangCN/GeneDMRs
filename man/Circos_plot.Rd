@@ -38,7 +38,6 @@ This function outputs the circos plot for the methylation level and the density 
 All the files used in this function should contain chromosome, start position, and end position information that are required for R RCircos package.
 }
 \examples{
-Circos_plot(inputcytofile, inputmethfile_QC, inputrefseqfile, inputcpgifeaturefile)
 Circos_plot(inputcytofile, inputmethfile_QC, inputrefseqfile, inputcpgifeaturefile, 
             labelname = regiongeneall_significant, linecolor = c("blue1", "orange1", "green1"))
 Circos_plot(inputcytofile, inputmethfile_QC, inputrefseqfile, inputcpgifeaturefile, 

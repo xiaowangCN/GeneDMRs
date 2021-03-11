@@ -10,7 +10,7 @@ Cpgfeature_boxplot(
   groupnum = 1,
   ttest = TRUE,
   cpgfeaturelable = c("CpGisland", "Shore"),
-  title = NULL,
+  title = "Group1",
   col = NULL,
   yaxislabel = TRUE
 )
@@ -26,7 +26,7 @@ like CpGislandgroup or Shoregroup, can also be automatically set in the Group_fe
 
 \item{cpgfeaturelable}{refers to CpG island features, with default CpGisland" and "Shore".}
 
-\item{title}{refers to main text of tilte， with default "Group1".}
+\item{title}{refers to main text of title with default "Group1".}
 
 \item{col}{refers to colors, with default NULL.}
 
