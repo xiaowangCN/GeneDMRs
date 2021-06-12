@@ -11,14 +11,22 @@
 #' 
 #' @param paths refers to the path of methylation file, with default the package path.
 #' @param suffix refers to the suffix of methylation file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".
+#' @param control_paths refers to the path of control groups, with default NULL.
+#' @param case_paths refers to the path of case groups, with default NULL.
 #' @param WGBS refers to whether to use Whole genome bisulfite sequencing (WGBS) data, with default FALSE.
 #' 
 #' @return Outputs a data frame contain chromosome, position, and Cs & Ts for different replicates and groups.
 #' 
 #' @examples
-#' inputmethfile <- Methfile_read() 
-#' inputmethfile <- Methfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), suffix = ".gz") # test the functions with default parameters #
-#' inputmethfile <- Methfile_read(paths = "my own path", suffix = ".txt.gz", WGBS = TRUE) 
+#' # test the functions with default parameters #
+#' inputmethfile <- Methfile_read()
+#' inputmethfile <- Methfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), suffix = ".gz")
+#' inputmethfile <- Methfile_read(paths = "C:/Users/GeneDMRs/methdata/", suffix = ".txt.gz", WGBS = TRUE) 
+#' 
+#' # if only case and control group (n = 2) paths are provided #
+#' controls <- c("C:/Users/GeneDMRs/methdata/1_1.gz", "C:/Users/GeneDMRs/methdata/1_2.gz", "C:/Users/GeneDMRs/methdata/1_3.gz")
+#' cases <- c("C:/Users/GeneDMRs/methdata/2_1.gz", "C:/Users/GeneDMRs/methdata/2_1.gz")
+#' inputmethfile <- Methfile_read(control_paths = controls, case_paths = cases)
 #' 
 #' @export
 
@@ -56,42 +64,38 @@
 
 # The function for automatically reading different replicates of different groups #
 
-Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), suffix = ".gz",
+Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), 
+                          control_paths = NULL, case_paths = NULL, 
+                          suffix = ".gz",
                           WGBS = FALSE){
   
   # Output the begin time
   print(paste("The start time is ", date(), sep = ""))
 
-  # set the paths #
-  setwd(paths)
-  
-  # count the number of file
-  filenum <- 0
-  
-  # detect the total group number 
-  groupnum <- length(grep("_1", dir(paths)))
-  
-  # from different group to different relicate files
-  for(i in 1:groupnum){
+  # if case and control group paths are provided #
+  if(is.null(control_paths) == F & is.null(case_paths) == F){
+
+    # from two group to different relicate files #
+    realreplicatenum_control <- length(control_paths)
+    realreplicatenum_case <- length(case_paths)
     
-    # dectect the real replicate number of this group
-    # output the real replicate number
-    realreplicatenum <- length(grep(paste(i,"_",sep = ""), dir(paths)))
+    # count the number of file #
+    filenum <- 0
     
-	# read the file from each real replicate of each group and combine the same chromosome and position #
-    for(j in 1:realreplicatenum){
+    # control group #
+    for(j in 1:realreplicatenum_control){
       
       # read cov file (without header) from Bismark output and save the column of read number of Ts and Cs #
       if(WGBS == TRUE){
         
         # if use WGBS data, read cov file based on ffbase package #
-        tmpfile <- read.table.ffdf(x = NULL, file = paste(i, "_", j, suffix, sep = ""), FUN = "read.table", 
+        tmpfile <- read.table.ffdf(x = NULL, file = control_paths[j], FUN = "read.table", 
                                    nrows = -1, header = F)
         
       }else{
-        tmpfile <- read.table(file = paste(i, "_", j, suffix, sep = ""), header = F)
+        tmpfile <- read.table(file = control_paths[j], header = F)
       }
-	
+      
       # check column number of the input file
       if(ncol(tmpfile) == 7){
         tmpfile <- tmpfile[, -7]
@@ -100,32 +104,159 @@ Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/met
       else if(ncol(tmpfile) > 7){
         stop("Stop and please check the input file format")
       }
-	  
-	  # If the cov file is with header, use "chr", "posi", "Cs", "Ts" for four columns #
-	  if(tmpfile[1,1] == "chr" | tmpfile[1,2] == "posi"){
-	    if(WGBS == TRUE){
-	      tmpfile <- read.table.ffdf(x = NULL, file = paste(i, "_", j, suffix, sep = ""), FUN = "read.table", 
-	                                 nrows = -1, header = T)
-	      
-	    }else{
-	      tmpfile <- read.table(file = paste(i, "_", j, suffix, sep = ""), header = F)
-	    }
-	    
-	    # arrange using the header #
-	    tmpfile <- tmpfile[, c(tmpfile$chr, tmpfile$posi, tmpfile$Cs, tmpfile$Ts)]
-		
-	  }else{
-	    tmpfile <- tmpfile[, -c(3,4)]
-	  }
-	  
-	  # rename the header by replicate number of group number #
-      colnames(tmpfile) <- c("chr","posi",paste("Cs",i,"_",j,sep = ""),paste("Ts",i,"_",j,sep = ""))
-	  
+      
+      # If the cov file is with header, use "chr", "posi", "Cs", "Ts" for four columns #
+      if(tmpfile[1,1] == "chr" | tmpfile[1,2] == "posi"){
+        if(WGBS == TRUE){
+          tmpfile <- read.table.ffdf(x = NULL, file = control_paths[j], FUN = "read.table", 
+                                     nrows = -1, header = T)
+          
+        }else{
+          tmpfile <- read.table(file = control_paths[j], header = F)
+        }
+        
+        # arrange using the header #
+        tmpfile <- tmpfile[, c(tmpfile$chr, tmpfile$posi, tmpfile$Cs, tmpfile$Ts)]
+        
+      }else{
+        tmpfile <- tmpfile[, -c(3,4)]
+      }
+      
+      # rename the header by replicate number of group number #
+      colnames(tmpfile) <- c("chr","posi",paste("Cs",1,"_",j,sep = ""),paste("Ts",1,"_",j,sep = ""))
+      
       filenum <- filenum + 1
-	  
-	  # combine each replicate file to the total dataset #
-      ifelse(filenum==1, methallfile <- tmpfile, methallfile <- inner_join(methallfile, tmpfile, by = c('chr'='chr','posi'='posi')))
+      
+      # combine each replicate file to the total dataset #
+      ifelse(filenum==1, methallfile_control <- tmpfile, 
+             methallfile_control <- inner_join(methallfile_control, tmpfile, by = c('chr'='chr','posi'='posi')))
     }
+    
+    # count the number of file #
+    filenum <- 0
+    
+    # case group #
+    for(j in 1:realreplicatenum_case){
+      
+      # read cov file (without header) from Bismark output and save the column of read number of Ts and Cs #
+      if(WGBS == TRUE){
+        
+        # if use WGBS data, read cov file based on ffbase package #
+        tmpfile <- read.table.ffdf(x = NULL, file = case_paths[j], FUN = "read.table", 
+                                   nrows = -1, header = F)
+        
+      }else{
+        tmpfile <- read.table(file = case_paths[j], header = F)
+      }
+      
+      # check column number of the input file
+      if(ncol(tmpfile) == 7){
+        tmpfile <- tmpfile[, -7]
+      }
+      
+      else if(ncol(tmpfile) > 7){
+        stop("Stop and please check the input file format")
+      }
+      
+      # If the cov file is with header, use "chr", "posi", "Cs", "Ts" for four columns #
+      if(tmpfile[1,1] == "chr" | tmpfile[1,2] == "posi"){
+        if(WGBS == TRUE){
+          tmpfile <- read.table.ffdf(x = NULL, file = case_paths[j], FUN = "read.table", 
+                                     nrows = -1, header = T)
+          
+        }else{
+          tmpfile <- read.table(file = case_paths[j], header = F)
+        }
+        
+        # arrange using the header #
+        tmpfile <- tmpfile[, c(tmpfile$chr, tmpfile$posi, tmpfile$Cs, tmpfile$Ts)]
+        
+      }else{
+        tmpfile <- tmpfile[, -c(3,4)]
+      }
+      
+      # rename the header by replicate number of group number #
+      colnames(tmpfile) <- c("chr","posi",paste("Cs",2,"_",j,sep = ""),paste("Ts",2,"_",j,sep = ""))
+      
+      filenum <- filenum + 1
+      
+      # combine each replicate file to the total dataset #
+      ifelse(filenum==1, methallfile_case <- tmpfile, 
+             methallfile_case <- inner_join(methallfile_case, tmpfile, by = c('chr'='chr','posi'='posi')))
+    }
+    
+    # merge methallfile_control and methallfile_case together #
+    methallfile <- inner_join(methallfile_control, methallfile_case, by = c('chr'='chr','posi'='posi'))
+  }
+  
+  else{
+    
+    # set the paths #
+    setwd(paths)
+    
+    # count the number of file #
+    filenum <- 0
+    
+    # detect the total group number #
+    groupnum <- length(grep("_1", dir(paths)))
+    
+    # from different group to different relicate files #
+    for(i in 1:groupnum){
+      
+      # dectect the real replicate number of this group #
+      # output the real replicate number #
+      realreplicatenum <- length(grep(paste(i,"_",sep = ""), dir(paths)))
+      
+      # read the file from each real replicate of each group and combine the same chromosome and position #
+      for(j in 1:realreplicatenum){
+        
+        # read cov file (without header) from Bismark output and save the column of read number of Ts and Cs #
+        if(WGBS == TRUE){
+          
+          # if use WGBS data, read cov file based on ffbase package #
+          tmpfile <- read.table.ffdf(x = NULL, file = paste(i, "_", j, suffix, sep = ""), FUN = "read.table", 
+                                     nrows = -1, header = F)
+          
+        }else{
+          tmpfile <- read.table(file = paste(i, "_", j, suffix, sep = ""), header = F)
+        }
+        
+        # check column number of the input file
+        if(ncol(tmpfile) == 7){
+          tmpfile <- tmpfile[, -7]
+        }
+        
+        else if(ncol(tmpfile) > 7){
+          stop("Stop and please check the input file format")
+        }
+        
+        # If the cov file is with header, use "chr", "posi", "Cs", "Ts" for four columns #
+        if(tmpfile[1,1] == "chr" | tmpfile[1,2] == "posi"){
+          if(WGBS == TRUE){
+            tmpfile <- read.table.ffdf(x = NULL, file = paste(i, "_", j, suffix, sep = ""), FUN = "read.table", 
+                                       nrows = -1, header = T)
+            
+          }else{
+            tmpfile <- read.table(file = paste(i, "_", j, suffix, sep = ""), header = F)
+          }
+          
+          # arrange using the header #
+          tmpfile <- tmpfile[, c(tmpfile$chr, tmpfile$posi, tmpfile$Cs, tmpfile$Ts)]
+          
+        }else{
+          tmpfile <- tmpfile[, -c(3,4)]
+        }
+        
+        # rename the header by replicate number of group number #
+        colnames(tmpfile) <- c("chr","posi",paste("Cs",i,"_",j,sep = ""),paste("Ts",i,"_",j,sep = ""))
+        
+        filenum <- filenum + 1
+        
+        # combine each replicate file to the total dataset #
+        ifelse(filenum==1, methallfile <- tmpfile, methallfile <- inner_join(methallfile, tmpfile, by = c('chr'='chr','posi'='posi')))
+      }
+    }
+    
   }
   
   # Sort by chromosome and position #
