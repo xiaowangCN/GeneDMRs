@@ -55,6 +55,14 @@ Before starting quickly or starting step by step, the user could download the ex
 allDMGs <- Quick_GeneDMRs(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""))
 ```
 
+Or if it is a case-control design, then the user can specify arbitrary file names for case group and control group, separately, such as:
+
+```
+controls <- c("C:/Users/GeneDMRs/methdata/1_1.gz", "C:/Users/GeneDMRs/methdata/1_2.gz", "C:/Users/GeneDMRs/methdata/1_3.gz")
+cases <- c("C:/Users/GeneDMRs/methdata/2_1.gz", "C:/Users/GeneDMRs/methdata/2_1.gz")
+allDMGs <- Quick_GeneDMRs(control_paths = controls, case_paths = cases)
+```
+
 2. If get all differentially methylated cytosine sites (DMCs) quickly
 
 ```
