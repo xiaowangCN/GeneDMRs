@@ -55,7 +55,7 @@ Before starting quickly or starting step by step, the user could download the ex
 allDMGs <- Quick_GeneDMRs(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""))
 ```
 
-Or if it is a case-control design, then the user can specify arbitrary file names for case group and control group, separately, such as:
+Or if it is a case-control design, the user can specify arbitrary file names for case group and control group, separately, where the paths = "C:/Users/GeneDMRs/methdata" here is mainly used for reading bedfile, i.e., inputrefseqfile <- Bedfile_read(paths = "C:/Users/GeneDMRs/methdata"). For example:
 
 ```
 controls <- c("C:/Users/GeneDMRs/methdata/1_1.gz", "C:/Users/GeneDMRs/methdata/1_2.gz", "C:/Users/GeneDMRs/methdata/1_3.gz")
@@ -69,11 +69,26 @@ allDMGs <- Quick_GeneDMRs(paths = "C:/Users/GeneDMRs/methdata", control_paths = 
 allDMCs <- Quick_DMCs(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""))
 ```
 
+Or if it is a case-control design, then the user can specify arbitrary file names for case group and control group, separately, such as:
+
+```
+controls <- c("C:/Users/GeneDMRs/methdata/1_1.gz", "C:/Users/GeneDMRs/methdata/1_2.gz", "C:/Users/GeneDMRs/methdata/1_3.gz")
+cases <- c("C:/Users/GeneDMRs/methdata/2_1.gz", "C:/Users/GeneDMRs/methdata/2_1.gz")
+allDMCs <- Quick_DMCs(control_paths = controls, case_paths = cases)
+```
+
 3. If get all DMGs step by step
 
 ```
-# read the file #
+# read the methylation file #
 inputmethfile <- Methfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), suffix = ".gz")
+
+# or if it is a case-control design #
+controls <- c("C:/Users/GeneDMRs/methdata/1_1.gz", "C:/Users/GeneDMRs/methdata/1_2.gz", "C:/Users/GeneDMRs/methdata/1_3.gz")
+cases <- c("C:/Users/GeneDMRs/methdata/2_1.gz", "C:/Users/GeneDMRs/methdata/2_1.gz")
+inputmethfile <- Methfile_read(control_paths = controls, case_paths = cases)
+
+# read the bedfile #
 inputrefseqfile <- Bedfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), bedfile = "refseq", suffix = ".txt", feature = FALSE)
   
 # quality control #
