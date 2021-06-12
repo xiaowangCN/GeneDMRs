@@ -52,6 +52,8 @@ GeneDMRs <- function(Dbannotation = "org.Mm.eg.db"){
 #' @description This function outputs a series of results and figures for gene based regions' methylation analysis.
 #' 
 #' @param paths refers to the path of input file, with default the package path.
+#' @param control_paths refers to the path of control groups, with default NULL.
+#' @param case_paths refers to the path of case groups, with default NULL.
 #' @param suffixmeth refers to the suffix of methylation file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".
 #' @param bedfile refers to the file name of bed file for "refseq". This file is downloaded from UCSC website, with default "refseq".
 #' @param suffixbed refers to the suffix of bed file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".txt".
@@ -64,14 +66,27 @@ GeneDMRs <- function(Dbannotation = "org.Mm.eg.db"){
 #' allDMGs <- Quick_GeneDMRs()
 #' allDMGs_mouse <- Quick_GeneDMRs(Dbannotation = "org.Mm.eg.db", keggorganism = "mmu")
 #' 
+#' # if only case and control group (n = 2) paths are provided #
+#' controls <- c("C:/Users/GeneDMRs/methdata/1_1.gz", "C:/Users/GeneDMRs/methdata/1_2.gz", "C:/Users/GeneDMRs/methdata/1_3.gz")
+#' cases <- c("C:/Users/GeneDMRs/methdata/2_1.gz", "C:/Users/GeneDMRs/methdata/2_1.gz")
+#' allDMGs <- Quick_GeneDMRs(paths = "C:/Users/GeneDMRs/methdata", control_paths = controls, case_paths = cases)
+#' 
 #' @export
 
 
 Quick_GeneDMRs <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), suffixmeth = ".gz",
-                           bedfile = "refseq", suffixbed = ".txt", Dbannotation = "org.Mm.eg.db", keggorganism = "mmu"){
+                           control_paths = NULL, case_paths = NULL, bedfile = "refseq", 
+                           suffixbed = ".txt", Dbannotation = "org.Mm.eg.db", keggorganism = "mmu"){
   
   # read the file #
-  inputmethfile <- Methfile_read(paths = paths, suffix = suffixmeth)
+  # if case and control group paths are provided #
+  if(is.null(control_paths) == F & is.null(case_paths) == F){
+    inputmethfile <- Methfile_read(control_paths = controls, case_paths = cases)
+    
+  }else{
+    inputmethfile <- Methfile_read(paths = paths, suffix = suffixmeth)
+  }
+  
   inputrefseqfile <- Bedfile_read(paths = paths, bedfile = bedfile, suffix = suffixbed, feature = FALSE)
   
   # quality control #
@@ -113,6 +128,8 @@ Quick_GeneDMRs <- function(paths = paste(system.file(package = "GeneDMRs"), "/me
 #' @description This function outputs the differentially methylated cytosine sites (DMCs).
 #' 
 #' @param paths refers to the path of input file, with default the package path.
+#' @param control_paths refers to the path of control groups, with default NULL.
+#' @param case_paths refers to the path of case groups, with default NULL.
 #' @param suffixmeth refers to the suffix of methylation file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".
 #' 
 #' @return Outputs DMC results.
@@ -123,9 +140,18 @@ Quick_GeneDMRs <- function(paths = paste(system.file(package = "GeneDMRs"), "/me
 #' @export
 
 
-Quick_DMCs <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), suffixmeth = ".gz"){
+Quick_DMCs <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), suffixmeth = ".gz",
+                       control_paths = NULL, case_paths = NULL){
   
   # read the file #
+  # if case and control group paths are provided #
+  if(is.null(control_paths) == F & is.null(case_paths) == F){
+    inputmethfile <- Methfile_read(control_paths = controls, case_paths = cases)
+    
+  }else{
+    inputmethfile <- Methfile_read(paths = paths, suffix = suffixmeth)
+  }
+  
   inputmethfile <- Methfile_read(paths = paths, suffix = suffixmeth)
   
   # quality control #
