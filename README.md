@@ -60,7 +60,7 @@ Or if it is a case-control design, then the user can specify arbitrary file name
 ```
 controls <- c("C:/Users/GeneDMRs/methdata/1_1.gz", "C:/Users/GeneDMRs/methdata/1_2.gz", "C:/Users/GeneDMRs/methdata/1_3.gz")
 cases <- c("C:/Users/GeneDMRs/methdata/2_1.gz", "C:/Users/GeneDMRs/methdata/2_1.gz")
-allDMGs <- Quick_GeneDMRs(control_paths = controls, case_paths = cases)
+allDMGs <- Quick_GeneDMRs(paths = "C:/Users/GeneDMRs/methdata", control_paths = controls, case_paths = cases)
 ```
 
 2. If get all differentially methylated cytosine sites (DMCs) quickly
