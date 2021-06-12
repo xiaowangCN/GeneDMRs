@@ -157,8 +157,6 @@ Quick_DMCs <- function(paths = paste(system.file(package = "GeneDMRs"), "/methda
     inputmethfile <- Methfile_read(paths = paths, suffix = suffixmeth)
   }
   
-  inputmethfile <- Methfile_read(paths = paths, suffix = suffixmeth)
-  
   # quality control #
   inputmethfile_QC <- Methfile_QC(inputmethfile)
   
