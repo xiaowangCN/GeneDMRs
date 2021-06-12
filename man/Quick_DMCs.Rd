@@ -6,13 +6,19 @@
 \usage{
 Quick_DMCs(
   paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep = ""),
-  suffixmeth = ".gz"
+  suffixmeth = ".gz",
+  control_paths = NULL,
+  case_paths = NULL
 )
 }
 \arguments{
 \item{paths}{refers to the path of input file, with default the package path.}
 
 \item{suffixmeth}{refers to the suffix of methylation file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".}
+
+\item{control_paths}{refers to the path of control groups, with default NULL.}
+
+\item{case_paths}{refers to the path of case groups, with default NULL.}
 }
 \value{
 Outputs DMC results.

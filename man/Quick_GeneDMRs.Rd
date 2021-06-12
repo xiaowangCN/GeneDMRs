@@ -7,6 +7,8 @@
 Quick_GeneDMRs(
   paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep = ""),
   suffixmeth = ".gz",
+  control_paths = NULL,
+  case_paths = NULL,
   bedfile = "refseq",
   suffixbed = ".txt",
   Dbannotation = "org.Mm.eg.db",
@@ -17,6 +19,10 @@ Quick_GeneDMRs(
 \item{paths}{refers to the path of input file, with default the package path.}
 
 \item{suffixmeth}{refers to the suffix of methylation file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".}
+
+\item{control_paths}{refers to the path of control groups, with default NULL.}
+
+\item{case_paths}{refers to the path of case groups, with default NULL.}
 
 \item{bedfile}{refers to the file name of bed file for "refseq". This file is downloaded from UCSC website, with default "refseq".}
 
@@ -35,5 +41,10 @@ This function outputs a series of results and figures for gene based regions' me
 \examples{
 allDMGs <- Quick_GeneDMRs()
 allDMGs_mouse <- Quick_GeneDMRs(Dbannotation = "org.Mm.eg.db", keggorganism = "mmu")
+
+# if only case and control group (n = 2) paths are provided #
+controls <- c("C:/Users/GeneDMRs/methdata/1_1.gz", "C:/Users/GeneDMRs/methdata/1_2.gz", "C:/Users/GeneDMRs/methdata/1_3.gz")
+cases <- c("C:/Users/GeneDMRs/methdata/2_1.gz", "C:/Users/GeneDMRs/methdata/2_1.gz")
+allDMGs <- Quick_GeneDMRs(paths = "C:/Users/GeneDMRs/methdata", control_paths = controls, case_paths = cases)
 
 }
