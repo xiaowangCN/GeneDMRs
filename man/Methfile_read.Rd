@@ -6,12 +6,18 @@
 \usage{
 Methfile_read(
   paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep = ""),
+  control_paths = NULL,
+  case_paths = NULL,
   suffix = ".gz",
   WGBS = FALSE
 )
 }
 \arguments{
 \item{paths}{refers to the path of methylation file, with default the package path.}
+
+\item{control_paths}{refers to the path of control groups, with default NULL.}
+
+\item{case_paths}{refers to the path of case groups, with default NULL.}
 
 \item{suffix}{refers to the suffix of methylation file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".}
 
@@ -28,8 +34,14 @@ The dataset of the example is the Reduced representation bisulfite sequencing (R
 (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE62392).
 }
 \examples{
-inputmethfile <- Methfile_read() 
-inputmethfile <- Methfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), suffix = ".gz") # test the functions with default parameters #
-inputmethfile <- Methfile_read(paths = "my own path", suffix = ".txt.gz", WGBS = TRUE) 
+# test the functions with default parameters #
+inputmethfile <- Methfile_read()
+inputmethfile <- Methfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), suffix = ".gz")
+inputmethfile <- Methfile_read(paths = "C:/Users/GeneDMRs/methdata/", suffix = ".txt.gz", WGBS = TRUE) 
+
+# if only case and control group (n = 2) paths are provided #
+controls <- c("C:/Users/GeneDMRs/methdata/1_1.gz", "C:/Users/GeneDMRs/methdata/1_2.gz", "C:/Users/GeneDMRs/methdata/1_3.gz")
+cases <- c("C:/Users/GeneDMRs/methdata/2_1.gz", "C:/Users/GeneDMRs/methdata/2_1.gz")
+inputmethfile <- Methfile_read(control_paths = controls, case_paths = cases)
 
 }
