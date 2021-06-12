@@ -1,33 +1,33 @@
 #' Read the methylation file.
-#' 
-#' @import dplyr 
+#'
+#' @import dplyr
 #' @import ffbase
-#' 
+#'
 #' @description This function reads all of the methylation files and generates one file with all samples including methylated read coverages (Cs) and unmethylated read coverages (Ts).
 #' It can automatically test how many samples and how many replicates in each group and the distribute them from 1_1, 1_2 to the final file by headers.
 #' The methylation files should be the standard coverage file (i.e., .bismark.cov) outputted from Bismark software.
 #' The dataset of the example is the Reduced representation bisulfite sequencing (RRBS) data of DNA methylation for mouse myeloid progenitor tissue from GEO (Accession number: GSE62392)
 #' (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE62392).
-#' 
+#'
 #' @param paths refers to the path of methylation file, with default the package path.
 #' @param suffix refers to the suffix of methylation file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".gz".
 #' @param control_paths refers to the path of control groups, with default NULL.
 #' @param case_paths refers to the path of case groups, with default NULL.
 #' @param WGBS refers to whether to use Whole genome bisulfite sequencing (WGBS) data, with default FALSE.
-#' 
+#'
 #' @return Outputs a data frame contain chromosome, position, and Cs & Ts for different replicates and groups.
-#' 
+#'
 #' @examples
 #' # test the functions with default parameters #
 #' inputmethfile <- Methfile_read()
 #' inputmethfile <- Methfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), suffix = ".gz")
-#' inputmethfile <- Methfile_read(paths = "C:/Users/GeneDMRs/methdata/", suffix = ".txt.gz", WGBS = TRUE) 
-#' 
+#' inputmethfile <- Methfile_read(paths = "C:/Users/GeneDMRs/methdata/", suffix = ".txt.gz", WGBS = TRUE)
+#'
 #' # if only case and control group (n = 2) paths are provided #
 #' controls <- c("C:/Users/GeneDMRs/methdata/1_1.gz", "C:/Users/GeneDMRs/methdata/1_2.gz", "C:/Users/GeneDMRs/methdata/1_3.gz")
 #' cases <- c("C:/Users/GeneDMRs/methdata/2_1.gz", "C:/Users/GeneDMRs/methdata/2_1.gz")
 #' inputmethfile <- Methfile_read(control_paths = controls, case_paths = cases)
-#' 
+#'
 #' @export
 
 
@@ -47,7 +47,7 @@
    #9  chr1 3150022 3150022 100.00000  3  0
    #10 chr1 3150068 3150068 100.00000  1  0
 
- 
+
  # The output file of this function is with header and combines all the files with the same chromosome and position #
  # It contains choromsome, position, methylated read coverages (Cs) and unmethylated read coverages (Ts) of each sample #
     #   chr  posi   Cs1_1 Ts1_1 Cs1_2 Ts1_2 Cs1_3 Ts1_3 Cs2_1 Ts2_1 Cs2_2 Ts2_2
@@ -64,11 +64,11 @@
 
 # The function for automatically reading different replicates of different groups #
 
-Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), 
-                          control_paths = NULL, case_paths = NULL, 
+Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""),
+                          control_paths = NULL, case_paths = NULL,
                           suffix = ".gz",
                           WGBS = FALSE){
-  
+
   # Output the begin time
   print(paste("The start time is ", date(), sep = ""))
 
@@ -78,193 +78,196 @@ Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/met
     # from two group to different relicate files #
     realreplicatenum_control <- length(control_paths)
     realreplicatenum_case <- length(case_paths)
-    
+
     # count the number of file #
     filenum <- 0
-    
+
     # control group #
     for(j in 1:realreplicatenum_control){
-      
+
       # read cov file (without header) from Bismark output and save the column of read number of Ts and Cs #
       if(WGBS == TRUE){
-        
+
         # if use WGBS data, read cov file based on ffbase package #
-        tmpfile <- read.table.ffdf(x = NULL, file = control_paths[j], FUN = "read.table", 
+        tmpfile <- read.table.ffdf(x = NULL, file = control_paths[j], FUN = "read.table",
                                    nrows = -1, header = F)
-        
+
       }else{
         tmpfile <- read.table(file = control_paths[j], header = F)
       }
-      
+
       # check column number of the input file
       if(ncol(tmpfile) == 7){
         tmpfile <- tmpfile[, -7]
       }
-      
+
       else if(ncol(tmpfile) > 7){
         stop("Stop and please check the input file format")
       }
-      
+
       # If the cov file is with header, use "chr", "posi", "Cs", "Ts" for four columns #
       if(tmpfile[1,1] == "chr" | tmpfile[1,2] == "posi"){
         if(WGBS == TRUE){
-          tmpfile <- read.table.ffdf(x = NULL, file = control_paths[j], FUN = "read.table", 
+          tmpfile <- read.table.ffdf(x = NULL, file = control_paths[j], FUN = "read.table",
                                      nrows = -1, header = T)
-          
+
         }else{
           tmpfile <- read.table(file = control_paths[j], header = F)
         }
-        
+
         # arrange using the header #
         tmpfile <- tmpfile[, c(tmpfile$chr, tmpfile$posi, tmpfile$Cs, tmpfile$Ts)]
-        
+
       }else{
         tmpfile <- tmpfile[, -c(3,4)]
       }
-      
+
       # rename the header by replicate number of group number #
       colnames(tmpfile) <- c("chr","posi",paste("Cs",1,"_",j,sep = ""),paste("Ts",1,"_",j,sep = ""))
-      
+
       filenum <- filenum + 1
-      
+
       # combine each replicate file to the total dataset #
-      ifelse(filenum==1, methallfile_control <- tmpfile, 
+      ifelse(filenum==1, methallfile_control <- tmpfile,
              methallfile_control <- inner_join(methallfile_control, tmpfile, by = c('chr'='chr','posi'='posi')))
     }
-    
+
     # count the number of file #
+    filenumcontrol <- filenum
     filenum <- 0
-    
+
     # case group #
     for(j in 1:realreplicatenum_case){
-      
+
       # read cov file (without header) from Bismark output and save the column of read number of Ts and Cs #
       if(WGBS == TRUE){
-        
+
         # if use WGBS data, read cov file based on ffbase package #
-        tmpfile <- read.table.ffdf(x = NULL, file = case_paths[j], FUN = "read.table", 
+        tmpfile <- read.table.ffdf(x = NULL, file = case_paths[j], FUN = "read.table",
                                    nrows = -1, header = F)
-        
+
       }else{
         tmpfile <- read.table(file = case_paths[j], header = F)
       }
-      
+
       # check column number of the input file
       if(ncol(tmpfile) == 7){
         tmpfile <- tmpfile[, -7]
       }
-      
+
       else if(ncol(tmpfile) > 7){
         stop("Stop and please check the input file format")
       }
-      
+
       # If the cov file is with header, use "chr", "posi", "Cs", "Ts" for four columns #
       if(tmpfile[1,1] == "chr" | tmpfile[1,2] == "posi"){
         if(WGBS == TRUE){
-          tmpfile <- read.table.ffdf(x = NULL, file = case_paths[j], FUN = "read.table", 
+          tmpfile <- read.table.ffdf(x = NULL, file = case_paths[j], FUN = "read.table",
                                      nrows = -1, header = T)
-          
+
         }else{
           tmpfile <- read.table(file = case_paths[j], header = F)
         }
-        
+
         # arrange using the header #
         tmpfile <- tmpfile[, c(tmpfile$chr, tmpfile$posi, tmpfile$Cs, tmpfile$Ts)]
-        
+
       }else{
         tmpfile <- tmpfile[, -c(3,4)]
       }
-      
+
       # rename the header by replicate number of group number #
       colnames(tmpfile) <- c("chr","posi",paste("Cs",2,"_",j,sep = ""),paste("Ts",2,"_",j,sep = ""))
-      
+
       filenum <- filenum + 1
-      
+
       # combine each replicate file to the total dataset #
-      ifelse(filenum==1, methallfile_case <- tmpfile, 
+      ifelse(filenum==1, methallfile_case <- tmpfile,
              methallfile_case <- inner_join(methallfile_case, tmpfile, by = c('chr'='chr','posi'='posi')))
     }
-    
+
     # merge methallfile_control and methallfile_case together #
     methallfile <- inner_join(methallfile_control, methallfile_case, by = c('chr'='chr','posi'='posi'))
-  }
-  
-  else{
-    
+
+    # total file number #
+    filenum <- filenum + filenumcontrol
+
+  }else{
+
     # set the paths #
     setwd(paths)
-    
+
     # count the number of file #
     filenum <- 0
-    
+
     # detect the total group number #
     groupnum <- length(grep("_1", dir(paths)))
-    
+
     # from different group to different relicate files #
     for(i in 1:groupnum){
-      
+
       # dectect the real replicate number of this group #
       # output the real replicate number #
       realreplicatenum <- length(grep(paste(i,"_",sep = ""), dir(paths)))
-      
+
       # read the file from each real replicate of each group and combine the same chromosome and position #
       for(j in 1:realreplicatenum){
-        
+
         # read cov file (without header) from Bismark output and save the column of read number of Ts and Cs #
         if(WGBS == TRUE){
-          
+
           # if use WGBS data, read cov file based on ffbase package #
-          tmpfile <- read.table.ffdf(x = NULL, file = paste(i, "_", j, suffix, sep = ""), FUN = "read.table", 
+          tmpfile <- read.table.ffdf(x = NULL, file = paste(i, "_", j, suffix, sep = ""), FUN = "read.table",
                                      nrows = -1, header = F)
-          
+
         }else{
           tmpfile <- read.table(file = paste(i, "_", j, suffix, sep = ""), header = F)
         }
-        
+
         # check column number of the input file
         if(ncol(tmpfile) == 7){
           tmpfile <- tmpfile[, -7]
         }
-        
+
         else if(ncol(tmpfile) > 7){
           stop("Stop and please check the input file format")
         }
-        
+
         # If the cov file is with header, use "chr", "posi", "Cs", "Ts" for four columns #
         if(tmpfile[1,1] == "chr" | tmpfile[1,2] == "posi"){
           if(WGBS == TRUE){
-            tmpfile <- read.table.ffdf(x = NULL, file = paste(i, "_", j, suffix, sep = ""), FUN = "read.table", 
+            tmpfile <- read.table.ffdf(x = NULL, file = paste(i, "_", j, suffix, sep = ""), FUN = "read.table",
                                        nrows = -1, header = T)
-            
+
           }else{
             tmpfile <- read.table(file = paste(i, "_", j, suffix, sep = ""), header = F)
           }
-          
+
           # arrange using the header #
           tmpfile <- tmpfile[, c(tmpfile$chr, tmpfile$posi, tmpfile$Cs, tmpfile$Ts)]
-          
+
         }else{
           tmpfile <- tmpfile[, -c(3,4)]
         }
-        
+
         # rename the header by replicate number of group number #
         colnames(tmpfile) <- c("chr","posi",paste("Cs",i,"_",j,sep = ""),paste("Ts",i,"_",j,sep = ""))
-        
+
         filenum <- filenum + 1
-        
+
         # combine each replicate file to the total dataset #
         ifelse(filenum==1, methallfile <- tmpfile, methallfile <- inner_join(methallfile, tmpfile, by = c('chr'='chr','posi'='posi')))
       }
     }
-    
+
   }
-  
+
   # Sort by chromosome and position #
   methallfile <- arrange(methallfile,chr,posi)
-  
+
   # Output how many files are read and the running timen #
   print(paste("Total methylation file number is", filenum, "and the reading finish time is", date(), sep = " "))
-  
+
   return(methallfile)
 }
 
@@ -278,49 +281,49 @@ Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/met
 
 
 #' Read the standard bedfile of refseq or cpgi downloaded from UCSC.
-#' 
+#'
 #' @import dplyr
 #' @import genomation
-#' 
-#' @description This function reads the bed file of refseq or cpgi and sorts them by chromosome and position. 
-#' The dataset of the example are the mouse reference genes and CpG island information that are downloaded from UCSC website 
-#' (http://genome.ucsc.edu/cgi-bin/hgTables). 
-#' The R package genomation used here can divide the refseq.bed file into several gene body features, e.g., promoter, exon, intron regions and 
+#'
+#' @description This function reads the bed file of refseq or cpgi and sorts them by chromosome and position.
+#' The dataset of the example are the mouse reference genes and CpG island information that are downloaded from UCSC website
+#' (http://genome.ucsc.edu/cgi-bin/hgTables).
+#' The R package genomation used here can divide the refseq.bed file into several gene body features, e.g., promoter, exon, intron regions and
 #' the cpgi.bed file into CpG island features, e.g., CpG island and CpG island shore.
-#' 
+#'
 #' @param paths refers to the path of bed file, with default the package path.
 #' @param bedfile refers to the file name of bed file like "refseq" or "cpgi". This file is downloaded from UCSC website, with default "refseq".
 #' @param suffix refers to the suffix of bed file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".txt".
-#' @param feature refers to whether to read the bed with the features, with default FALSE. 
+#' @param feature refers to whether to read the bed with the features, with default FALSE.
 #' If feature = TRUE, the output of this function will contain the features e.g., promoter, exon, intron or CpG island, CpG island shore based on R package genomation.
-#'              
+#'
 #' @param featurewrite refers to whether to write out the feature file to the given path, with default FALSE.
-#' 
-#' @return Outputs a data frame contains four columns of chromosome, start position, end position. 
+#'
+#' @return Outputs a data frame contains four columns of chromosome, start position, end position.
 #' If feature = TRUE, the data frame is five columns with the added feature such as genebody or cpgfeature.
-#' 
-#' @references Akalin A, Franke V, Vlahovicek K, Mason C, Schubeler D (2014). "genomation: a toolkit to summarize, annotate and visualize genomic intervals." 
+#'
+#' @references Akalin A, Franke V, Vlahovicek K, Mason C, Schubeler D (2014). "genomation: a toolkit to summarize, annotate and visualize genomic intervals."
 #' Bioinformatics. doi: 10.1093/bioinformatics/btu775, http://bioinformatics.oxfordjournals.org/content/early/2014/12/04/bioinformatics.btu775.long.
-#' 
+#'
 #' @examples
-#' inputrefseqfile <- Bedfile_read() 
+#' inputrefseqfile <- Bedfile_read()
 #' inputrefseqfile <- Bedfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), bedfile = "refseq", suffix = ".txt", feature = FALSE)
 #' inputcpgifile <- Bedfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), bedfile = "cpgi", suffix = ".txt", feature = FALSE)
 #' head(inputrefseqfile)
 #' head(inputcpgifile)
-#' 
+#'
 #' inputgenebodyfile <- Bedfile_read(bedfile = "refseq", feature = TRUE, featurewrite = TRUE)
 #' inputcpgifeaturefile <- Bedfile_read(bedfile = "cpgi", feature = TRUE, featurewrite = FALSE)
 #' head(inputgenebodyfile)
 #' head(inputcpgifeaturefile)
-#' 
+#'
 #' @export
 
 
 # So, what are the origanally standard bedfile and outputed file looking like? e.g. data from pig #
 
  # Bedfile is without header, so don't add the header #
- 
+
  # refseq.bed file #
  # It contains 12 columns that are choromsome, chromstart (thickStart) position, chromend (thickEnd) position, #
  # NCBI ID number for mRNA, score, strand, coding start position, coding end position, score, number of exon, length of exon, distance from TSS start position to exon #
@@ -348,9 +351,9 @@ Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/met
  #9 chr1	174275	174652	CpG:_36
  #10 chr1	186372	187350	CpG:_119
 
- 
+
  # The output file of this function is with header and combines with the other features #
- 
+
  # The inputrefseqfile contains NCBI ID of gene, chromosome, start position, end position.
  #        refseq  chr   start     end
  # 1 NM_001244353 chr1   23826   40033
@@ -363,7 +366,7 @@ Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/met
  # 8 NM_001007195 chr1 4738530 4883241
  # 9 NM_001044603 chr1 5698507 6731132
  # 10 NM_001143697 chr1 6807761 6883255
- 
+
  # The inputcpgifile contains CpG ID, chromosome, start position, end position.
  #       cpgi  chr  start    end
  # 1   CpG:_48 chr1  21811  22330
@@ -389,7 +392,7 @@ Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/met
  # 8 NM_001244353 chr1 30850 33299   introns_3
  # 9 NM_001244353 chr1 33300 33429     exons_4
  # 10 NM_001244353 chr1 33430 38650   introns_4
-  
+
  # The inputcpgifeaturefile contains chromosome, start position, end position and CpGfeature.
  #     cpgi  chr start   end cpgfeature
  # 1  shore1 chr1 19811 21810     Shores_1
@@ -402,55 +405,55 @@ Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/met
  # 8  shore5 chr1 66650 68649     Shores_5
  # 9  shore6 chr1 89255 91254     Shores_6
  # 10  cpgi4 chr1 91255 91533  CpGisland_4
-  
-  
-Bedfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), bedfile = "refseq", 
+
+
+Bedfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), bedfile = "refseq",
                          suffix = ".txt", feature = FALSE, featurewrite = TRUE){
-  
+
   # set the paths #
   setwd(paths)
-  
+
   # read refseq or cpgi file #
   if(bedfile=="refseq"){
     if(feature == FALSE){
       regionfile <- Regionfile_read(bedfile, suffix)
-      
+
       return(regionfile)
-      
+
     }else{
-      
+
       # region file is the reference gene or cpg bed file (without header) #
       regionfile <- Regionfile_read(bedfile, suffix)
       geneobj <- readTranscriptFeatures(paste(bedfile, ".bed", suffix, sep = ""))
-      
+
       # Output the defined gene features based on refseq.bed file#
       write.table(geneobj, "Genebody", col.names = F, row.names = F, quote = F)
-      
+
       geneobj <- read.table("Genebody")
-      
+
       # check the geneobj file for promoter regions #
       geneobj <- refseqfile_check(geneobj, regionfile)
-      
+
       # if featurewrite == FALSE then delete geneobj file #
       if(featurewrite == FALSE){
         file.remove("Genebody")
       }
-      
+
       return(geneobj)
     }
-    
-    
+
+
   }else if(bedfile=="cpgi"){
     if(feature == FALSE){
       regionfile <- Regionfile_read(bedfile, suffix)
-      
+
       return(regionfile)
-      
+
     }else{
-      
+
       # region file is the reference gene or cpg bed file (without header) #
       cpgiobj <- readFeatureFlank(paste(bedfile, ".bed", suffix, sep = ""), feature.flank.name = c("CpGisland", "Shores"))
-      
+
       # Output the defined gene features based on refseq.bed file #
       write.table(cpgiobj, "Cpgifeature", col.names = F, row.names = F, quote = F)
 
@@ -458,25 +461,25 @@ Bedfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/meth
       cpgiobj[,6] <- cpgiobj[,2]
       cpgiobj <- cpgiobj[,3:6]
       colnames(cpgiobj) <- c("chr", "start", "end", "cpgfeature")
-      
+
       # rename the "cpgi" #
       cpginum <- sum(cpgiobj$cpgfeature == "CpGisland")
       cpginame <- c(paste("cpgi", 1:cpginum, sep = ""), paste("shore", 1:(nrow(cpgiobj) - cpginum), sep = ""))
       cpgiobj <- data.frame(cpgi = cpginame, cpgiobj)
-	  
+
       # sort the file #
       cpgiobj <- arrange(cpgiobj, chr, start)
-      
+
       # if featurewrite == FALSE then delete cpgiobj file #
       if(featurewrite == FALSE){
         file.remove("Cpgifeature")
       }
-      
+
       return(cpgiobj)
     }
-    
+
   }else{
-    
+
     # inform only refseq or cpgi file can be read #
     stop("Wrong bed file names and please use refseq or cpgi name")
   }
@@ -490,15 +493,15 @@ Bedfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/meth
 #' That reads the bed file.
 #'
 #' @description This function reads the bed file and sort them.
-#' 
+#'
 #' @param bedfile refers to the bedfile name (e.g., refseq or cpgi) downloaded from UCSC, with the default refseq.
 #' @param suffix refers to the compressed file suffix such as ".gz", ".zip" and so on, with the default suffix ".gz".
 #'
 #' @return Outputs bed file that can be used in the next step.
-#'  
+#'
 #' @examples
 #' regionfile <- Regionfile_read(bedfile, suffix)
-#' 
+#'
 #' @export
 
 
@@ -506,17 +509,17 @@ Regionfile_read <- function(bedfile, suffix){
 
   # region file is the reference gene or cpg bed file (without header)
   regionfile <- read.table(paste(bedfile, ".bed", suffix, sep = ""), header=F)
-  
+
   regionfile <- cbind(regionfile[, c(4,1,2,3)], 0)
   colnames(regionfile) <- c(bedfile, "chr", "start", "end", "uniid")
-  
+
   # unique the repeated positions #
   regionfile$uniid <- paste(regionfile$chr, regionfile$start, regionfile$end, sep = "_")
   regionfile <- distinct(regionfile, uniid, .keep_all = TRUE)
-  
+
   #sort by chromosome and position
   regionfile <- arrange(regionfile, chr, start)
-  
+
   return(regionfile[,-5])
 }
 
@@ -525,116 +528,116 @@ Regionfile_read <- function(bedfile, suffix){
 
 
 #' Internal Use Function
-#' That checks and annotates the promoter to the specific gene. 
+#' That checks and annotates the promoter to the specific gene.
 #'
 #' @description This function sorts and makes sure geneobj file can be used in this package,
 #' that mainly works on the promoters without the choromsome and position information.
 #' In addition, it can add the genomic number of exons and introns, e.g., first exon or second intron.
-#' 
+#'
 #' @param geneobj refers to the genebody file from readTranscriptFeatures of package genomation.
 #' @param regionfile refers to the reference gene or cpg bed file (without header)
 #'
 #' @return Outputs gene body file.
-#'  
+#'
 #' @examples
 #' geneobj <- refseqfile_check(geneobj, regionfile)
-#' 
+#'
 #' @export
 
 
 refseqfile_check <- function(geneobj, regionfile){
   geneobj <- geneobj[,c(9,3,4,5,2,7)]
   colnames(geneobj) <- c("refseq","chr","start","end","genebody","strand")
-  
+
   ## promoters without the choromsome and position information ##
   tmp_promoter <- filter(geneobj, genebody == "promoters")
   tmp_nopromoter <- filter(geneobj, genebody != "promoters")
   print(paste("The total reading line for promoter is", nrow(tmp_promoter), sep = " "))
-  
+
   for(i in 1:nrow(tmp_promoter)){
-    
+
     # fill up the missing information of promoters #
     if(as.vector(unlist(tmp_promoter$strand))[i] == "+"){
-      
+
       # when the strand is "+", then start position of gene is in the middle of promoter #
       tmp <- filter(regionfile, chr == as.vector(unlist(tmp_promoter$chr))[i], start == (tmp_promoter[i,3] + 1000))
     }else{
-      
+
       # when the strand is "-", then end position of gene is in the middle of promoter #
       tmp <- filter(regionfile, chr == as.vector(unlist(tmp_promoter$chr))[i], end == (tmp_promoter[i,3] + 1000))
     }
-    
+
     # replace '.' by NCBI ID #
     # if the chromosome and position are same but with two NCBI IDs, juse use the first one #
     tmp_promoter[i,1] <- as.vector(unlist(tmp$refseq))[1]
   }
-  
+
   geneobj <- rbind(tmp_promoter, tmp_nopromoter)
-  
+
   # unique the repeated positions #
   geneobj$strand <- paste(geneobj$chr, geneobj$start, geneobj$end, sep = "_")
   geneobj <- distinct(geneobj, strand, .keep_all = TRUE)
-  
-  
+
+
   ## add the number of exon and intron ##
   tmp_exonintron <- filter(geneobj, genebody == "exons" | genebody == "introns")
   tmp_noexonintron <- filter(geneobj, genebody != "exons" & genebody != "introns")
-  
+
   # sort the file #
   tmp_exonintron <- arrange(tmp_exonintron, chr, start, refseq, genebody)
-  
+
   # add one first row and one last row #
   tmp_exonintron <- rbind(tmp_noexonintron[1, ], tmp_exonintron, tmp_noexonintron[1, ])
   numexon <- 1
   numintron <- 1
   for(j in 2:(nrow(tmp_exonintron) - 1)){
-    
+
     # for same gene #
     if(as.vector(unlist(tmp_exonintron$refseq))[j] == as.vector(unlist(tmp_exonintron$refseq))[j + 1]){
       if(as.vector(unlist(tmp_exonintron$genebody))[j] == "exons"){
         tmp_exonintron[j, ncol(tmp_exonintron)] <- paste("exons", numexon, sep = "_")
         numexon <- numexon + 1
-        
+
       }else if(as.vector(unlist(tmp_exonintron$genebody))[j] == "introns"){
         tmp_exonintron[j, ncol(tmp_exonintron)] <- paste("introns", numintron, sep = "_")
         numintron <- numintron + 1
       }
-      
+
     }else{
-      
+
       # last gene body of the same gene #
       if(as.vector(unlist(tmp_exonintron$refseq))[j] == as.vector(unlist(tmp_exonintron$refseq))[j - 1]){
         if(as.vector(unlist(tmp_exonintron$genebody))[j] == "exons"){
           tmp_exonintron[j, ncol(tmp_exonintron)] <- paste("exons", numexon, sep = "_")
-          
+
         }else if(as.vector(unlist(tmp_exonintron$genebody))[j] == "introns"){
           tmp_exonintron[j, ncol(tmp_exonintron)] <- paste("introns", numintron, sep = "_")
         }
         numexon <- 1
         numintron <- 1
       }else{
-        
+
         # for the different gene #
         numexon <- 1
         numintron <- 1
         if(as.vector(unlist(tmp_exonintron$genebody))[j] == "exons"){
           tmp_exonintron[j, ncol(tmp_exonintron)] <- paste("exons", numexon, sep = "_")
-          
+
         }else if(as.vector(unlist(tmp_exonintron$genebody))[j] == "introns"){
           tmp_exonintron[j, ncol(tmp_exonintron)] <- paste("introns", numintron, sep = "_")
         }
       }
     }
   }
-  
+
   # delete the first row, last row and last column #
   tmp_exonintron$genebody <- tmp_exonintron[, ncol(tmp_exonintron)]
   tmp_exonintron <- tmp_exonintron[-c(1, nrow(tmp_exonintron)), -ncol(tmp_exonintron)]
   geneobj <- rbind(tmp_exonintron, tmp_noexonintron[, -ncol(tmp_noexonintron)])
-  
+
   # sort the file #
   geneobj <- arrange(geneobj, chr, start, refseq)
-  
+
   return(geneobj)
 }
 
@@ -644,79 +647,79 @@ refseqfile_check <- function(geneobj, regionfile){
 
 #' Read the cyto file.
 #'
-#' @description This function reads the chromosome information from cyto file (cytoBandIdeo.txt) and sort them by chromosome and position. 
-#' The dataset of the example is the mouse genome information downloaded from UCSC website 
-#' (http://hgdownload.cse.ucsc.edu/goldenPath/mm10/database/cytoBandIdeo.txt.gz). 
-#' 
+#' @description This function reads the chromosome information from cyto file (cytoBandIdeo.txt) and sort them by chromosome and position.
+#' The dataset of the example is the mouse genome information downloaded from UCSC website
+#' (http://hgdownload.cse.ucsc.edu/goldenPath/mm10/database/cytoBandIdeo.txt.gz).
+#'
 #' @param paths refers to the path of input file, with default the package path.
 #' @param cytofile refers to the name of input cyto file that is downloaded from UCSC website, with default "cytoBandIdeo".
 #' @param suffix refers to the suffix of input cyto file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".txt.gz".
 #'
 #' @return Outputs a data frame contains chromosome, start position, end position.
-#'  
+#'
 #' @examples
 #' inputcytofile <- Cytofile_read()
-#' inputcytofile <- Cytofile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), 
+#' inputcytofile <- Cytofile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""),
 #' cytofile = "cytoBandIdeo", suffix = ".txt.gz")
-#' 
+#'
 #' @export
 
 
-Cytofile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), cytofile = "cytoBandIdeo", 
+Cytofile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), cytofile = "cytoBandIdeo",
                           suffix = ".txt.gz"){
-  
+
   # set the paths #
   setwd(paths)
-  
+
   #chromosome info#
   cyto <- read.table(paste(cytofile, suffix, sep = ""), fill = T, header=F)
-  
+
   # five columns or four columns #
   if(ncol(cyto)==4){
     cyto <- cbind(cyto,"gneg")
 	cyto[, 4] <- "p"
   }
-  
+
   colnames(cyto) <- c("chr","start","end","band","stain")
-  
-  
+
+
   # find the unannotated chromosome rows and delete them #
   unqualifiedrow1 <- grep("_", cyto$chr)
-  
+
   if(length(unqualifiedrow1) > 0){
     cyto <- cyto[-unqualifiedrow1,]
   }
-  
+
   # find the chromosome M and delete it #
   unqualifiedrow2 <- grep("M", cyto$chr)
-  
+
   if(length(unqualifiedrow2) > 0){
     cyto <- cyto[-unqualifiedrow2,]
   }
-  
+
   # transfer chr column to character #
   cyto$chr <- as.vector(unlist(cyto$chr))
-  
+
   # set the chromosome label to number as the default of qqman #
   chromtable <- table(cyto$chr)
-  
+
   # set the chromosome label to number as the default of qqman #
   for(i in 1:length(chromtable[chromtable != 0])){
-    
+
     cyto$chr[cyto$chr == paste("chr", i ,sep="")] <- i
   }
   cyto$chr[cyto$chr == "chrX"] <- length(chromtable[chromtable != 0]) - 1
   cyto$chr[cyto$chr == "chrY"] <- length(chromtable[chromtable != 0])
-  
+
   # transfer chr column to numeric again for sort #
   cyto$chr <- as.numeric(cyto$chr)
-  cyto <- cyto[order(cyto$chr), ] 
-  
+  cyto <- cyto[order(cyto$chr), ]
+
   # paste "chr" to chromosome number #
   cyto$chr <- paste("chr", cyto$chr, sep = "")
   cyto$chr[cyto$chr == paste("chr", (length(chromtable[chromtable != 0]) - 1), sep = "")] <- "chrX"
   cyto$chr[cyto$chr == paste("chr", length(chromtable[chromtable != 0]), sep = "")] <- "chrY"
-  
+
   return(cyto)
 }
 
