@@ -37,7 +37,7 @@ The dataset of the example is the Reduced representation bisulfite sequencing (R
 # test the functions with default parameters #
 inputmethfile <- Methfile_read()
 inputmethfile <- Methfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), suffix = ".gz")
-inputmethfile <- Methfile_read(paths = "C:/Users/GeneDMRs/methdata/", suffix = ".txt.gz", WGBS = TRUE) 
+inputmethfile <- Methfile_read(paths = "C:/Users/GeneDMRs/methdata/", suffix = ".txt.gz", WGBS = TRUE)
 
 # if only case and control group (n = 2) paths are provided #
 controls <- c("C:/Users/GeneDMRs/methdata/1_1.gz", "C:/Users/GeneDMRs/methdata/1_2.gz", "C:/Users/GeneDMRs/methdata/1_3.gz")

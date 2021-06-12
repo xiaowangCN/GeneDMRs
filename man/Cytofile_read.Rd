@@ -21,13 +21,13 @@ Cytofile_read(
 Outputs a data frame contains chromosome, start position, end position.
 }
 \description{
-This function reads the chromosome information from cyto file (cytoBandIdeo.txt) and sort them by chromosome and position. 
-The dataset of the example is the mouse genome information downloaded from UCSC website 
+This function reads the chromosome information from cyto file (cytoBandIdeo.txt) and sort them by chromosome and position.
+The dataset of the example is the mouse genome information downloaded from UCSC website
 (http://hgdownload.cse.ucsc.edu/goldenPath/mm10/database/cytoBandIdeo.txt.gz).
 }
 \examples{
 inputcytofile <- Cytofile_read()
-inputcytofile <- Cytofile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), 
+inputcytofile <- Cytofile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""),
 cytofile = "cytoBandIdeo", suffix = ".txt.gz")
 
 }

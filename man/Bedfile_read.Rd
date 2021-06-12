@@ -19,24 +19,24 @@ Bedfile_read(
 
 \item{suffix}{refers to the suffix of bed file, e.g., ".gz", ".zip" and so on (some files are in text .txt format, then ".txt" or ".txt.gz"), with default ".txt".}
 
-\item{feature}{refers to whether to read the bed with the features, with default FALSE. 
+\item{feature}{refers to whether to read the bed with the features, with default FALSE.
 If feature = TRUE, the output of this function will contain the features e.g., promoter, exon, intron or CpG island, CpG island shore based on R package genomation.}
 
 \item{featurewrite}{refers to whether to write out the feature file to the given path, with default FALSE.}
 }
 \value{
-Outputs a data frame contains four columns of chromosome, start position, end position. 
+Outputs a data frame contains four columns of chromosome, start position, end position.
 If feature = TRUE, the data frame is five columns with the added feature such as genebody or cpgfeature.
 }
 \description{
-This function reads the bed file of refseq or cpgi and sorts them by chromosome and position. 
-The dataset of the example are the mouse reference genes and CpG island information that are downloaded from UCSC website 
-(http://genome.ucsc.edu/cgi-bin/hgTables). 
-The R package genomation used here can divide the refseq.bed file into several gene body features, e.g., promoter, exon, intron regions and 
+This function reads the bed file of refseq or cpgi and sorts them by chromosome and position.
+The dataset of the example are the mouse reference genes and CpG island information that are downloaded from UCSC website
+(http://genome.ucsc.edu/cgi-bin/hgTables).
+The R package genomation used here can divide the refseq.bed file into several gene body features, e.g., promoter, exon, intron regions and
 the cpgi.bed file into CpG island features, e.g., CpG island and CpG island shore.
 }
 \examples{
-inputrefseqfile <- Bedfile_read() 
+inputrefseqfile <- Bedfile_read()
 inputrefseqfile <- Bedfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), bedfile = "refseq", suffix = ".txt", feature = FALSE)
 inputcpgifile <- Bedfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), bedfile = "cpgi", suffix = ".txt", feature = FALSE)
 head(inputrefseqfile)
@@ -49,6 +49,6 @@ head(inputcpgifeaturefile)
 
 }
 \references{
-Akalin A, Franke V, Vlahovicek K, Mason C, Schubeler D (2014). "genomation: a toolkit to summarize, annotate and visualize genomic intervals." 
+Akalin A, Franke V, Vlahovicek K, Mason C, Schubeler D (2014). "genomation: a toolkit to summarize, annotate and visualize genomic intervals."
 Bioinformatics. doi: 10.1093/bioinformatics/btu775, http://bioinformatics.oxfordjournals.org/content/early/2014/12/04/bioinformatics.btu775.long.
 }
