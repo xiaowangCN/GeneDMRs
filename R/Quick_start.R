@@ -137,6 +137,11 @@ Quick_GeneDMRs <- function(paths = paste(system.file(package = "GeneDMRs"), "/me
 #' @examples
 #' allDMCs <- Quick_DMCs()
 #' 
+#' # if only case and control group (n = 2) paths are provided #
+#' controls <- c("C:/Users/GeneDMRs/methdata/1_1.gz", "C:/Users/GeneDMRs/methdata/1_2.gz", "C:/Users/GeneDMRs/methdata/1_3.gz")
+#' cases <- c("C:/Users/GeneDMRs/methdata/2_1.gz", "C:/Users/GeneDMRs/methdata/2_1.gz")
+#' allDMCs <- Quick_DMCs(control_paths = controls, case_paths = cases)
+#' 
 #' @export
 
 
