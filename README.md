@@ -116,7 +116,7 @@ Xiao Wang, Dan Hao, Haja N. Kadarmideen.
 
 ## Maintainer
 
-Xiao Wang. <xiwa@dtu.dk> or <wangxiao880923@gmail.com>
+Xiao Wang. <wangxiao880923@gmail.com>
 
 ## Reference
 
