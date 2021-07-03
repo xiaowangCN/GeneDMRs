@@ -112,7 +112,7 @@ regiongeneall_significant <- Significant_filter(regiongeneall_Qvalue)
 
 ## Author
 
-Xiao Wang, Dan Hao, Haja N. Kadarmideen. Department of Applied Mathematics and Computer Science, Technical University of Denmark
+Xiao Wang, Dan Hao, Haja N. Kadarmideen.
 
 ## Maintainer
 
