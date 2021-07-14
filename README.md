@@ -124,4 +124,4 @@ Xiao Wang, Dan Hao and Haja N. Kadarmideen. GeneDMRs: an R package for Gene-base
 
 Xiao Wang, Dan Hao and Haja N. Kadarmideen. GeneDMRs: an R package for Gene-based Differentially Methylated Regions analysis. bioRxiv 2020, 04.11.037168. (https://doi.org/10.1101/2020.04.11.037168)
 
-Xiao Wang, Dan Hao and Haja N. Kadarmideen. GeneDMRs: an R package for Gene-based Differentially Methylated Regions analysis. Journal of Computational Biology 2020, 28, 1-13. (https://doi.org/10.1089/cmb.2020.0081)
+Xiao Wang, Dan Hao and Haja N. Kadarmideen. GeneDMRs: an R package for Gene-based Differentially Methylated Regions analysis. Journal of Computational Biology 2021, 28(3), 304-316. (https://doi.org/10.1089/cmb.2020.0081)
