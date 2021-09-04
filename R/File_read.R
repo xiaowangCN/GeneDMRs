@@ -34,7 +34,7 @@
 # So, what are the origanal coverage file and combined methall file looking like? e.g. data from mouse #
 
  # Coverage file from Bismark without header, so don't add the header. If the cov file is with header, please use "chr", "posi", "Cs", "Ts" for four columns #
- # It contains six columns that are choromsome, start position, end position, methylated percentage, methylated read coverage and unmethylated read coverage #
+ # It contains six columns that are chromosome, start position, end position, methylated percentage, methylated read coverage and unmethylated read coverage #
  # Methylated percentage = Methylated read coverage / (Methylated read coverage and Unmethylated read coverage) #
    #1  chr1 3020877 3020877  97.46835 77  2
    #2  chr1 3020891 3020891  92.40506 73  6
@@ -49,7 +49,7 @@
 
 
  # The output file of this function is with header and combines all the files with the same chromosome and position #
- # It contains choromsome, position, methylated read coverages (Cs) and unmethylated read coverages (Ts) of each sample #
+ # It contains chromosome, position, methylated read coverages (Cs) and unmethylated read coverages (Ts) of each sample #
     #   chr  posi   Cs1_1 Ts1_1 Cs1_2 Ts1_2 Cs1_3 Ts1_3 Cs2_1 Ts2_1 Cs2_2 Ts2_2
    #1  chr1 3020877    77     2    77     7    49     2    31     4    68     0
    #2  chr1 3020891    73     6    78     6    49     2    33     2    68     0
@@ -325,7 +325,7 @@ Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/met
  # Bedfile is without header, so don't add the header #
 
  # refseq.bed file #
- # It contains 12 columns that are choromsome, chromstart (thickStart) position, chromend (thickEnd) position, #
+ # It contains 12 columns that are chromosome, chromstart (thickStart) position, chromend (thickEnd) position, #
  # NCBI ID number for mRNA, score, strand, coding start position, coding end position, score, number of exon, length of exon, distance from TSS start position to exon #
  #1 chr1	75465296	75508244	NM_001243664	0	-	75465385	75508212	0	8	201,136,57,148,63,189,96,155,	0,11425,20986,26474,26728,35769,39257,42793,
  #2 chr1	5698507	6731132	NM_001044603	0	+	5698507	6729846	0	11	166,229,122,84,116,137,62,150,84,118,1399,	0,160362,224013,370124,439504,592645,812774,826595,994107,1025825,1031226,
@@ -339,7 +339,7 @@ Methfile_read <- function(paths = paste(system.file(package = "GeneDMRs"), "/met
  #10 chr1	189690481	189907808	NM_001166316	0	+	189690481	189907808	0	8	89,153,74,104,141,126,122,121,	0,55712,57518,67005,73033,78455,118475,217206,
 
   # cpgi.bed file #
- # It contains 4 columns that are choromsome, start position, end position, CpG ID #
+ # It contains 4 columns that are chromosome, start position, end position, CpG ID #
  #1 chr1	21811	22330	CpG:_48
  #2 chr1	23707	24083	CpG:_41
  #3 chr1	66380	66649	CpG:_22
@@ -531,7 +531,7 @@ Regionfile_read <- function(bedfile, suffix){
 #' That checks and annotates the promoter to the specific gene.
 #'
 #' @description This function sorts and makes sure geneobj file can be used in this package,
-#' that mainly works on the promoters without the choromsome and position information.
+#' that mainly works on the promoters without the chromosome and position information.
 #' In addition, it can add the genomic number of exons and introns, e.g., first exon or second intron.
 #'
 #' @param geneobj refers to the genebody file from readTranscriptFeatures of package genomation.
@@ -549,7 +549,7 @@ refseqfile_check <- function(geneobj, regionfile){
   geneobj <- geneobj[,c(9,3,4,5,2,7)]
   colnames(geneobj) <- c("refseq","chr","start","end","genebody","strand")
 
-  ## promoters without the choromsome and position information ##
+  ## promoters without the chromosome and position information ##
   tmp_promoter <- filter(geneobj, genebody == "promoters")
   tmp_nopromoter <- filter(geneobj, genebody != "promoters")
   print(paste("The total reading line for promoter is", nrow(tmp_promoter), sep = " "))
