@@ -17,7 +17,7 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 
     install.packages("BiocManager")
     
-  BiocManager::install(c("devtools", "clusterProfiler", "corrplot", "dplyr", "ffbase", "genomation", "KEGG.db", 
+  BiocManager::install(c("devtools", "clusterProfiler", "corrplot", "dplyr", "ffbase", "genomation", 
                          "pheatmap", "plotrix", "qqman", "RCircos", "VennDiagram", "org.Mm.eg.db"))
 ```
 
@@ -40,12 +40,6 @@ install_github("xiaowangCN/GeneDMRs")
 See the GeneDMRs.pdf file
 
 ### Examples
-
-If dependencies need to be installed
-
-```
-GeneDMRs(Dbannotation = "org.Mm.eg.db")
-```
 
 Before starting quickly or starting step by step, the user could download the example data or the whole folder from "/methdata" for testing. In the folder "/methdata", "1_1.gz", "1_2.gz" and "1_3.gz" files are the control group, while "2_1.gz" and "2_1.gz" files are case group. The user just needs to give one path for GeneDMRS package, e.g., "paths = paste(system.file(package = "GeneDMRs")" which is the package systme path.
 
@@ -102,12 +96,6 @@ regiongeneall_Qvalue <- Logic_regression(regiongeneall)
   
 # sifnificant filter #
 regiongeneall_significant <- Significant_filter(regiongeneall_Qvalue)
-```
-
-### More about GeneDMRs
-
-```
-?GeneDMRs
 ```
 
 ## Author
