@@ -1,13 +1,13 @@
 Package: GeneDMRs
 Title: GeneDMRs: an R package for Gene-based differentially methylated regions analysis
-Version: 0.1.0
-Authors@R: person("Xiao", "Wang", email = c("xiwa@dtu.dk", "wangxiao880923@gmail.com"), role = c("aut", "cre"))
+Version: 1.1.0
+Authors@R: person("Xiao", "Wang", email = c("wangxiao880923@gmail.com"), role = c("aut", "cre"))
 Description: Calculating methylations within genes and identify the Gene-based Differentially Methylated Regions (GeneDMRs).
-Depends: R (>= 3.5.0)
-Imports: clusterProfiler, corrplot, dplyr, ffbase, genomation, KEGG.db, pheatmap, plotrix, qqman, RCircos, VennDiagram, org.Mm.eg.db
+Depends: R (>= 4.1.0)
+Imports: clusterProfiler, corrplot, dplyr, ffbase, genomation, pheatmap, plotrix, qqman, RCircos, VennDiagram, org.Mm.eg.db
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests: knitr
 VignetteBuilder: knitr
