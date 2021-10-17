@@ -34,7 +34,7 @@ Enrich_plot(
 
 \item{title}{refers to the title of figure, with default "Enrichments for significant gene".}
 
-\item{expressionfile_significant}{refers to an additional file for differentially expressed genes which includes gene name and Log fold change (LogFC). 
+\item{expressionfile_significant}{refers to an additional file for differentially expressed genes which includes gene name and Log fold change (LogFC).
 This is a optional file for GO terms and pathways, with default NULL.}
 
 \item{expressionfile_genetype}{refers to the gene type of expressionfile_significant file, which can be "REFSEQ", "ENTREZID", "SYMBOL",
@@ -44,7 +44,7 @@ or other gene types that can be used in clusterProfiler, with default NULL.}
 Outputs a dot-plot figure of enrichment.
 }
 \description{
-This function outputs the groups, GO terms and pathways plot for the enrichment based on R package clusterProfiler, org.Mm.eg.db (Mouse for example) and KEGG.db.
+This function outputs the groups, GO terms and pathways plot for the enrichment based on R package clusterProfiler and org.Mm.eg.db (Mouse for example).
 }
 \examples{
 Enrich_plot(regiongenealls_significant, enrichterm = "GOgroup", Dbannotation = "org.Mm.eg.db", title = "Biological process for significant gene")
@@ -55,9 +55,9 @@ Enrich_plot(regiongenealls_significant, enrichterm = "pathway", keggorganism = "
 
 expressionfile_significant <- read.table(paste(system.file(package = "GeneDMRs"), "/methdata/DEgenes.txt", sep=""), header = T) # read DEgene file #
 
-Enrich_plot(regiongenealls_significant, adjustpvaluecut = 0.2, enrichterm = "GO", Dbannotation = "org.Mm.eg.db", title = "Go term for significant gene in two categories", 
+Enrich_plot(regiongenealls_significant, adjustpvaluecut = 0.2, enrichterm = "GO", Dbannotation = "org.Mm.eg.db", title = "Go term for significant gene in two categories",
 expressionfile_significant = expressionfile_significant, expressionfile_genetype = "SYMBOL")
-Enrich_plot(regiongenealls_significant, enrichterm = "pathway", Dbannotation = "org.Mm.eg.db", keggorganism = "mmu", title = "Pathway for significant gene in two categories", 
+Enrich_plot(regiongenealls_significant, enrichterm = "pathway", Dbannotation = "org.Mm.eg.db", keggorganism = "mmu", title = "Pathway for significant gene in two categories",
 expressionfile_significant = expressionfile_significant, expressionfile_genetype = "SYMBOL")
 
 }
