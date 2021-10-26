@@ -46,7 +46,7 @@ Before starting quickly or starting step by step, the user could download the sa
 If the folder is downloaded on the desktop, just run like:
 ```
 
-allDMGs <- Quick_GeneDMRs(paths = "C:/Users/Desktop/refseq.bed.txt")
+allDMGs <- Quick_GeneDMRs(paths = "C:/Users/Desktop/methdata")
 ```
 
 ### Examples
