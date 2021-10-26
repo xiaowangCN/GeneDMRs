@@ -53,7 +53,7 @@ inputrefseqfile <- Bedfile_read(paths = "C:/Users/Desktop/methdata", bedfile = "
 
 ### Examples
 
-1. If get all differentially methylated genes (DMGs) quickly
+#### 1. If get all differentially methylated genes (DMGs) quickly
 
 ```
 allDMGs <- Quick_GeneDMRs(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""))
@@ -67,7 +67,7 @@ cases <- c("C:/Users/GeneDMRs/methdata/2_1.gz", "C:/Users/GeneDMRs/methdata/2_1.
 allDMGs <- Quick_GeneDMRs(paths = "C:/Users/GeneDMRs/methdata", control_paths = controls, case_paths = cases)
 ```
 
-2. If get all differentially methylated cytosine sites (DMCs) quickly
+#### 2. If get all differentially methylated cytosine sites (DMCs) quickly
 
 ```
 allDMCs <- Quick_DMCs(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""))
@@ -81,7 +81,7 @@ cases <- c("C:/Users/GeneDMRs/methdata/2_1.gz", "C:/Users/GeneDMRs/methdata/2_1.
 allDMCs <- Quick_DMCs(control_paths = controls, case_paths = cases)
 ```
 
-3. If get all DMGs step by step
+#### 3. If get all DMGs step by step
 
 ```
 # read the methylation file #
