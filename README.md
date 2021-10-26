@@ -39,9 +39,17 @@ install_github("xiaowangCN/GeneDMRs")
 
 See the GeneDMRs.pdf file
 
-### Examples
+### Sample data
 
-Before starting quickly or starting step by step, the user could download the example data or the whole folder from "/methdata" for testing. In the folder "/methdata", "1_1.gz", "1_2.gz" and "1_3.gz" files are the control group, while "2_1.gz" and "2_1.gz" files are case group. The user just needs to give one path for GeneDMRS package, e.g., "paths = paste(system.file(package = "GeneDMRs")" which is the package systme path.
+Before starting quickly or starting step by step, the user could download the sample data or the whole folder from "/methdata" for testing (https://github.com/xiaowangCN/GeneDMRs/tree/master/methdata). In the folder "/methdata", "1_1.gz", "1_2.gz" and "1_3.gz" files are the control group, while "2_1.gz" and "2_1.gz" files are case group. The user just needs to give one path for GeneDMRS package, e.g., "paths = paste(system.file(package = "GeneDMRs")" which is the package systme path. 
+
+If the folder is downloaded on the desktop, just run like:
+```
+
+allDMGs <- Quick_GeneDMRs(paths = "C:/Users/Desktop/refseq.bed.txt")
+```
+
+### Examples
 
 1. If get all differentially methylated genes (DMGs) quickly
 
