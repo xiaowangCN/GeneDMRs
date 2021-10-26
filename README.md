@@ -46,7 +46,8 @@ Before starting quickly or starting step by step, the user could download the sa
 The user just needs to give one path for GeneDMRS package, e.g., "paths = paste(system.file(package = "GeneDMRs")" which is the package systme path. If the folder is downloaded on the desktop, just use the desktop as the path like:
 
 ```
-allDMGs <- Quick_GeneDMRs(paths = "C:/Users/Desktop/methdata")
+inputmethfile <- Methfile_read(paths = "C:/Users/Desktop/methdata", suffix = ".gz")
+inputrefseqfile <- Bedfile_read(paths = "C:/Users/Desktop/methdata", bedfile = "refseq", suffix = ".txt", feature = FALSE)
 ```
 
 ### Examples
