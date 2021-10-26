@@ -41,11 +41,11 @@ See the GeneDMRs.pdf file
 
 ### Sample data
 
-Before starting quickly or starting step by step, the user could download the sample data or the whole folder from "/methdata" for testing (https://github.com/xiaowangCN/GeneDMRs/tree/master/methdata). In the folder "/methdata", "1_1.gz", "1_2.gz" and "1_3.gz" files are the control group, while "2_1.gz" and "2_1.gz" files are case group. The user just needs to give one path for GeneDMRS package, e.g., "paths = paste(system.file(package = "GeneDMRs")" which is the package systme path. 
+Before starting quickly or starting step by step, the user could download the sample data or the whole folder from "/methdata" for testing (https://github.com/xiaowangCN/GeneDMRs/tree/master/methdata). In the folder "/methdata", "1_1.gz", "1_2.gz" and "1_3.gz" files are the control group, while "2_1.gz" and "2_2.gz" files are case group. 
 
-If the folder is downloaded on the desktop, just run like:
+The user just needs to give one path for GeneDMRS package, e.g., "paths = paste(system.file(package = "GeneDMRs")" which is the package systme path. If the folder is downloaded on the desktop, just use the desktop as the path like:
+
 ```
-
 allDMGs <- Quick_GeneDMRs(paths = "C:/Users/Desktop/methdata")
 ```
 
