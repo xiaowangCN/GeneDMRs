@@ -39,6 +39,7 @@ install_github("xiaowangCN/GeneDMRs")
 
 See the GeneDMRs.pdf file
 
+
 ### Sample data
 
 Before starting quickly or starting step by step, the user could download the sample data or the whole folder from "/methdata" for testing (https://github.com/xiaowangCN/GeneDMRs/tree/master/methdata). In the folder "/methdata", "1_1.gz", "1_2.gz" and "1_3.gz" files are from the control group, while "2_1.gz" and "2_2.gz" files are from the case group. "refseq.bed.txt" and "cpgi.bed.txt" files are the bed files that are downloaded from UCSC (http://genome.ucsc.edu/cgi-bin/hgTables) by changing the "genome", "group", "track" and "output format" channels, where "refseq.bed.txt" is used for reference genes and "cpgi.bed.txt" is used for CpG islands. 
