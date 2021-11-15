@@ -48,10 +48,10 @@ Meth_mean <- function(inputmethfile_QC, regionchr, cpgifeaturefile = NULL){
       if(i==50000){
         message("The calculating line is 50,000 now")
       }
-	  if(i==100000){
+      if(i==100000){
         message("The calculating line is 100,000 now")
       }
-    if(i==300000){
+      if(i==300000){
         message("The calculating line is 300,000 now")
       }
       if(i==500000){
@@ -97,10 +97,13 @@ Meth_mean <- function(inputmethfile_QC, regionchr, cpgifeaturefile = NULL){
       if(i==50000){
         message("The calculating line is 50,000 now")
       }
-	  if(i==100000){
+      if(i==100000){
         message("The calculating line is 100,000 now")
       }
-	  if(i==500000){
+      if(i==300000){
+        message("The calculating line is 300,000 now")
+      }
+      if(i==500000){
         message("The calculating line is 500,000 now")
       }
 
