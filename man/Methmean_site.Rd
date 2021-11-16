@@ -13,12 +13,12 @@ Methmean_site(inputmethfile_QC)
 Outputs a data frame of the methylation mean of provided cytosine sites.
 }
 \description{
-This function outputs the methylation mean for each cytosine site. It will calculate methylation difference along each group. 
+This function outputs the methylation mean for each cytosine site. It will calculate methylation difference along each group.
 
-Formula:The mean methylation of a cytosine of one treatment group was calculated by: 
-E((E[MR]_i )/(E[TR]_i ))*W_i and W_i =  (E[TR]_i )/(EE[TR]_i ), 
-where [MR]_i and [TR]_i are methylated and total reads number of the CpG, 
-n is the total individual number of one treatment group, and 
+Formula:The mean methylation of a cytosine of one treatment group was calculated by:
+E((E[MR]_i )/(E[TR]_i ))*W_i and W_i =  (E[TR]_i )/(EE[TR]_i ),
+where [MR]_i and [TR]_i are methylated and total reads number of the CpG,
+n is the total individual number of one treatment group, and
 W_i is the weight of reads of the CpG of individual i.
 }
 \examples{
