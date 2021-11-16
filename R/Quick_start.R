@@ -2,7 +2,6 @@
 #'
 #' @import dplyr
 #' @import ffbase
-#' @import qqman
 #' @import pheatmap
 #' @import clusterProfiler
 #'
@@ -60,7 +59,6 @@ Quick_GeneDMRs <- function(paths = paste(system.file(package = "GeneDMRs"), "/me
 
   # visualization #
   Group_boxplot(regiongeneall)
-  Manhattan_plot(regiongeneall_Qvalue, chrlabs = c(1:19,"X","Y"), col = c("red","blue"), genomewideline = -log10(1e-02))
   Chromosome_pieplot(regiongeneall_significant, title = "Distribution of DMG")
   Heatmap_plot(regiongeneall_significant, title = "Methylation level (%) for genes", display_numbers = FALSE)
 
@@ -127,7 +125,6 @@ Quick_DMCs <- function(paths = paste(system.file(package = "GeneDMRs"), "/methda
   siteall_significant <- Significant_filter(siteall_Qvalue, methdiff = 0.1)
 
   # visualization #
-  Manhattan_plot(siteall_Qvalue, chrlabs = c(1:19,"X","Y"), col = c("red","blue"), genomewideline = -log10(1e-02))
   Volcano_plot(siteall_Qvalue)
   Chromosome_pieplot(siteall_significant, title = "Distribution of DMC")
 
