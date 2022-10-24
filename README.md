@@ -110,7 +110,7 @@ regiongeneall_significant <- Significant_filter(regiongeneall_Qvalue)
 
 #### 4. If get all DMGs by fitting other environmental factors as covariates step by step
 
-## The input files "1_1.gz", "1_2.gz", "1_3.gz", "2_1.gz" and "2_2.gz" in the "methdata" folder need to be renamed to "1_1.gz", "2_1.gz", "3_1.gz", "4_1.gz" and "5_1.gz" as the individual sample. So no replicate here.
+### The input files "1_1.gz", "1_2.gz", "1_3.gz", "2_1.gz" and "2_2.gz" in the "methdata" folder need to be renamed to "1_1.gz", "2_1.gz", "3_1.gz", "4_1.gz" and "5_1.gz" as the individual sample. So no replicate here.
 
 ```
 # define the covariates #
