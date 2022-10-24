@@ -92,17 +92,44 @@ controls <- c("C:/Users/GeneDMRs/methdata/1_1.gz", "C:/Users/GeneDMRs/methdata/1
 cases <- c("C:/Users/GeneDMRs/methdata/2_1.gz", "C:/Users/GeneDMRs/methdata/2_1.gz")
 inputmethfile <- Methfile_read(control_paths = controls, case_paths = cases)
 
-# read the bedfile #
-inputrefseqfile <- Bedfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), bedfile = "refseq", suffix = ".txt", feature = FALSE)
-  
 # quality control #
 inputmethfile_QC <- Methfile_QC(inputmethfile)
+
+# read the bedfile #
+inputrefseqfile <- Bedfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), bedfile = "refseq", suffix = ".txt", feature = FALSE)
   
 # methylation mean #
 regiongeneall <- Methmean_region(inputmethfile_QC, inputrefseqfile, chrnum = "all")
   
 # statistical test #
 regiongeneall_Qvalue <- Logic_regression(regiongeneall)
+  
+# sifnificant filter #
+regiongeneall_significant <- Significant_filter(regiongeneall_Qvalue)
+```
+
+#### 4. If get all DMGs by fitting other environmental factors as covariates step by step
+
+## The input files "1_1.gz", "1_2.gz", "1_3.gz", "2_1.gz" and "2_2.gz" in the "methdata" folder need to be renamed to "1_1.gz", "2_1.gz", "3_1.gz", "4_1.gz" and "5_1.gz" as the individual sample. So no replicate here.
+
+```
+# define the covariates #
+covariateinfo <- data.frame(Group = c("Control","Control","Control","Case","Case"), Diet = c("High","High","Low","High","Low"), Timepoint = c("Week1","Week2","Week1","Week2","Week2"))
+
+# read the methylation file #
+inputmethfile <- Methfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), suffix = ".gz")
+
+# quality control #
+inputmethfile_QC <- Methfile_QC(inputmethfile)
+
+# read the bedfile #
+inputrefseqfile <- Bedfile_read(paths = paste(system.file(package = "GeneDMRs"), "/methdata", sep=""), bedfile = "refseq", suffix = ".txt", feature = FALSE)
+  
+# methylation mean #
+regiongeneall <- Methmean_region(inputmethfile_QC, inputrefseqfile, chrnum = "all")
+  
+# statistical test #
+regiongeneall_Qvalue <- Logic_regression(regiongeneall, covariates = covariateinfo)
   
 # sifnificant filter #
 regiongeneall_significant <- Significant_filter(regiongeneall_Qvalue)
