@@ -584,7 +584,7 @@ refseqfile_check <- function(geneobj, regionfile){
   tmp_noexonintron <- filter(geneobj, genebody != "exons" & genebody != "introns")
 
   # sort the file #
-  tmp_exonintron <- arrange(tmp_exonintron, chr, start, refseq, genebody)
+  tmp_exonintron <- arrange(tmp_exonintron, chr, refseq, start, genebody)
 
   # add one first row and one last row #
   tmp_exonintron <- rbind(tmp_noexonintron[1, ], tmp_exonintron, tmp_noexonintron[1, ])
