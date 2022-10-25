@@ -42,4 +42,7 @@ genefeatureall_Qvalue <- Logic_regression(genefeatureall, adjustedmethod = "bonf
 siteall_Qvalue <- Logic_regression(siteall, adjustedmethod = "fdr") # for each cytosine site #
 siteall_Qvalue <- Logic_regression(siteall, adjustedmethod = "fdr", diffgroup = c("group1", "group2"))
 
+covariateinfo <- data.frame(Timepoint = c("week3","week3","week12","week12","week12"), Diet = c("Low","High","Low","High","High")) # for environmental factors #
+regiongeneall_Qvalue <- Logic_regression(regiongeneall, covariates = covariateinfo)
+
 }
