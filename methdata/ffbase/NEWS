@@ -1,0 +1,139 @@
+version 0.13
+- update ffbase so that it works again with the changed version of ff
+
+version 0.12.4
+- make sure that if ffdfdply is used if there is only one split level, function executes fine also
+
+version 0.12.3
+- allowed to index and overwrite ffdf objects based on logical ff vectors ("[.ffdf" and "[<-.ffdf" from the ff package are overwritten)
+- allowed users to use ffdfappend on 1 column ffdf objects
+- added importFrom graphics/stats/utils packages to comply to CRAN policy update
+
+version 0.12.2
+- fixed a bug in binned_sumsq.
+
+version 0.12.1
+- exported all methods and namespaced functions physical and clone
+
+version 0.12.0
+- exported (almost) all methods since some users depend upon them
+- removed CRAN warnings (stricter checking)
+
+version 0.11.2
+- fix for issue #32
+- added ffdfrbind.fill (request #33)
+- added also table to export
+- fix for issue #15
+- fix for issue #35
+- Added import tools::file_as_absolute_path and file_ext
+
+version 0.11-1
+- table.ff was not exported
+
+version 0.11
+- Fix for issue #19 (thanks to @jwijffels and @gaizoule)
+- allow expand.ffgrid to also work with lists of ff objects (issue #23)
+- speeding up of ffdfdply and fix for issue #27 when supplying wrong split in ffdfdply
+- Fix for issue #29
+- Added check in save.ffdf: if .Rdata is available, by default save.ffdf will give an error. 
+(Thanks to @dnlbrky). Fix for Issue: #30. NOTE this changes default behavior!
+- Changed internal match function into fmatch for speeding up things. issue #28
+
+version 0.10
+- Made several method generics
+- Improved error message in merge.ffdf when one of the columns was missing (Thanks to Milan Bouchet-Valat)
+- Removed rowname creation by within (Thanks to Milan Bouchet-Valat).
+- Removed bug in save.ffdf (Thanks to d.morrison, issue #6)
+- Removed bug in droplevels (issue #3)
+- Removed bug in load.ffdf which caused open file handlers. (Thanks to Milan Bouchet-Valat, issue #7)
+- Removed bug in mean (issue #2)
+- Fix for issue #10: with() can give wrong results (Thanks to Milan Bouchet-Valat)
+- Fix for issue #16: load.ffdf(), when loading a non-existent directory a more clear error is generated. (Thanks to Milan Bouchet-Valat)
+- Fix for issue #14: table.ffdf() prints same result as table.ffdf()
+- Fix for issue #18: bySum was not working correctly. (Thanks to @stevechc)
+- Fix for issue #21: formula interface for bigglm was not working correctly (Thanks to Chris Louden @louden)
+- Append factor levels in within.ffdf() (Thanks to Milan Bouchet-Valat)
+- overloaded "[.ff" and "[<-.ff" to allow writing  ff(1:3)[ff(c(FALSE, TRUE, TRUE))]
+
+version 0.9
+- fixed an error in chunkexpr: long expressions were cut off, Thanks to gaizoule
+- made binned_ functions faster by reusing the same vector.
+- binned_sum (and the rest) also accept a factor variable
+- binned_sum.ff (and the rest) also accept an INDEX vector 
+- added rev.ff for reversing an ff vector
+
+version 0.8
+- made binned_sum, binned_sumsq and binned_tabulate generic functions (thanks to Gordon An)
+- added rbind for ffdf's 
+- Fixed bug in ffdfappend appending two ffdf's with a factor, thanks to Milan Bouchet-Valat
+- Fixed bug in subset/ffwhich: variables in function body could not be evaluated, thanks to 该走了
+- Fixed bug in cut.ff, thanks to Gordon An
+- Added rle for ff vectors
+- Added function ffseq
+- Added S3 methods for ff vectors for generics as.Date, format.
+- Allowed chunkify to work with functions returning character vectors also
+- Fixed issue when using with.ffdf which returns Date or POSIXct, fixes for table.ff when not all levels where known in 1 chunk
+
+version 0.7
+- Fixed bug in ffwhich: variables in expression could not be evaluated, thanks to 该走了
+
+version 0.6-3
+- Made sure bigglm.ffdf also works in R version 2.14.2 (reported by Uwe Ligges)
+- ffappend now works directly with is.factor.ff instead of is.factor
+- BREAKING CHANGE: changed function key to ikey: request of http://code.google.com/p/fffunctions/issues/detail?id=3
+- Allowed ikey to work also on an ffdf with only 1 column
+
+version 0.6-2
+- Added bigglm.ffdf to allow to fit a bounded memory linear regression model using package biglm
+- Removed the overloading of "[.ff" and "[<-.ff" which is causing R crashes due to .Call of C code in package ff directly. Will be put back later on when the reason is cleared out
+- Improved implementation of subsetting ff vectors and ffdf data.frames. NA is now handled correctly.
+
+version 0.6-1
+- fixed a CRAN check warning for overloading extract functions (thanks to Brian Ripley)
+
+version 0.6
+- Added bySum and bySumsq
+- Fixed a bug in ffappend for adding factors (this also fixes a bugs in cut.ff)
+- Added function key 
+- Added function ffifelse
+- Added function ffrep.int, ffseq_len 
+- Added function expand.ffgrid
+- Added as.character.ff
+- Allowed table.ff also to work with integers and dates next to factors
+- Allowed ffdfdply also to work with integers and dates next to factors in the split
+- Overloaded "[.ff" and "[<-.ff" extractor and setter functions from package ff to allow to extract and set elements based on a logical ff vector also instead of only ff integer vectors (this allows to do e.g. ff(1:10)[ff(c(FALSE, TRUE, NA, TRUE))])
+
+version 0.5
+- Added Arithmetic (+, -, *, /, ^, %%, %/%) operators for ff vectors
+- Added Compare & Logic (==, !=, <, <=, >=, >, &, |, !) operators for ff vectors 
+- Added Math (abs, sign, sqrt, ceiling, floor, trunc, log, log10, log2, log1p, acos, acosh, asin, asinh, atan, atanh, exp, expm1, cos, cosh, sin, sinh, tan, tanh, gamma, lgamma, digamma, trigamma, round, signif) functions for ff vectors
+- Added ffmatch & ffdfmatch function and overloaded the %in% operator
+- Added ffwhich function
+- Added laf_to_ffdf
+- Added duplicated and unique for ff and ffdf
+- Added is.na for ff vectors
+- Changed merge.ffdf to work based on ffmatch in order to handle left outer joins correctly
+- Fixed a bug in ffwhich.ff_vector
+- ffappend and ffdfappend have an extra argument adjustvmode - defaulting to TRUE - which makes sure x is now coerced to a higher vmode if needed. This also affects the c.ff_vector operator.
+- improved compact.ff
+- Added save.ffdf, move.ffdf, load.ffdf, pack.ffdf and unpack.ffdf
+
+version 0.4-1
+- exported sum.ff, because RecordLinkage fails...
+
+version 0.4
+- Added many new functions ffdfdply, ffwhich, hist.ff, quantile.ff, cumsum, cummax
+- Fixed bugs in 'with.ff' in combination with character and factor vectors.
+- Welcomed a new contributer/author Jan Wijffels
+
+version 0.3
+- Added ffdfsave function that can be used to save an ffdf data.frame
+
+version 0.2-2
+- bug fix, subset for ffdf now works properly (thanks to Martijn Tennekes)
+
+version 0.2-1
+- bug fix, sum.ff with na.rm=TRUE is now working correctly (thanks to Andreas Borg)
+
+version 0.2
+- initial version

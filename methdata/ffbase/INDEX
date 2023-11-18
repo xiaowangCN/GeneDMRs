@@ -1,0 +1,89 @@
++.ff_vector             Arithmetic Operators for ff vectors
+>.ff_vector             Ops for ff vectors
+[.ff                    Reading and writing vectors extended to handle
+                        logical 'ff' vectors as indexes
+[.ffdf                  Reading and writing data.frames (ffdf)
+abs.ff_vector           Math for ff vectors
+addfforder              Add the order of a ff vector of the 'ff' vector
+                        'x'
+all.ff                  Summary methods for ff objects
+any.ff                  Summary methods for ff objects
+as.Date.ff_vector       Date Conversion Functions for 'ff' vector
+as.character.ff         Character Vectors
+as.ffdf.ffdf            Trivial implementation, but very handy
+as.ram.ffdf             As ram for an ffdf to get your ffdf as a data
+                        frame in RAM
+bigglm.ffdf             Bounded memory linear regression
+binned_sum              Fast summing in different bins
+binned_sumsq            Fast squared summing in different bins
+binned_tabulate         Fast tabulating in different bins
+byMean                  Fast conditional mean
+bySum                   Fast conditional sum
+c.ff                    Concatenate 'ff' vectors
+chunkify                Chunkify an element-wise function
+compact                 Compact a ff vector or ffdf data frame
+condMean                Fast conditional mean
+condSum                 Fast conditional sum
+cumsum.ff               Cumulative Sums, Products, and Extremes
+cut.ff                  Convert Numeric ff vector to factor ff
+diff.ff                 Lagged Differences
+droplevels.ff           The function 'droplevels' is used to drop
+                        unused levels from a 'ff' factor or , more
+                        commonly, from factors in a 'ffdf'
+droplevels.ffdf         The function 'droplevels' is used to drop
+                        unused levels from factors in a 'ffdf'
+duplicated.ff           Duplicated for ff and ffdf objects
+expand.ffgrid           Create a 'ffdf' from All Combinations of
+                        Factors
+ffappend                Append a ff vector to another ff vector
+ffbase-package          Basic statistical functions for ff
+ffdfappend              Append a dataframe or an 'ffdf' to another
+                        'ffdf'
+ffdfdply                Performs a split-apply-combine on an ffdf
+ffdfrbind.fill          rbind for ffdf where missing columns are added
+                        if not available in one of the ffdf objects
+ffdfsave                Save a ffdf data.frame in directory
+ffdfwith                Evaluate an expression in a ffdf data
+                        environment
+ffifelse                Conditional Element Selection for 'ff' vectors.
+ffmatch                 Value Matching for ff objects
+ffrandom                Generate 'ff' vector with draws from
+                        distribution
+ffrep.int               Replicate Elements of 'ff' vectors.
+ffseq                   Sequence Generation of 'ff' vectors.
+ffseq_len               Sequence Generation of 'ff' vectors.
+ffwhich                 Create an index from a filter statement
+format.ff_vector        Date Conversion Functions for 'ff' vector
+grouprunningcumsum      Groups the input integer vector into several
+                        groups if the running cumulative sum increases
+                        a certain maximum number
+hist.ff                 hist for ff vectors
+ikey                    Creates a unique integer key for unique
+                        combinations of rows of an 'ffdf'
+is.na.ff                'Not Available' / Missing Values for ff vectors
+laf_to_ffdf             Use LaF to import data into 'ffdf' data.frame
+load.ffdf               Loads ffdf data.frames from a directory
+mean.ff                 Mean of ff vector
+merge.ffdf              Merge two ffdf by common columns, or do other
+                        versions of database join operations.
+min.ff                  Minimum, maximum and range of ff vector
+move.ffdf               Moves all the columns of ffdf data.frames into
+                        a directory
+pack.ffdf               Packs ffdf data.frames into a compressed file
+quantile.ff             quantiles
+rle_ff                  Compute the lengths and values of runs of equal
+                        values in a vector
+save.ffdf               Save ffdf data.frames in a directory
+set_ffbase_logging      sets the logging of ffbase
+subset.ff               Subsetting a ff vector or ffdfdata frame
+sum.ff                  Sum of 'ff' vector Elements
+table                   Cross Tabulation and Table Creation
+tabulate.ff             Tabulation for ff vectors
+transform.ffdf          Transform a ffdf data.frame
+unique.ff               Unique values for ff and ffdf objects
+unpack.ffdf             Unpacks previously stored ffdf data.frame into
+                        a directory
+with.ffdf               Evaluate an expression in a ffdf data
+                        environment
+within.ffdf             Evaluate an expression in a ffdf data
+                        environment
